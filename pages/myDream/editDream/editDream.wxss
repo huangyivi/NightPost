@@ -1,0 +1,126 @@
+/* 顶部样式 */
+@import "../../../app.wxss";
+
+page {
+  background-color: #F8F8F8;
+  font-family: 'Source Han Serif CN' !important;
+}
+
+
+.navi-top {
+  box-sizing: border-box;
+  padding-left: 32px;
+  padding-right: 32px;
+  position: fixed;
+  width: 100vw;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 31px;
+  color: #181818;
+  opacity: 1;
+}
+
+
+.main {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-header {
+  height: 44px;
+  width: 100%;
+}
+
+.main-date {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #7B7B7B;
+  opacity: 1;
+}
+
+.main-publish {
+  color: #fff;
+  width: 56px;
+  height: 24px;
+  background: #181818;
+  opacity: 1;
+}
+
+
+
+
+.main-content {
+  box-sizing: border-box;
+  position: relative;
+  height: calc(100% - 44px);
+  width: 100%;
+  background: linear-gradient(225deg, transparent 24px, #fff 0);
+  padding: 24px 16px;
+}
+
+.main-content::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: linear-gradient(-135deg, transparent 50%, rgba(112, 112, 112, 0.1) 0);
+  border-bottom: 1px rgba(112, 112, 112, 0.5) solid;
+  border-left: 1px rgba(112, 112, 112, 0.5) solid;
+  width: 34px;
+  height: 34px;
+}
+
+.main-title {
+  width: 100%;
+  height: 30px;
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 25px;
+  color: #7B7B7B;
+  opacity: 1;
+  border-bottom: 1px solid #DDDDDD;
+  margin-bottom: 10px;
+}
+
+.main-detail {
+  width: 100%;
+  height: 232px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 25px;
+  color: #ACACAC;
+  opacity: 1;
+}
+
+
+.navi-bottom {
+  box-sizing: border-box;
+  position: fixed;
+  padding: 0 32px;
+  height: 80px;
+  width: 100vw;
+  bottom: 34px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  width: 28px;
+  height: 28px;
+}
+
+.navi-btn-active {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(0, 0, 0, 0.1);
+}

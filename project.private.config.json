@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -14,6 +15,12 @@
         {
           "name": "pages/frame/frame",
           "pathName": "pages/frame/frame",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myDream/editDream/editDream",
+          "pathName": "pages/myDream/editDream/editDream",
           "scene": null
         }
       ]

@@ -9,6 +9,26 @@
   box-sizing: border-box;
 } 
 
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center
+}
+
 @font-face{
   font-family: "Source Han Serif CN";
   src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
