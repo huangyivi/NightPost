@@ -1,0 +1,14 @@
+<view class="navi-top" style="top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  梦境万象
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 32px 144px;">
+  <view class="main-content">
+    主要内容
+  </view>
+</view>
+<!-- 以下根据页面自己修改 -->
+<view class="navi-bottom">
+  <view class="navi-btn navi-btn-active">万象</view>
+  <view class="navi-btn"></view>
+  <view class="navi-btn"></view>
+</view>

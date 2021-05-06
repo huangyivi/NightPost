@@ -1,0 +1,68 @@
+/* 顶部样式 */
+@import "../../app.wxss";
+
+page {
+  --bgc: #F8F8F8;
+  --font: 'Source Han Serif CN' !important;
+  background-color: var(--bgc);
+}
+
+.navi-top {
+  background-color: var(--bgc);
+  box-sizing: border-box;
+  padding-left: 32px;
+  padding-right: 32px;
+  position: fixed;
+  width: 100vw;
+  font-size: 22px;
+  font-family: var(--font);
+  font-weight: 500;
+  line-height: 31px;
+  color: #181818;
+  opacity: 1;
+}
+
+
+.main {
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+
+.navi-bottom {
+  box-sizing: border-box;
+  position: fixed;
+  padding: 0 32px;
+  height: 80px;
+  width: 100vw;
+  bottom: 34px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font);
+  background-color: rgba(0,0,0,0.3);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 21px;
+  width: 28px;
+  height: 28px;
+}
+
+.navi-btn-active {
+  width: 56px;
+  height: 56px;
+  background-color: rgba(0,0,0,0.1);
+}

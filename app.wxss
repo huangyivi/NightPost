@@ -1,0 +1,18 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+@font-face{
+  font-family: "Source Han Serif CN";
+  src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
