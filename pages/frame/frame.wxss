@@ -2,20 +2,17 @@
 @import "../../app.wxss";
 
 page {
-  --bgc: #F8F8F8;
-  --font: 'Source Han Serif CN' !important;
-  background-color: var(--bgc);
+  background-color: #F8F8F8;
+  font-family: 'Source Han Serif CN' !important;
 }
 
 .navi-top {
-  background-color: var(--bgc);
   box-sizing: border-box;
   padding-left: 32px;
   padding-right: 32px;
   position: fixed;
   width: 100vw;
   font-size: 22px;
-  font-family: var(--font);
   font-weight: 500;
   line-height: 31px;
   color: #181818;
@@ -24,6 +21,7 @@ page {
 
 
 .main {
+
   box-sizing: border-box;
   height: 100vh;
   width: 100vw;
@@ -52,7 +50,6 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: var(--font);
   background-color: rgba(0,0,0,0.3);
   font-size: 15px;
   font-weight: 500;
