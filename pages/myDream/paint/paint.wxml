@@ -1,0 +1,25 @@
+<view catchtap="return" class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  ← 绘梦
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+  <view class="main-content flex-around-col">
+    <view class="option-board flex-between">
+      <view class="flex-start">
+        <view class="paint-option">撤回</view>
+        <view class="paint-option">重做</view>
+      </view>
+      <view class="black-btn">完成</view>
+    </view>
+    <view class="paint-board">
+    </view>
+    <view class="paint-tools flex-around">
+      <view class="eraser flex-center">橡皮</view>
+      <view class="pen-thick flex-around">
+        <view catchtap="changeThickness" data-thick="0" class="pen-thickness pen-small {{thick == 0? 'clicked': ''}}"></view>
+        <view catchtap="changeThickness" data-thick="1" class="pen-thickness pen-mid  {{thick == 1? 'clicked': ''}}"></view>
+        <view catchtap="changeThickness" data-thick="2" class="pen-thickness pen-large {{thick == 2? 'clicked': ''}}"></view>
+      </view>
+      <view class="pen-color"></view>
+    </view>
+  </view>
+</view>

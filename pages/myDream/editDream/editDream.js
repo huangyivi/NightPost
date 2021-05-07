@@ -26,5 +26,20 @@ Page({
     this.setData({
       tagIndex : e.detail.value
     })
-  }
+  },
+  toRecord(e) {
+    wx.navigateTo({
+      url: '../record/record'
+    })
+  },
+  toPaint(e) {
+    wx.navigateTo({
+      url: '../paint/paint'
+    })
+  },
+  toPublish(e) {
+    wx.navigateTo({
+      url: '../published/published'
+    })
+  },
 })

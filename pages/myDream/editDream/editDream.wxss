@@ -42,15 +42,6 @@ page {
   opacity: 1;
 }
 
-.main-publish {
-  color: #fff;
-  width: 112rpx;
-  height: 48rpx;
-  background: #181818;
-  opacity: 1;
-}
-
-
 
 
 .main-content {

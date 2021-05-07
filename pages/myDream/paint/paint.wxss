@@ -1,0 +1,148 @@
+/* 顶部样式 */
+/* 1px = 2rpx */
+@import "../../../app.wxss";
+
+page {
+  background-color: #F8F8F8;
+  font-family: 'Source Han Serif CN' !important;
+}
+
+.navi-top {
+  background-color: #F8F8F8;
+  top: 0;
+  box-sizing: border-box;
+  padding-left: 64rpx;
+  padding-right: 64rpx;
+  position: fixed;
+  width: 100vw;
+  font-size: 44rpx;
+  font-weight: 500;
+  line-height: 62rpx;
+  color: #181818;
+  opacity: 1;
+}
+
+
+.main {
+
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+}
+
+.main-content {
+  width: 100%;
+  height: 100%;
+}
+
+.option-board {
+  width: 100%;
+}
+
+
+.paint-option {
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 500;
+  line-height: 40rpx;
+  color: #7B7B7B;
+  opacity: 1;
+}
+
+.paint-board {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 80%;
+  background-color: #fff;
+}
+
+.eraser {
+  font-size: 28rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 500;
+  line-height: 32rpx;
+  color: #181818;
+  width: 96rpx;
+  height: 96rpx;
+  background: #DDDDDD;
+  opacity: 1;
+}
+
+.paint-tools {
+  width: 100%;
+}
+
+.pen-thick {
+  width: 200rpx;
+}
+
+.pen-thickness {
+  width: 32rpx;
+  height: 32rpx;
+  background: #ACACAC;
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.pen-small {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.pen-mid {
+  width: 48rpx;
+  height: 48rpx;
+}
+
+.pen-large {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.clicked {
+  background: #181818;
+  border: 8rpx solid #FFFFFF;
+  box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, 0.16);
+}
+
+.pen-color {
+  width: 80rpx;
+  height: 80rpx;
+  background: #6467F0;
+  border: 8rpx solid #FFFFFF;
+  box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, 0.16);
+  opacity: 1;
+}
+
+
+/* .navi-bottom {
+  background-color: #F8F8F8;
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  padding: 0 64rpx;
+  height: 240rpx;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 42rpx;
+  width: 56rpx;
+  height: 56rpx;
+}
+
+.navi-btn-active {
+  width: 112rpx;
+  height: 112rpx;
+  background-color: rgba(0, 0, 0, 0.1);
+} */

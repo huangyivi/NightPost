@@ -1,0 +1,14 @@
+<view catchtap="return" class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  ← 录音
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+  <view class="main-content flex-center-col">
+    <view class="start-record flex-center">
+      开始录制
+    </view>
+    <view class="grey-btn">完成</view>
+  </view>
+</view>
+<!-- 以下根据页面自己修改 -->
+<view class="navi-bottom">
+</view>
