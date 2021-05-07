@@ -1,7 +1,7 @@
-<view class="navi-top" style="top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+<view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
   梦境万象
 </view>
-<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 32px 144px;">
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
   <view class="main-content">
     主要内容
   </view>

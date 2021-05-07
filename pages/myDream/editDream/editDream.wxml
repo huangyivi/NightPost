@@ -1,15 +1,50 @@
-<view class="navi-top" style="top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+<view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
   梦境记录
 </view>
-<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 32px 144px;">
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 200rpx;">
   <view class="main-header flex-between">
-    <view class="main-date">05 / 01  Sun.</view>
+    <view class="main-date">05 / 01 Sun.</view>
     <view class="main-publish flex-center">发表</view>
   </view>
   <view class="main-content">
     <input class="main-title" type="text" placeholder="为你的梦取个名字" />
     <textarea class="main-detail" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}"></textarea>
-    <view class="main-function"></view>
+    <view class="main-function flex-start">
+      <view class="main-func flex-center">手绘</view>
+      <view class="main-func flex-center">录音</view>
+    </view>
+    <view class="main-select flex-start-col">
+      <picker style="width: 100%" bindchange="isAccessedChange" value="{{accessIndex}}" range="{{access}}">
+        <view class="select-item flex-between">
+          <view class="flex-start">
+            <view class="select-icon"></view>
+            <view class="select-text">发布权限</view>
+          </view>
+          <view class="flex-start">
+            <view class="select-info">{{access[accessIndex]}}</view>
+            <view class="select-text">></view>
+          </view>
+        </view>
+      </picker>
+      <picker style="width: 100%" bindchange="isTagsChange" value="{{tagIndex}}" range="{{tags}}">
+        <view class="select-item flex-between">
+          <view class="flex-start">
+            <view class="select-icon"></view>
+            <view class="select-text">发布标签</view>
+          </view>
+          <view class="flex-start">
+            <view class="select-info">{{tags[tagIndex]}}</view>
+            <view class="select-text">></view>
+          </view>
+        </view>
+      </picker>
+      <view style="width: 100%">
+        <view class="flex-start select-item">
+            <view class="select-icon"></view>
+            <input type="text" placeholder="输入梦境关键词，有彩蛋哦" />
+          </view>
+      </view>
+    </view>
   </view>
 </view>
 <!-- 以下根据页面自己修改 -->
