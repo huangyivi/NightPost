@@ -2,7 +2,9 @@
   "pages":[
     "pages/frame/frame",
     "pages/index/index",
-    "pages/myDream/editDream/editDream"
+    "pages/myDream/editDream/editDream",
+    "pages/myCommunity/listView/listView",
+    "pages/myCommunity/dreamArticle/dreamArticle"
   ],
   "window":{
     "backgroundTextStyle":"light",
