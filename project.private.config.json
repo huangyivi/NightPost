@@ -21,6 +21,30 @@
         {
           "name": "pages/myDream/editDream/editDream",
           "pathName": "pages/myDream/editDream/editDream",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myDream/record/record",
+          "pathName": "pages/myDream/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myDream/published/published",
+          "pathName": "pages/myDream/published/published",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myDream/paint/paint",
+          "pathName": "pages/myDream/paint/paint",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/listView/listView",
+          "pathName": "pages/myCommunity/listView/listView",
           "scene": null
         }
       ]

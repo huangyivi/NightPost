@@ -15,6 +15,9 @@ App({
   },
   globalData: {
     userInfo: null,
-    statusBarHeight: wx.getSystemInfoSync()['statusBarHeight']
+    statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
+    tempFile: '',
+    lastImage: [],
+    myDream: null,
   }
 })
