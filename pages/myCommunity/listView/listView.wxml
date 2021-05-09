@@ -5,22 +5,20 @@
   <view class="main-content">
     <view class="content_top flex-between">
       <view>漫 游</view>
-      <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
+      <view class="flex-between">
+        <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
         <view class="content_select">
           <view class="content_pic"></view>
           <view class="content_tag">{{tags[tagIndex]}}</view>
         </view>
       </picker>
+      <view class="sort_btn" bindtap="handleSort">排序</view>
+      </view>
     </view>
     <view class="hr"></view>
     <view class="content_list">
-      <navigator 
-      wx:for="{{list}}" 
-      wx:for-item="item" 
-      wx:for-index="index" wx:key="index" 
-      class="content_item flex-between"
-      url="../dreamArticle/dreamArticle?id="
-      >
+      <navigator wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"
+        class="content_item flex-between" url="{{item.url}}">
         <view class="left_wrap">
           <view class="title">{{item.title}}</view>
           <view class="tip flex-between">
@@ -28,7 +26,13 @@
             <view class="tag">#{{item.tag}}</view>
           </view>
         </view>
-        <view class="to_detail">></view>
+        <view class="right_wrap flex-between">
+          <view class="resonate">
+            <view class="text">共鸣</view>
+            <view class="num">{{item.star}}</view>
+          </view>
+          <view class="to_detail">></view>
+        </view>
       </navigator>
     </view>
   </view>
