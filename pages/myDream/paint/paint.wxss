@@ -54,6 +54,10 @@ page {
   margin-top: 20rpx;
   width: 100%;
   height: 80%;
+  /* background-color: #fff; */
+}
+
+.mycanvas {
   background-color: #fff;
 }
 
@@ -109,7 +113,6 @@ page {
 .pen-color {
   width: 80rpx;
   height: 80rpx;
-  background: #6467F0;
   border: 8rpx solid #FFFFFF;
   box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, 0.16);
   opacity: 1;

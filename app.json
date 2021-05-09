@@ -2,7 +2,10 @@
   "pages":[
     "pages/frame/frame",
     "pages/index/index",
-    "pages/myDream/editDream/editDream"
+    "pages/myDream/editDream/editDream",
+    "pages/myDream/record/record",
+    "pages/myDream/published/published",
+    "pages/myDream/paint/paint"
   ],
   "window":{
     "backgroundTextStyle":"light",

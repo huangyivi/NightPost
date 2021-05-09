@@ -1,3 +1,10 @@
+@font-face{
+  font-family: "Source Han Serif CN";
+  src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 /**app.wxss**/
 .container {
   height: 100%;
@@ -13,6 +20,11 @@
 .flex-between {
   display: flex;
   justify-content: space-between;
+  align-items: center
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
   align-items: center
 }
 
@@ -36,10 +48,46 @@
   align-items: flex-start
 }
 
-@font-face{
-  font-family: "Source Han Serif CN";
-  src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+.flex-center-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center
+}
+
+.flex-around-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center
+}
+
+.black-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 500;
+  line-height: 40rpx;
+  color: #fff;
+  width: 112rpx;
+  height: 48rpx;
+  background: #181818;
+  opacity: 1;
+}
+
+.grey-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 112rpx;
+  height: 48rpx;
+  background: #ACACAC;
+  font-size: 28rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 500;
+  line-height: 40rpx;
+  color: #FFFFFF;
+  opacity: 1;
 }
