@@ -5,7 +5,9 @@
     "pages/myDream/editDream/editDream",
     "pages/myDream/record/record",
     "pages/myDream/published/published",
-    "pages/myDream/paint/paint"
+    "pages/myDream/paint/paint",
+    "pages/myCommunity/listView/listView",
+    "pages/myCommunity/dreamArticle/dreamArticle"
   ],
   "window":{
     "backgroundTextStyle":"light",

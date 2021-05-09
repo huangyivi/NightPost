@@ -1,0 +1,41 @@
+<view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  梦境万象
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+  <view class="main-content">
+    <view class="content_top flex-between">
+      <view>漫 游</view>
+      <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
+        <view class="content_select">
+          <view class="content_pic"></view>
+          <view class="content_tag">{{tags[tagIndex]}}</view>
+        </view>
+      </picker>
+    </view>
+    <view class="hr"></view>
+    <view class="content_list">
+      <navigator 
+      wx:for="{{list}}" 
+      wx:for-item="item" 
+      wx:for-index="index" wx:key="index" 
+      class="content_item flex-between"
+      url="../dreamArticle/dreamArticle?id="
+      >
+        <view class="left_wrap">
+          <view class="title">{{item.title}}</view>
+          <view class="tip flex-between">
+            <view class="date">{{item.date}}</view>
+            <view class="tag">#{{item.tag}}</view>
+          </view>
+        </view>
+        <view class="to_detail">></view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<!-- 以下根据页面自己修改 -->
+<view class="navi-bottom">
+  <view class="navi-btn navi-btn-active">万象</view>
+  <view class="navi-btn"></view>
+  <view class="navi-btn"></view>
+</view>

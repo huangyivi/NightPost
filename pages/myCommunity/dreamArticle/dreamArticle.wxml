@@ -1,0 +1,46 @@
+<!--pages/myCommunity/dreamArticle/dreamArticle.wxml-->
+<view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  梦境万象
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;" bindtouchstart="touchstart" bindtouchend="touchend">
+  <view class="main-content">
+    <view class="content_top flex-between">
+      <view class="top_date">
+        <view class="month">05</view>
+        <view class="decoration">/</view>
+        <view class="day">02</view>
+      </view>
+      <view class="top_pic"></view>
+    </view>
+    <view class="content_introduce">
+      <image mode="scaleToFill" class="introduce_bg"></image>
+      <view class="title">食梦貘</view>
+      <view class="text">
+        身体像马，鼻子像象，脸像狮子，额头
+        像犀，尾巴像母牛，腿像老虎，据说是从前
+        神创造动物的时候，把剩下的半段物用来创
+        造了貘。
+      </view>
+      <view class="content_sound">
+        <button class="sound_play">播放录音</button>
+        <view class="sound_bg"></view>
+      </view>
+    </view>
+    <view class="content_bottom flex-between">
+      <view>
+        <text class="user">Nusu</text>
+        <text class="tag">#怪诞</text>
+      </view>
+      <view class="bottom_bg"></view>
+    </view>
+  </view>
+  <view class="bottom_tip">
+      往下滑动查看其他梦境 
+      <text>→</text> 
+    </view>
+</view>
+<view class="navi-bottom">
+  <view class="navi-btn navi-btn-active">万象</view>
+  <view class="navi-btn"></view>
+  <view class="navi-btn"></view>
+</view>
