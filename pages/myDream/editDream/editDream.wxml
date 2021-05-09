@@ -10,10 +10,17 @@
     <input class="main-title" type="text" placeholder="为你的梦取个名字" />
     <textarea class="main-detail" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}"></textarea>
     <view class="main-function flex-start">
-      <view class="main-func flex-center" catchtap="toPaint">手绘</view>
+      <view wx:if="{{!tempFile}}" class="main-func flex-center" catchtap="toPaint" style="background : {{tempFile === ''? 'rgba(0, 0, 0, 0.1)': 'url(' + tempFile +  ')'}}">手绘</view>
+      <image wx:else class="main-func flex-center" mode="aspectFill" src="{{tempFile}}" catchtap="toPaint"></image>
       <view class="main-func flex-center" catchtap="toRecord">录音</view>
     </view>
     <view class="main-select flex-start-col">
+      <!-- <view style="width: 100%">
+        <view class="flex-start select-item">
+            <view class="select-icon"></view>
+            <input type="text" placeholder="输入梦境关键词，有彩蛋哦" />
+          </view>
+      </view> -->
       <picker style="width: 100%" bindchange="isAccessedChange" value="{{accessIndex}}" range="{{access}}">
         <view class="select-item flex-between">
           <view class="flex-start">
@@ -38,12 +45,6 @@
           </view>
         </view>
       </picker>
-      <view style="width: 100%">
-        <view class="flex-start select-item">
-            <view class="select-icon"></view>
-            <input type="text" placeholder="输入梦境关键词，有彩蛋哦" />
-          </view>
-      </view>
     </view>
   </view>
 </view>

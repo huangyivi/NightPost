@@ -105,7 +105,6 @@ page {
 }
 
 .clicked {
-  background: #181818;
   border: 8rpx solid #FFFFFF;
   box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, 0.16);
 }
@@ -115,6 +114,36 @@ page {
   height: 80rpx;
   border: 8rpx solid #FFFFFF;
   box-shadow: 0rpx 0rpx 12rpx rgba(0, 0, 0, 0.16);
+  opacity: 1;
+}
+
+
+.color-pane {
+  position: absolute;
+  left: 50%;
+  bottom: 20%;
+  transform: translateX(-50%);
+  width: 480rpx;
+  height: 192rpx;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 12rpx rgba(0, 0, 0, 0.16);
+  opacity: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.colors {
+  box-sizing: border-box;
+  width: 48rpx;
+  height: 48rpx;
+  margin: 24rpx;
+}
+
+.selected {
+  border: 6rpx solid #FFFFFF;
+  box-shadow: 0px 0px 12rpx rgba(0, 0, 0, 0.16);
   opacity: 1;
 }
 

@@ -36,6 +36,7 @@ page {
 
 
 .start-record {
+  box-sizing: border-box;
   position: relative;
   top: -200rpx;
   width: 184rpx;

@@ -39,6 +39,12 @@
         {
           "name": "pages/myDream/paint/paint",
           "pathName": "pages/myDream/paint/paint",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/listView/listView",
+          "pathName": "pages/myCommunity/listView/listView",
           "scene": null
         }
       ]
