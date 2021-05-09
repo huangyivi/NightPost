@@ -127,6 +127,7 @@ page {
 }
 
 .content_introduce .text {
+  font-size: 32rpx;
   padding: 50rpx;
   text-indent: calc(1rem + 50rpx);
 }
@@ -143,6 +144,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 32rpx;
 }
 
 .sound_play:not([size='mini']){
@@ -159,7 +161,7 @@ page {
 
 .content_bottom {
   padding: 50rpx;
-  font-size: 32rpx;
+  font-size: 30rpx;
   color: #ACACAC;
 }
 
