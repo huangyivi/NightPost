@@ -1,25 +1,15 @@
 <view catchtap="return" class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
   ← 返回
 </view>
-<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
-  <view class="main-content flex-start-col">
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;height : {{hasEgg ? 'auto' : '100vh'}}">
+  <view class="main-content {{hasEgg ? 'flex-start-col' : 'flex-center-col'}}">
     <view class="published-text flex-center">梦境已发表</view>
-    <view class="surprise flex-around-col">
+    <view wx:if="{{hasEgg}}" class="flex-center tip">以下解读仅供参考，如有应验纯属巧合</view>
+    <view animation="{{animationData}}" wx:if="{{hasEgg}}" class="surprise flex-around-col">
       <view class="surprise-title">读梦</view>
       <text class="surprise-ctx">
-        梦见养羊，预示着你近期的运势很好，路上将会遇到自己很久没见的故人，两人有很多说不完的话。
-
-        找工作者梦见养羊，预示着你近期的求职运势很好，自己的表现得到考官的欣赏，有机会获得一份好的工作。
-
-        公务员梦见养羊，预示着你近期的运势很好，自己的表现太好，得到上司的器重，有机会可以升职。
+        {{eggCtx}}
       </text>
     </view>
-    <view class="flex-center tip">以上解读仅供参考，如有应验纯属巧合</view>
   </view>
-</view>
-<!-- 以下根据页面自己修改 -->
-<view class="navi-bottom">
-  <view class="navi-btn"></view>
-  <view class="navi-btn navi-btn-active">忆梦</view>
-  <view class="navi-btn"></view>
 </view>

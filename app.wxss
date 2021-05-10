@@ -91,3 +91,17 @@
   color: #FFFFFF;
   opacity: 1;
 }
+.red-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 112rpx;
+  height: 48rpx;
+  background: #ec1717;
+  font-size: 28rpx;
+  font-family: Source Han Serif CN;
+  font-weight: 500;
+  line-height: 40rpx;
+  color: #FFFFFF;
+  opacity: 1;
+}
