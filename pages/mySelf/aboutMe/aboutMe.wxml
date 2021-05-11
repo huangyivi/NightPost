@@ -1,0 +1,48 @@
+<view catchtap="return" class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+    关于我
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+    <view class="main-content flex-start-col">
+        <view class="aboutme-dream-sleep">
+            <view catchtap="toSleep">助眠模式 ></view>
+        </view>
+        <view class="flex-start-col aboutme-top">
+            <view class="flex-space-between aboutme-top-title">
+                <view class="aboutme-dream-title">梦境统计</view>
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{type}}">
+                    <view class="aboutme-picker flex-center">
+                        <view class="about-pinker-svg">▼</view>
+                        {{type[index]}}
+                    </view>
+                </picker>
+            </view>
+            <view class="aboutme-times flex-space-between" wx:if="{{index == 0}}">
+                <view wx:for="{{timesList}}" wx:key="id" class="aboutme-times-chart" style="opacity: {{item.opacity}}">
+                    <view class="aboutme-times-line" style="height:{{item.height}}"></view>
+                    <view class="aboutme-times-day">{{item.day}}</view>
+                </view>
+            </view>
+            <view class="aboutme-times" style="width: 90vw; height: 320rpx" wx:else>
+                <ec-canvas style="width: 100%; height:100%" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+            </view>
+        </view>
+        <view class="aboutme-list flex-around-col">
+            <view wx:for="{{dreamList}}" wx:key="id" class="aboutme-list-dream flex-space-between">
+                <view>
+                    <view>{{item.title}}</view>
+                    <view class="aboutme-list-dream-detail flex-center">
+                        <view class="aboutme-list-dream-day">{{item.day}}</view>
+                        <view>{{item.tab}}</view>
+                    </view>
+                </view>
+                <view class="aboutme-list-dream-svg">></view>
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 以下根据页面自己修改 -->
+<view class="navi-bottom">
+    <view class="navi-btn"></view>
+    <view class="navi-btn"></view>
+    <view class="navi-btn navi-btn-active">我</view>
+</view>

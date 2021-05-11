@@ -1,0 +1,18 @@
+<view catchtap="return" class="navi-top" catchtap="toAboutme" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+    ← 助眠音
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+    <scroll-view scroll-y="true" class="main-content flex-start-col">
+        <view class="sleep-music-bgimg">这里放背景图片</view>
+        <view>助眠曲录</view>
+        <view class="sleep-music-all flex-start">
+            <view wx:for="{{musicList}}" wx:key="{{item}}" class="sleep-music">
+                <view class="sleep-music-name">{{item.name}}</view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 以下根据页面自己修改 -->
+<view class="navi-bottom">
+    <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop></audio>
+</view>

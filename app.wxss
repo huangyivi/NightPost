@@ -1,11 +1,13 @@
-@font-face{
+@font-face {
   font-family: "Source Han Serif CN";
   src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 /**app.wxss**/
+
 .container {
   height: 100%;
   display: flex;
@@ -14,24 +16,29 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
-
+}
 
 .flex-between {
   display: flex;
   justify-content: space-between;
   align-items: center
 }
+
 .flex-around {
   display: flex;
   justify-content: space-around;
   align-items: center
 }
 
-
 .flex-center {
   display: flex;
   justify-content: center;
+  align-items: center
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
   align-items: center
 }
 
@@ -91,6 +98,7 @@
   color: #FFFFFF;
   opacity: 1;
 }
+
 .red-btn {
   display: flex;
   justify-content: center;

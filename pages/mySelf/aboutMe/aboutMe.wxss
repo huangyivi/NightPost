@@ -1,0 +1,170 @@
+/* 顶部样式 */
+
+/* 1px = 2rpx */
+
+@import "../../../app.wxss";
+page {
+    background-color: #F8F8F8;
+    font-family: 'Source Han Serif CN' !important;
+}
+
+.navi-top {
+    background-color: #F8F8F8;
+    top: 0;
+    box-sizing: border-box;
+    padding-left: 64rpx;
+    padding-right: 64rpx;
+    position: fixed;
+    width: 100vw;
+    font-size: 44rpx;
+    font-weight: 500;
+    line-height: 62rpx;
+    color: #181818;
+    opacity: 1;
+}
+
+.aboutme-top {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20rpx;
+}
+
+.aboutme-top-title {
+    width: 90%;
+    padding: 0 5%;
+}
+
+.aboutme-dream-title {
+    font-size: 36rpx;
+}
+
+.aboutme-times {
+    width: 90vw;
+    padding: 0 5vw;
+    margin-left: -32px;
+    height: 320rpx;
+    flex-direction: row-reverse;
+}
+
+.aboutme-times-chart {
+    position: relative;
+    width: 10%;
+    height: 100%;
+    margin: 0 3%;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.aboutme-times-line{
+    position: absolute;
+    width: 20%;
+    right: 40%;
+    height: 70%;
+    bottom: 20%;
+    background-color: black;
+}
+
+.aboutme-times-day{
+    position: absolute;
+    width: 100%;
+    bottom: 3%;
+    color: black;
+}
+
+.aboutme-dream-sleep {
+    width: 100%;
+    text-align: right;
+    margin-top: -48rpx;
+    margin-bottom: 24rpx;
+    color: #818181;
+}
+
+.aboutme-picker {
+    color: #818181;
+    float: right;
+}
+
+.about-pinker-svg {
+    font-size: 20rpx;
+    margin-right: 10rpx;
+    float: left;
+}
+
+.main {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-content {
+    width: 100%;
+    height: 100%;
+}
+
+.aboutme-list {
+    height: calc(100% - 640rpx);
+    width: 100%;
+    background-color: white;
+}
+
+.aboutme-list-dream {
+    width: calc(100% - 64rpx);
+    height: calc(25% - 104rpx);
+    padding: 52rpx 32rpx;
+}
+
+.aboutme-list-dream-detail {
+    font-size: 28rpx;
+    color: #818181;
+}
+
+.aboutme-list-dream-day {
+    width: 84rpx;
+}
+
+.aboutme-list-dream-svg {
+    font-weight: 900;
+    color: #D2D2D2;
+}
+
+.tip {
+    margin: 100rpx 0 0 0;
+    width: 100%;
+    font-size: 28rpx;
+    font-family: Source Han Serif CN;
+    font-weight: 400;
+    line-height: 40rpx;
+    color: #D2D2D2;
+    opacity: 1;
+}
+
+.navi-bottom {
+    background-color: #F8F8F8;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    padding: 0 64rpx;
+    height: 240rpx;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navi-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    font-size: 30rpx;
+    font-weight: 500;
+    line-height: 42rpx;
+    width: 56rpx;
+    height: 56rpx;
+}
+
+.navi-btn-active {
+    width: 112rpx;
+    height: 112rpx;
+    background-color: rgba(0, 0, 0, 0.1);
+}

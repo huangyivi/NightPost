@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/mySelf/aboutMe/aboutMe",
+    "pages/mySelf/sleepMode/sleepMode",
     "pages/frame/frame",
     "pages/index/index",
     "pages/myDream/editDream/editDream",
