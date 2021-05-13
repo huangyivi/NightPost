@@ -1,8 +1,9 @@
 <!--pages/myCommunity/dreamArticle/dreamArticle.wxml-->
 <view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
-  梦境万象
+  <text bindtap="handleBack" decode="true">&lt;返回\n</text>梦境万象
 </view>
-<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;" bindtouchstart="touchstart" bindtouchend="touchend">
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;" bindtouchstart="touchstart"
+  bindtouchend="touchend">
   <view class="main-content">
     <view class="content_top flex-between">
       <view class="top_date">
@@ -13,8 +14,10 @@
       <view class="top_pic"></view>
     </view>
     <view class="content_introduce">
-      <image mode="scaleToFill" class="introduce_bg"></image>
-      <view class="title">食梦貘</view>
+      <view class="img_container"> 
+        <image src="http://39.99.140.114/draw/666.jpg" mode="scaleToFill" class="introduce_bg"></image>
+        <view class="title">食梦貘</view>
+      </view>
       <view class="text">
         身体像马，鼻子像象，脸像狮子，额头
         像犀，尾巴像母牛，腿像老虎，据说是从前
@@ -35,9 +38,9 @@
     </view>
   </view>
   <view class="bottom_tip">
-      往下滑动查看其他梦境 
-      <text>→</text> 
-    </view>
+    往下滑动查看其他梦境
+    <text>→</text>
+  </view>
 </view>
 <view class="navi-bottom">
   <view class="navi-btn navi-btn-active">万象</view>
