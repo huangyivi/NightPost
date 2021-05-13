@@ -63,7 +63,19 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/myCommunity/dreamArticle/dreamArticle",
+          "pathName": "pages/myCommunity/dreamArticle/dreamArticle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/listView/listView",
+          "pathName": "pages/myCommunity/listView/listView",
+          "scene": null
+        }
+      ]
     }
   }
 }

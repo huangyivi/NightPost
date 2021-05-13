@@ -2,7 +2,7 @@ const app = getApp();
 Page({
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
-    capsuleHeight: 44,
+    capsuleHeight: 60,
     nowclientX: ""
   },
   onReady: function () {
@@ -32,10 +32,19 @@ Page({
     let windowWidth = wx.getSystemInfoSync().windowWidth; */
     // 往左滑30触发，设计一定距离，防止下滑时手滑而触发
     if (nowclientX - clientX > 30) {
-      wx.navigateTo({
+/*       wx.navigateTo({
         url: "../listView/listView"
+      }) */
+      wx.navigateBack({
+        delta: 0,
       })
     }
+  },
+  // 返回页面
+  handleBack(){
+    wx.navigateBack({
+      delta: 0,
+    })
   }
 
 })
