@@ -35,7 +35,6 @@ Page({
     if(app.globalData.tempFile) {
       let file = app.globalData.tempFile;
       let imgBase64 = 'data:image/png;base64,' + wx.getFileSystemManager().readFileSync(file,'base64');
-      this.data.tempFile = imgBase64;
       this.setData({
         tempFile : imgBase64
       })
@@ -70,7 +69,7 @@ Page({
     wx.showModal({
       content: "准备发布您的梦境了吗？",
       confirmText: "准备好了",
-      cancelText: "我再回忆回忆",
+      cancelText: "还没有",
       success(res) {
         if(res.confirm) {
           app.globalData.myDream = null;

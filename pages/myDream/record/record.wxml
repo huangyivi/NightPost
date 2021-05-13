@@ -2,13 +2,20 @@
   ← 录音
 </view>
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
-  <view class="main-content flex-center-col">
-    <view class="start-record flex-center">
-      开始录制
+  <view class="main-content flex-around-col">
+    <view animation="{{scaleAnimation}}" class="{{isplaying ? 'grey-play':'start-record'}} flex-center" catchtap="{{isplaying ? '': 'record'}}">
+      {{isrecording ? '停止录制' : '开始录制'}}
     </view>
-    <view class="grey-btn">完成</view>
+    <view class="{{done? 'start-record' : 'grey-play'}} flex-center" catchtap="{{done? 'play' : ''}}">
+      {{isplaying ? '停止播放' : '播放'}}
+    </view>
+    <view wx:if="{{duration}}" class="flex-center">{{currentTime}}s / {{duration}}s</view>
+    <view class="flex-around" style="width: 100%">
+      <view class="{{done? 'red-btn' : 'grey-btn'}}" catchtap="{{done? 'toDelete' : ''}}">删除</view>
+      <view class="{{done? 'black-btn' : 'grey-btn'}}" catchtap="{{done? 'toPublish' : ''}}">完成</view>
+    </view>
   </view>
 </view>
 <!-- 以下根据页面自己修改 -->
-<view class="navi-bottom">
+<view animation="{{moveAnimation}}" class="navi-bottom">
 </view>

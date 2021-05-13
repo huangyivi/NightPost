@@ -1,0 +1,98 @@
+/* 顶部样式 */
+
+/* 1px = 2rpx */
+
+@import "../../../app.wxss";
+page {
+    background-color: #F8F8F8;
+    font-family: 'Source Han Serif CN' !important;
+}
+
+.navi-top {
+    background-color: #F8F8F8;
+    top: 0;
+    box-sizing: border-box;
+    padding-left: 64rpx;
+    padding-right: 64rpx;
+    position: fixed;
+    width: 100vw;
+    font-size: 44rpx;
+    font-weight: 500;
+    line-height: 62rpx;
+    color: #181818;
+    opacity: 1;
+}
+
+.main {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-content {
+    width: 100%;
+    height: 100%;
+}
+
+.sleep-music-all {
+    width: 100%;
+    flex-wrap: wrap-reverse;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+    display: none;
+  }
+
+.sleep-music-bgimg{
+    height: 128rpx;
+    line-height: 128rpx;
+}
+
+.sleep-music {
+    position: relative;
+    width: 290rpx;
+    height: 290rpx;
+    margin: 10rpx 10rpx;
+    border-radius: 14rpx;
+    display: block;
+    background-color: brown;
+}
+
+.sleep-music-name{
+    position: absolute;
+    bottom: 24rpx;
+    left: 18rpx;
+}
+
+.tip {
+    margin: 100rpx 0 0 0;
+    width: 100%;
+    font-size: 28rpx;
+    font-family: Source Han Serif CN;
+    font-weight: 400;
+    line-height: 40rpx;
+    color: #D2D2D2;
+    opacity: 1;
+}
+
+.navi-bottom {
+    background-color: #F8F8F8;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 64rpx;
+    height: auto;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#myAudio {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

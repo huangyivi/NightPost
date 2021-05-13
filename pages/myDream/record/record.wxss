@@ -32,16 +32,29 @@ page {
 .main-content {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  padding: 100px 0;
 }
 
 
 .start-record {
   box-sizing: border-box;
   position: relative;
-  top: -200rpx;
+  /* top: -200rpx; */
   width: 184rpx;
   height: 184rpx;
   background: #FFFFFF;
+  box-shadow: 0rpx 0rpx 16rpx rgba(116, 116, 116, 0.16);
+  opacity: 1;
+  border-radius: 80rpx;
+}
+
+.grey-play {
+  box-sizing: border-box;
+  position: relative;
+  width: 184rpx;
+  height: 184rpx;
+  background: #DDDDDD;
   box-shadow: 0rpx 0rpx 16rpx rgba(116, 116, 116, 0.16);
   opacity: 1;
   border-radius: 80rpx;
