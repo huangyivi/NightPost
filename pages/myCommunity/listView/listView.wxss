@@ -124,33 +124,3 @@ view.hr {
   font-size: 48rpx;
 }
 
-.navi-bottom {
-  background-color: #F8F8F8;
-  box-sizing: border-box;
-  position: fixed;
-  bottom: 0;
-  padding: 0 64rpx;
-  height: 240rpx;
-  width: 100vw;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.navi-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0,0,0,0.3);
-  font-size: 30rpx;
-  font-weight: 500;
-  line-height: 42rpx;
-  width: 56rpx;
-  height: 56rpx;
-}
-
-.navi-btn-active {
-  width: 112rpx;
-  height: 112rpx;
-  background-color: rgba(0,0,0,0.1);
-}

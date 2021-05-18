@@ -45,6 +45,30 @@
         {
           "name": "pages/myCommunity/listView/listView",
           "pathName": "pages/myCommunity/listView/listView",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/dreamArticle/dreamArticle",
+          "pathName": "pages/myCommunity/dreamArticle/dreamArticle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/listView/listView",
+          "pathName": "pages/myCommunity/listView/listView",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mySelf/aboutMe/aboutMe",
+          "pathName": "pages/mySelf/aboutMe/aboutMe",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/mySelf/sleepMode/sleepMode",
+          "pathName": "pages/mySelf/sleepMode/sleepMode",
           "scene": null
         }
       ]
