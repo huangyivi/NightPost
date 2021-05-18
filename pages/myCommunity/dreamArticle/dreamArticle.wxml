@@ -1,6 +1,6 @@
 <!--pages/myCommunity/dreamArticle/dreamArticle.wxml-->
 <view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
-  <text bindtap="handleBack" decode="true">&lt;返回\n</text>梦境万象
+  <text bindtap="handleBack" decode="true">&lt;返回</text>
 </view>
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;" bindtouchstart="touchstart"
   bindtouchend="touchend">
