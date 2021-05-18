@@ -23,10 +23,43 @@ Page({
         that.data.capsuleHeight = e.height;
       }
     })
+
   },
   onLoad() {
-    // 获取全局录音管理
     let that = this;
+    // 如果本地有缓存录音
+    if(app.globalData.voice) {
+      this.setData({
+        done: true
+      })
+      this.tempVoice = app.globalData.voice;  
+      this.innerAudio = wx.createInnerAudioContext();
+      this.innerAudio.src = this.tempVoice;
+      this.innerAudio.onPlay(() =>{
+        // 解决自然结束后无法继续更新时间
+        that.innerAudio.paused;
+        that.innerAudio.onTimeUpdate(function() {
+          that.setData({
+            currentTime: Math.floor(that.innerAudio.currentTime),
+            duration: Math.floor(that.innerAudio.duration)
+          })
+        })
+      })
+      this.innerAudio.onEnded(() => {
+        that.setData({
+          isplaying: false,
+          currentTime: 0
+        })
+      })
+      this.innerAudio.onError((err)=>{
+        wx.showModal({
+          title: "播放出错了",
+          content: err.errMsg,
+          showCancel: false
+        })
+      })
+    }
+    // 获取全局录音管理
     this.recordManager = wx.getRecorderManager();
     this.recordManager.onStart(function (res) {
       console.log('录音开始');
@@ -68,6 +101,7 @@ Page({
         showCancel: false
       })
     }) 
+    
   },
   record() {
     if (!this.data.isrecording) {
@@ -152,7 +186,7 @@ Page({
     let that = this;
     wx.showModal({
       title: "是否返回？",
-      content: '返回后将不保存音频',
+      content: '返回后将不做任何修改',
       confirmText: "确定",
       cancelText: "取消",
       success(res) {

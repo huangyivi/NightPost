@@ -16,8 +16,10 @@ App({
   globalData: {
     userInfo: null,
     statusBarHeight: wx.getSystemInfoSync()['statusBarHeight'],
-    tempFile: '',
+    imageFile: '',
     lastImage: [],
     myDream: null,
+    voice: '',
+    domain: 'http://39.99.140.114/dream/'
   }
 })

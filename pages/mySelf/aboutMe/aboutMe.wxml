@@ -40,9 +40,4 @@
         </view>
     </view>
 </view>
-<!-- 以下根据页面自己修改 -->
-<view class="navi-bottom">
-    <view class="navi-btn"></view>
-    <view class="navi-btn"></view>
-    <view class="navi-btn navi-btn-active">我</view>
-</view>
+<my-navigator role="2"></my-navigator>

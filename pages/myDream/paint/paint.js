@@ -141,7 +141,7 @@ Page({
       success(res) {
         if (res.confirm) {
           that.lastImage = [];
-          app.globalData.tempFile = '';
+          app.globalData.imageFile = '';
           app.globalData.lastImage = [];
           that.context.rect(0, 0, that.canvasW, that.canvasH);
           that.context.setFillStyle('#ffffff');
@@ -171,7 +171,7 @@ Page({
             destHeight: that.canvasH,
             destWidth: that.canvasW,
             success(res) {
-              app.globalData.tempFile = res.tempFilePath;
+              app.globalData.imageFile = res.tempFilePath;
               wx.navigateBack();
             }
           })
