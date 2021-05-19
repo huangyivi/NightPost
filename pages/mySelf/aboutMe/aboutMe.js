@@ -16,7 +16,7 @@ function initChart(canvas, width, height) {
       max: 100,
       splitNumber: 5,
       inRange: {
-        color: ['#9ACCFF', '#0091FE', '#0080FF', '#1751B2', '#013998'],
+        color: ['#d2d2d2', '#acacac', '#acacac', '#7b7b7b'],
       },
     },
     series: [{
@@ -31,18 +31,18 @@ function initChart(canvas, width, height) {
         children: [{
           name: 'nodeAa',       // First leaf of first tree
           value: 42
-        }
-          , {
+        }, 
+        {
           name: 'nodeAb',       // Second leaf of first tree
           value: 28
-        }
-          , {
+        }, 
+        {
           name: 'nodeAc',       // Second leaf of first tree
-          value: 25
-        }
-          , {
+          value: 15
+        }, 
+        {
           name: 'nodeAd',       // Second leaf of first tree
-          value: 5
+          value: 15
         }],
 
       }]
@@ -59,28 +59,16 @@ Page({
     capsuleHeight: 44,
     type: ['次数', '类型'],
     index: 0,
-    dreamList: [
-      { title: "标题", day: "今日", tab: "#爱情" },
-      { title: "标题", day: "今日", tab: "#爱情" },
-      { title: "标题", day: "今日", tab: "#爱情" },
-      { title: "标题", day: "05/04", tab: "#爱情" },
-    ],
-    timesList: [
-      { times: 5, day: "今日", opacity: 1, height: '70%' },// 最高的
-      { times: 5, day: "昨日", opacity: 0.5, height: '60%' },
-      { times: 5, day: "05/07", opacity: 0.4, height: '20%' },
-      { times: 5, day: "05/06", opacity: 0.3, height: '50%' },
-      { times: 5, day: "05/05", opacity: 0.2, height: '10%' },
-      { times: 5, day: "05/04", opacity: 0.1, height: '50%' },
-    ],
+    dreamList: [],
+    timesList: [],
     ec: {
       onInit: initChart // 3、将数据放入到里面
     },
     dataTotal: {
-      d1: '22',
-      d2: '33',
-      d3: '44',
-    }
+      d1: '--',
+      d2: '--',
+    },
+    openId: false,
   },
 
   bindPickerChange: function (e) {
@@ -92,6 +80,7 @@ Page({
 
 
   login: function () {
+    let that = this;
     wx.showModal({
       title: '提示',
       content: '是否登录？',
@@ -110,7 +99,10 @@ Page({
                 },
                 method: "GET",
                 success: function (res) {
-                  app.globalData.openID = res.data.Data;
+                  app.globalData.openId = res.data.Data;
+                  console.log(app.globalData.openId);
+                  that.setData({ openId: true });
+                  that.getData();
                 }
               })
             }
@@ -123,6 +115,53 @@ Page({
 
   },
 
+  getData: function () {
+    let that = this;
+    wx.request({
+      // url: app.globalData.domain + `count/type/1/0`,
+      url: app.globalData.domain + `my/1`,
+      data: {},
+      header: {
+        'content-type': 'json'
+      },
+      method: "GET",
+      success: function (res) {
+        let data = res.data.Data;
+        that.setData({
+          dreamList: data
+        });
+
+      }
+    })
+    wx.request({
+      url: app.globalData.domain + `count/time`,
+      data: {},
+      header: {
+        'content-type': 'json'
+      },
+      method: "GET",
+      success: function (res) {
+        let data = res.data.Data;
+        let max = Math.max(...data);
+        that.setData({
+          timesList: [
+            { times: data[0].Count, day: data[0].Day, opacity: 1.0, height: `${that.getpercent(max, data[0].Count)}%` },// 最高的
+            { times: data[1].Count, day: data[1].Day, opacity: 0.5, height: `${that.getpercent(max, data[1].Count)}%` },
+            { times: data[2].Count, day: data[2].Day, opacity: 0.4, height: `${that.getpercent(max, data[2].Count)}%` },
+            { times: data[3].Count, day: data[3].Day, opacity: 0.3, height: `${that.getpercent(max, data[3].Count)}%` },
+            { times: data[4].Count, day: data[4].Day, opacity: 0.2, height: `${that.getpercent(max, data[4].Count)}%` },
+            { times: data[5].Count, day: data[5].Day, opacity: 0.1, height: `${that.getpercent(max, data[5].Count)}%` },
+          ]
+        });
+        // console.log(res.data.Data);
+      }
+    })
+  },
+
+  getpercent: function (max, x) {
+    if (x == 0) return 2;
+    else return x / max * 70;
+  },
 
   toSleep: function () {
     wx.navigateTo({
@@ -131,50 +170,12 @@ Page({
   },
 
   onLoad: function () {
-    app.globalData.openID = "o_50r44VTHxq0fFoSj8IvpEaFyz0";
-    // wx.checkSession({
-    //   success: function () {
-    //     console.log("success");
-    //     //session_key 未过期，并且在本生命周期一直有效，直接发送加密字段
-    //   },
-    //   fail: function () {
-    //     // session_key 已经失效，需要重新执行登录流程
-    //     console.log("fail");
-    //     wx.login({
-    //       success: function (res) {
-    //         var code = res.code; //返回code
-    //         console.log(code);
-    //         var appId = 'wxd0748aaad95d239a';
-    //         var secret = 'b71c503761d021c4eb3f20a236d1698b';
-    //         wx.request({
-    //           url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
-    //           data: {},
-    //           header: {
-    //             'content-type': 'json'
-    //           },
-    //           method: "GET",
-    //           success: function (res) {
-    //             console.log('res:', res);
-    //             app.globalData.openID = "";
-    //           }
-    //         })
-    //       }
-    //     });
-    //   }
-    // })
-    // 查看是否授权
-    // wx.getSetting({
-    //   success(res) {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.getUserInfo({
-    //         success: function (res) {
-    //           console.log(res.userInfo)
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
+    this.login()
+    var that = this;
+    console.log("onload:", app.globalData.openId);
+    if (app.globalData.openId != '')
+      that.setData({ openId: true })
+    // console.log("?:", that.data.openId);
   },
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo)
@@ -190,12 +191,7 @@ Page({
       success: function (e) {
         that.data.capsuleHeight = e.height;
       }
-    }),
-      setTimeout(function () {
-        // 获取 chart 实例的方式
-        console.log(chart)
-      }, 2000);
-
+    })
   },
 
 

@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Source Han Serif CN";
-  src: url("https://qg-recruit-video.oss-cn-guangzhou.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
+  src: url("https://qg-recruit-video.oss-accelerate.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
