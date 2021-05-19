@@ -7,11 +7,26 @@ App({
     wx.setStorageSync('logs', logs)
 
     // 登录
+    let that = this;
     wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      success: function (res) {
+        var code = res.code;
+        var appId = 'wxd0748aaad95d239a';
+        var secret = 'b71c503761d021c4eb3f20a236d1698b';
+        wx.request({
+          url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
+          data: {},
+          header: {
+            'content-type': 'json'
+          },
+          method: "GET",
+          success: function (res) {
+            console.log(res);
+            that.globalData.openID = res.data.Data;
+          }
+        })
       }
-    })
+    });
   },
   globalData: {
     userInfo: null,
