@@ -2,10 +2,33 @@
     关于我
 </view>
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
-    <view class="main-content flex-start-col">
-        <view class="aboutme-dream-sleep">
-            <view catchtap="toSleep">助眠模式 ></view>
+    <scroll-view class="main-content flex-start-col">
+        <view class="aboutme-login flex-around-col">
+            <image mode="aspectFill" src="https://tva2.sinaimg.cn/large/007DFXDhgy1g51jlzfb4lj305k02s0sp.jpg" bindgetuserinfo="getUserInfo" catchtap="login" class="aboutme-login-img" />
+            <!-- <button class="aboutme-login-img" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+                ?
+            </button> -->
+            <!-- <open-data type="userAvatarUrl" class="aboutme-login-img"></open-data> -->
         </view>
+        <view class="aboutme-dream-sleep flex-around">
+            <view>
+                <view>{{dataTotal.d1}}</view>
+                <view>文字描述</view>
+            </view>
+            <view>
+                <view>{{dataTotal.d2}}</view>
+                <view>文字描述</view>
+            </view>
+            <view>
+                <view>{{dataTotal.d3}}</view>
+                <view>文字描述</view>
+            </view>
+            <view catchtap="toSleep">
+                <view>>></view>
+                <view>助眠模式</view>
+            </view>
+        </view>
+        <view class="aboutme-bg">背景图片</view>
         <view class="flex-start-col aboutme-top">
             <view class="flex-space-between aboutme-top-title">
                 <view class="aboutme-dream-title">梦境统计</view>
@@ -38,6 +61,6 @@
                 <view class="aboutme-list-dream-svg">></view>
             </view>
         </view>
-    </view>
+    </scroll-view>
 </view>
 <my-navigator role="2"></my-navigator>

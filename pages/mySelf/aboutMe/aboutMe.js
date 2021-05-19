@@ -75,6 +75,11 @@ Page({
     ],
     ec: {
       onInit: initChart // 3、将数据放入到里面
+    },
+    dataTotal: {
+      d1: '22',
+      d2: '33',
+      d3: '44',
     }
   },
 
@@ -86,6 +91,38 @@ Page({
   },
 
 
+  login: function () {
+    wx.showModal({
+      title: '提示',
+      content: '是否登录？',
+      success: function (sm) {
+        if (sm.confirm) {
+          wx.login({
+            success: function (res) {
+              var code = res.code;
+              var appId = 'wxd0748aaad95d239a';
+              var secret = 'b71c503761d021c4eb3f20a236d1698b';
+              wx.request({
+                url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
+                data: {},
+                header: {
+                  'content-type': 'json'
+                },
+                method: "GET",
+                success: function (res) {
+                  app.globalData.openID = res.data.Data;
+                }
+              })
+            }
+          });
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
+
 
   toSleep: function () {
     wx.navigateTo({
@@ -93,12 +130,56 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    app.globalData.openID = "o_50r44VTHxq0fFoSj8IvpEaFyz0";
+    // wx.checkSession({
+    //   success: function () {
+    //     console.log("success");
+    //     //session_key 未过期，并且在本生命周期一直有效，直接发送加密字段
+    //   },
+    //   fail: function () {
+    //     // session_key 已经失效，需要重新执行登录流程
+    //     console.log("fail");
+    //     wx.login({
+    //       success: function (res) {
+    //         var code = res.code; //返回code
+    //         console.log(code);
+    //         var appId = 'wxd0748aaad95d239a';
+    //         var secret = 'b71c503761d021c4eb3f20a236d1698b';
+    //         wx.request({
+    //           url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
+    //           data: {},
+    //           header: {
+    //             'content-type': 'json'
+    //           },
+    //           method: "GET",
+    //           success: function (res) {
+    //             console.log('res:', res);
+    //             app.globalData.openID = "";
+    //           }
+    //         })
+    //       }
+    //     });
+    //   }
+    // })
+    // 查看是否授权
+    // wx.getSetting({
+    //   success(res) {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       wx.getUserInfo({
+    //         success: function (res) {
+    //           console.log(res.userInfo)
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
+  bindGetUserInfo(e) {
+    console.log(e.detail.userInfo)
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -117,45 +198,5 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

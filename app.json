@@ -16,5 +16,15 @@
     "navigationStyle": "custom"
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "custom": true,
+    "list": [{
+      "pagePath": "pages/myCommunity/listView/listView"
+    },{
+      "pagePath": "pages/myDream/editDream/editDream"
+    },{
+      "pagePath": "pages/mySelf/aboutMe/aboutMe"
+    }]
+  }
 }

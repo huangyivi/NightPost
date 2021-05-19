@@ -32,7 +32,7 @@ page {
   box-sizing: border-box;
   height: 100%;
   width: 100vw;
-  margin-bottom: 200rpx;
+  /* margin-bottom: 200rpx; */
 }
 
 .main-content {

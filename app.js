@@ -20,6 +20,7 @@ App({
     lastImage: [],
     myDream: null,
     voice: '',
-    domain: 'http://39.99.140.114/dream/'
+    domain: 'http://39.99.140.114/dream/',
+    openId : ''
   }
 })

@@ -36,7 +36,8 @@ page {
 
 .sleep-music-all {
     width: 100%;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
+    padding-bottom: 100rpx;
 }
 
 /* 隐藏滚动条 */

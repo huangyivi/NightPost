@@ -7,7 +7,7 @@ const getFileName = function(file) {
   return '';
 }
 
-// 传入时间戳，格式化时间
+// 传入时间戳，格式化时间为：2021/01/01 12:00:00
 const formatDate = (date) => {
   if(!date) return null;
   //date是传入的时间

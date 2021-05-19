@@ -55,7 +55,7 @@ page {
     text-align: center;
 }
 
-.aboutme-times-line{
+.aboutme-times-line {
     position: absolute;
     width: 20%;
     right: 40%;
@@ -64,19 +64,53 @@ page {
     background-color: black;
 }
 
-.aboutme-times-day{
+.aboutme-times-day {
     position: absolute;
     width: 100%;
     bottom: 3%;
     color: black;
 }
 
+.aboutme-login {
+    width: 100%;
+    height: 280rpx;
+    line-height: 280rpx;
+    text-align: center;
+    background-color: pink;
+}
+
+.aboutme-login-img {
+    width: 128rpx !important;
+    padding: 0;
+    margin: 0;
+    height: 128rpx;
+    line-height: 128rpx;
+    overflow: hidden;
+    border-radius: 50% 50%;
+    background-color: grey;
+}
+
 .aboutme-dream-sleep {
     width: 100%;
+    height: 200rpx;
     text-align: right;
-    margin-top: -48rpx;
-    margin-bottom: 24rpx;
     color: #818181;
+}
+
+.aboutme-dream-sleep>view {
+    font-size: 28rpx;
+    text-align: center;
+    color: black;
+}
+
+.aboutme-dream-sleep>view>view:first-child {
+    font-size: 32rpx;
+    margin-bottom: 8rpx;
+}
+
+.aboutme-bg {
+    background-color: thistle;
+    height: 128rpx;
 }
 
 .aboutme-picker {
@@ -98,11 +132,12 @@ page {
 
 .main-content {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    padding-bottom: 240rpx;
 }
 
 .aboutme-list {
-    height: calc(100% - 640rpx);
+    height: 600rpx;
     width: 100%;
     background-color: white;
 }

@@ -21,15 +21,15 @@ Component({
     rdctTo(e) {
       let site = e.target.dataset.site;
       if(site == 0) {
-        wx.redirectTo({
+        wx.switchTab({
           url: '../../../pages/myCommunity/listView/listView'
         })
       }else if(site == 1) {
-        wx.redirectTo({
+        wx.switchTab({
           url: '../../../pages/myDream/editDream/editDream'
         })
       }else if(site == 2){
-        wx.redirectTo({
+        wx.switchTab({
           url: '../../../pages/mySelf/aboutMe/aboutMe'
         })
       }
