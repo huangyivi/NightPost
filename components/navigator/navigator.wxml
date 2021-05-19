@@ -1,5 +1,5 @@
 <view class="navi-bottom">
-  <view class="navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" data-site="0" catchtap="rdctTo">{{ role === 0 ? '万象' : '' }}</view>
-  <view class="navi-btn {{role === 1 ? 'navi-btn-active' : ''}}" data-site="1" catchtap="rdctTo">{{ role === 1 ? '忆梦' : '' }}</view>
-  <view class="navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" data-site="2" catchtap="rdctTo">{{ role === 2 ? '我梦' : '' }}</view>
+  <view animation="{{role === 0 ? animationUp : animationDown}}" class="comunity navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" data-site="0" catchtap="switchTab"> </view>
+  <view animation="{{role === 1 ? animationUp : animationDown}}" class="edit navi-btn {{role === 1 ? 'navi-btn-active' : ''}}" data-site="1" catchtap="switchTab">     </view>
+  <view animation="{{role === 2 ? animationUp : animationDown}}" class="personal navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" data-site="2" catchtap="switchTab"> </view>
 </view>

@@ -21,12 +21,11 @@ App({
           },
           method: "GET",
           success: function (res) {
-            console.log(res);
-            that.globalData.openID = res.data.Data;
+            that.globalData.openId = res.data.Data;
           }
         })
       }
-    });
+      });
   },
   globalData: {
     userInfo: null,
