@@ -24,6 +24,27 @@ const formatDate = (date) => {
   return times;
 }
 
+// 请求后台的方法
+const handleRequest = (params)=>{
+  const domain = 'http://39.99.140.114';
+  wx.showLoading({
+    title: '加载中',
+  })
+  return new Promise((resolve,reject)=>{
+    wx.request({
+      ...params,
+      url: domain + params.url,
+      success:(res)=>resolve(res),
+      fail: err=>reject(err),
+      complete: ()=>{
+        wx.hideLoading();
+      }
+    })
+  })
+}
+
+
 module.exports = {
-  getFileName
+  getFileName,
+  handleRequest,
 }
