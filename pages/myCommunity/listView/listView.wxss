@@ -51,7 +51,7 @@ page {
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 120rpx;
+  width: 125rpx;
   height: 100rpx;
 }
 
@@ -117,8 +117,10 @@ view.hr {
 }
 
 .resonate .text{
-  background: #ACACAC;
-  padding: 10rpx 5rpx;
+  /* background: #ACACAC; */
+  /* padding: 10rpx 5rpx; */
+  width: 50rpx;
+  height: 50rpx;
 }
 
 .resonate .num {

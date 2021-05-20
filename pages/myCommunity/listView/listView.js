@@ -128,10 +128,13 @@ Page({
   // 点击去详情页面
   handleTo(e) {
     const {
-      index
+      index,
+      url
     } = e.target.dataset;
     app.globalData.currentIndex = parseInt(index);
-    console.log(app.globalData.currentIndex);
+    wx.navigateTo({
+      url
+    })
   },
 
   // 获取梦境地址

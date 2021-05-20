@@ -19,7 +19,7 @@
     <view class="content_list">
       <view hidden="{{list.length}}" class="content_item flex-center">暂无数据</view>
       <navigator wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="id"
-        class="content_item flex-between" url="{{item.url}}" bindtap="handleTo" data-index="{{index}}">
+        class="content_item flex-between" data-url="{{item.url}}" bindtap="handleTo" data-index="{{index}}">
         <view class="left_wrap">
           <view class="title">{{item.keyWord}}</view>
           <view class="tip">
@@ -29,7 +29,8 @@
         </view>
         <view class="right_wrap flex-between">
           <view class="resonate">
-            <view class="text">共鸣</view>
+            <image mode="scaleToFill" class="text" src="../../../assets/images/dreamCommunity/resonate.png"></image>
+            <!-- <view class="text">共鸣</view> -->
             <view class="num">{{item.like}}</view>
           </view>
           <view class="to_detail">></view>
