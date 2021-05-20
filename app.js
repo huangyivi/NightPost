@@ -35,6 +35,8 @@ App({
     myDream: null,
     voice: '',
     domain: 'http://39.99.140.114/dream/',
-    openId : ''
+    openId : '',
+    dreamsList: [], // 梦境列表
+    currentIndex: -1, // 梦境索引
   }
 })
