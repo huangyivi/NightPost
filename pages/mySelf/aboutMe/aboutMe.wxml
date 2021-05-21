@@ -12,11 +12,11 @@
         </view>
         <view class="aboutme-dream-sleep flex-around">
             <view>
-                <view>{{dataTotal.d1}}</view>
+                <view>{{d1}}</view>
                 <view>发表数量</view>
             </view>
             <view>
-                <view>{{dataTotal.d2}}</view>
+                <view>{{d2}}</view>
                 <view>共鸣数量</view>
             </view>
             <view>
