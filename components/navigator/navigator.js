@@ -11,11 +11,10 @@ Component({
    * 组件的初始数据
    */
   data: {
-    animationUp : null,
-    animationDown : null
+    animationData : null
   },
-  lifetimes :{
-    ready : function() {
+  pageLifetimes :{
+    show : function() {
       this.loadAnimation();
     }
   },
@@ -41,26 +40,27 @@ Component({
       }
     },
     loadAnimation() {
-      this.setData({
-        animationUp : null,
-        animationDown : null
-      })
       let up = wx.createAnimation({
         duration: 1000,
         timingFunction: 'ease'
       })
-      up.translateY('-20rpx').opacity(0).opacity(1).step();
+      up.translateY('-20rpx').step();
       
       let down = wx.createAnimation({
-        duration: 1000,
+        duration: 5000,
         timingFunction: 'ease'
       })
-      down.translateY('0').opacity(0).opacity(1).step();
+      down.translateY('0rpx').step();
 
       this.setData({
-        animationUp : up.export(),
-        animationDown : down.export()
+        animationData : up.export()
       })
+      let that = this;
+      setTimeout(function() {
+        that.setData({
+          animationData : down.export()
+        })
+      },1500)
     }
   }
 })

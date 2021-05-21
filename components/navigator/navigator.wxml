@@ -1,5 +1,5 @@
 <view class="navi-bottom">
-  <view animation="{{role === 0 ? animationUp : animationDown}}" class="comunity navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" data-site="0" catchtap="switchTab"> </view>
-  <view animation="{{role === 1 ? animationUp : animationDown}}" class="edit navi-btn {{role === 1 ? 'navi-btn-active' : ''}}" data-site="1" catchtap="switchTab">     </view>
-  <view animation="{{role === 2 ? animationUp : animationDown}}" class="personal navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" data-site="2" catchtap="switchTab"> </view>
+  <view animation="{{role === 0 ? animationData : null}}" class="comunity navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" data-site="0" catchtap="switchTab"> </view>
+  <view animation="{{role === 1 ? animationData : null}}" class="edit navi-btn {{role === 1 ? 'navi-btn-active' : ''}}" data-site="1" catchtap="switchTab">     </view>
+  <view animation="{{role === 2 ? animationData : null}}" class="personal navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" data-site="2" catchtap="switchTab"> </view>
 </view>

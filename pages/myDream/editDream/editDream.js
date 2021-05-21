@@ -1,6 +1,7 @@
 const app = getApp();
 const {
-  getFileName
+  getFileName,
+  getWeekday
 } = require('../../../utils/util.js')
 Page({
   data: {
@@ -10,12 +11,24 @@ Page({
     accessIndex: 0,
     tags: ['美梦', '噩梦', '白日梦', '预知','猎奇','反梦','平平淡淡','其他'],
     tagIndex: 0,
-    keyword: '饮茶',
-    detail: '喂！朋友！做咩咁多啦！差唔多七点咧，放工啦 唔洗做咁多啦！做咁多，钱带去边度？差唔多七点咧！放工！焗杯茶先！饮下靓靓个beer！白啤酒黑啤酒ok？happy下唔洗做咁多！死佐都无用诶，银纸无得带去咧！happy下！饮酒！ok？！',
-    imageFile: ''
+    keyword: '',
+    detail: '',
+    imageFile: '',
+    date : {},
+    animationData : null
   },
   onReady: function () {
     let that = this;
+    let date = new Date();
+    let dateObj = {
+      month : date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1),
+      day : date.getDate() > 9 ? date.getDate() + 1 : '0' + (date.Date() + 1),
+      weekday : getWeekday(date.getDay())
+    }
+   
+    this.setData({
+      date : dateObj
+    })
     wx.getMenuButtonBoundingClientRect({
       success: function (e) {
         that.data.capsuleHeight = e.height;
@@ -23,6 +36,15 @@ Page({
     })
   },
   onShow() {
+    // 动画
+    let animationData = wx.createAnimation({
+      duration : 1000,
+      timingFunction : 'ease'
+    })
+    animationData.opacity(1).step();
+    this.setData({
+      animationData : animationData.export()
+    })
     // 查看本地是否有临时梦境
     if (app.globalData.myDream) {
       const {
@@ -145,6 +167,13 @@ Page({
           app.globalData.myDream = null;
           app.globalData.imageFile = '';
           app.globalData.lastImage = [];
+          that.setData({
+            accessIndex: 0,
+            tagIndex: 0,
+            keyword: '',
+            detail: '',
+            imageFile: '',
+          })
           wx.navigateTo({
             url: '../published/published'
           })

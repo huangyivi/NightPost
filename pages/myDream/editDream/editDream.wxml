@@ -3,24 +3,18 @@
 </view>
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 200rpx;">
   <view class="main-header flex-between">
-    <view class="main-date">05 / 01 Sun.</view>
+    <view class="main-date">{{date.month}} / {{date.day}} {{date.weekday}}</view>
     <view class="black-btn flex-center" catchtap="toPublish">发表</view>
   </view>
-  <view class="main-content">
+  <view class="main-content" animation="{{animationData}}" style="opacity : 0.2">
     <input class="main-title" type="text" placeholder="梦的关键词" data-key="keyword" value="{{keyword}}" bindinput="changeVal"/>
-    <textarea class="main-detail" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}" data-key="detail" bindinput="changeVal"></textarea>
+    <textarea class="main-detail" placeholder="记录下你的梦吧" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}" data-key="detail" bindinput="changeVal"></textarea>
     <view class="main-function flex-start">
       <view wx:if="{{!imageFile}}" class="main-func flex-center" catchtap="toPaint">手绘</view>
       <image wx:else class="main-func flex-center" mode="aspectFill" src="{{imageFile}}" catchtap="toPaint"></image>
       <view class="main-func flex-center" catchtap="toRecord">录音</view>
     </view>
     <view class="main-select flex-start-col">
-      <!-- <view style="width: 100%">
-        <view class="flex-start select-item">
-            <view class="select-icon"></view>
-            <input type="text" placeholder="输入梦境关键词，有彩蛋哦" />
-          </view>
-      </view> -->
       <picker style="width: 100%" bindchange="isAccessedChange" value="{{accessIndex}}" range="{{access}}">
         <view class="select-item flex-between">
           <view class="flex-start">
