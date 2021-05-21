@@ -35,6 +35,7 @@ App({
     myDream: null,
     voice: '',
     domain: 'http://39.99.140.114/dream/',
-    openId : ''
+    openId : '',
+    userId : '',
   }
 })

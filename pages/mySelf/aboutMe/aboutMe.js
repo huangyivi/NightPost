@@ -1,6 +1,6 @@
 const app = getApp();
 import * as echarts from "../../../utils/ec-canvas/echarts";
-let chart = null;
+let chart;
 
 function initChart(canvas, width, height) {
   chart = echarts.init(canvas, null, {
@@ -8,48 +8,6 @@ function initChart(canvas, width, height) {
     height: height
   });
   canvas.setChart(chart);
-
-  let option = {
-    visualMap: {
-      show: false,
-      min: 0,
-      max: 100,
-      splitNumber: 5,
-      inRange: {
-        color: ['#d2d2d2', '#acacac', '#acacac', '#7b7b7b'],
-      },
-    },
-    series: [{
-      type: 'treemap',
-      roam: false,
-      breadcrumb: { show: false },
-      nodeClick: false,
-
-      data: [{
-        name: 'nodeA',            // First tree
-        value: 100,
-        children: [{
-          name: 'nodeAa',       // First leaf of first tree
-          value: 42
-        }, 
-        {
-          name: 'nodeAb',       // Second leaf of first tree
-          value: 28
-        }, 
-        {
-          name: 'nodeAc',       // Second leaf of first tree
-          value: 15
-        }, 
-        {
-          name: 'nodeAd',       // Second leaf of first tree
-          value: 15
-        }],
-
-      }]
-    }]
-  };
-
-  chart.setOption(option);
   return chart;
 }
 
@@ -61,21 +19,26 @@ Page({
     index: 0,
     dreamList: [],
     timesList: [],
+    option: {},
     ec: {
-      onInit: initChart // 3、将数据放入到里面
+      onInit: initChart
     },
-    dataTotal: {
-      d1: '--',
-      d2: '--',
-    },
+    d1: '--',
+    d2: '--',
     openId: false,
   },
 
   bindPickerChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
+    if (e.detail.value == 1) {
+      setTimeout(() => {
+        let option = this.data.option;
+        console.log(option);
+        chart.setOption(option);
+      }, 100)
+    }
   },
 
 
@@ -92,7 +55,7 @@ Page({
               var appId = 'wxd0748aaad95d239a';
               var secret = 'b71c503761d021c4eb3f20a236d1698b';
               wx.request({
-                url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
+                url: `${app.globalData.domain}openid?appId=${appId}&code=${code}&secret=${secret}`,
                 data: {},
                 header: {
                   'content-type': 'json'
@@ -100,9 +63,21 @@ Page({
                 method: "GET",
                 success: function (res) {
                   app.globalData.openId = res.data.Data;
-                  console.log(app.globalData.openId);
                   that.setData({ openId: true });
-                  that.getData();
+                  // 获取用户ID
+                  wx.request({
+                    url: `${app.globalData.domain}user?${app.globalData.openId}`,
+                    data: {},
+                    header: {
+                      'content-type': 'json'
+                    },
+                    method: "GET",
+                    success: function (res) {
+                      app.globalData.userId = res.data.Data.id;
+                      // app.globalData.userId = 1;
+                      that.getData();
+                    }
+                  })
                 }
               })
             }
@@ -112,14 +87,189 @@ Page({
         }
       }
     })
-
   },
 
   getData: function () {
     let that = this;
+    // 总发表数
+    let dataChartAll = [];
+    let dataChart = [];
+    let tags = ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
+    let i = 0;
     wx.request({
-      // url: app.globalData.domain + `count/type/1/0`,
-      url: app.globalData.domain + `my/1`,
+      url: app.globalData.domain + 'all/' + app.globalData.userId,
+      data: {},
+      header: {
+        'content-type': 'json'
+      },
+      method: "GET",
+      success: function (res) {
+        let data = res.data.Data;
+        that.setData({
+          d1: data
+        });
+        dataChartAll.push({
+          name: '总发表数',
+          value: data,
+          children: []
+        });
+        // 类型统计
+        // 0
+        wx.request({
+          url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+          data: {},
+          header: {
+            'content-type': 'json'
+          },
+          method: "GET",
+          success: function (res) {
+            let data = res.data.Data;
+            dataChart.push({
+              name: tags[i],
+              value: data
+            })
+            i++;
+            // 1
+            wx.request({
+              url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+              data: {},
+              header: {
+                'content-type': 'json'
+              },
+              method: "GET",
+              success: function (res) {
+                let data = res.data.Data;
+                dataChart.push({
+                  name: tags[i],
+                  value: data
+                })
+                i++;
+                // 2
+                wx.request({
+                  url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                  data: {},
+                  header: {
+                    'content-type': 'json'
+                  },
+                  method: "GET",
+                  success: function (res) {
+                    let data = res.data.Data;
+                    dataChart.push({
+                      name: tags[i],
+                      value: data
+                    })
+                    i++;
+                    // 3
+                    wx.request({
+                      url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                      data: {},
+                      header: {
+                        'content-type': 'json'
+                      },
+                      method: "GET",
+                      success: function (res) {
+                        let data = res.data.Data;
+                        dataChart.push({
+                          name: tags[i],
+                          value: data
+                        })
+                        i++;
+                        // 4
+                        wx.request({
+                          url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                          data: {},
+                          header: {
+                            'content-type': 'json'
+                          },
+                          method: "GET",
+                          success: function (res) {
+                            let data = res.data.Data;
+                            dataChart.push({
+                              name: tags[i],
+                              value: data
+                            })
+                            i++;
+                            // 5
+                            wx.request({
+                              url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                              data: {},
+                              header: {
+                                'content-type': 'json'
+                              },
+                              method: "GET",
+                              success: function (res) {
+                                let data = res.data.Data;
+                                dataChart.push({
+                                  name: tags[i],
+                                  value: data
+                                })
+                                i++;
+                                // 6
+                                wx.request({
+                                  url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                                  data: {},
+                                  header: {
+                                    'content-type': 'json'
+                                  },
+                                  method: "GET",
+                                  success: function (res) {
+                                    let data = res.data.Data;
+                                    dataChart.push({
+                                      name: tags[i],
+                                      value: data
+                                    })
+                                    i++;
+                                    // 7
+                                    wx.request({
+                                      url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
+                                      data: {},
+                                      header: {
+                                        'content-type': 'json'
+                                      },
+                                      method: "GET",
+                                      success: function (res) {
+                                        let data = res.data.Data;
+                                        dataChart.push({
+                                          name: tags[i],
+                                          value: data
+                                        })
+                                        that.setChart(tags, dataChart, dataChartAll);
+                                      }
+                                    })
+                                  }
+                                })
+                              }
+                            })
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
+        })
+      }
+    })
+    // 总共鸣数
+    wx.request({
+      url: app.globalData.domain + 'user/likes/' + app.globalData.userId,
+      data: {},
+      header: {
+        'content-type': 'json'
+      },
+      method: "GET",
+      success: function (res) {
+        let data = res.data.Data;
+        that.setData({
+          d2: data
+        });
+      }
+    })
+    // 梦境列表
+    wx.request({
+      url: app.globalData.domain + `my/` + app.globalData.userId,
       data: {},
       header: {
         'content-type': 'json'
@@ -130,9 +280,9 @@ Page({
         that.setData({
           dreamList: data
         });
-
       }
     })
+    // 次数统计
     wx.request({
       url: app.globalData.domain + `count/time`,
       data: {},
@@ -142,7 +292,7 @@ Page({
       method: "GET",
       success: function (res) {
         let data = res.data.Data;
-        let max = Math.max(...data);
+        let max = Math.max(data[0].Count, data[1].Count, data[2].Count, data[3].Count, data[4].Count, data[5].Count);
         that.setData({
           timesList: [
             { times: data[0].Count, day: data[0].Day, opacity: 1.0, height: `${that.getpercent(max, data[0].Count)}%` },// 最高的
@@ -155,6 +305,47 @@ Page({
         });
         // console.log(res.data.Data);
       }
+    })
+  },
+
+  setChart: function (tags, dataChart, dataChartAll) {
+    // 数据处理
+    dataChart.sort(function (a, b) {
+      return b.value - a.value
+    })
+    let data = [];
+    data.push(dataChart[0], dataChart[1], dataChart[2]);
+    let count = 0;
+    for (let i = 3; i <= 7; i++) {
+      count += dataChart[i].value;
+    }
+    data.push({
+      name: '其他',
+      value: count
+    });
+    dataChartAll[0].children = data;
+
+    // 显示
+    let option = {
+      visualMap: {
+        show: false,
+        min: 0,
+        max: 100,
+        splitNumber: 5,
+        inRange: {
+          color: ['#d2d2d2', '#acacac', '#acacac', '#7b7b7b'],
+        },
+      },
+      series: [{
+        type: 'treemap',
+        roam: false,
+        breadcrumb: { show: false },
+        nodeClick: false,
+        data: data,
+      }]
+    };
+    this.setData({
+      option: option
     })
   },
 
@@ -172,19 +363,11 @@ Page({
   onLoad: function () {
     this.login()
     var that = this;
-    console.log("onload:", app.globalData.openId);
     if (app.globalData.openId != '')
       that.setData({ openId: true })
     // console.log("?:", that.data.openId);
   },
-  bindGetUserInfo(e) {
-    console.log(e.detail.userInfo)
-  },
 
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
@@ -193,6 +376,4 @@ Page({
       }
     })
   },
-
-
 })
