@@ -6,30 +6,32 @@
     <view class="content_top flex-between">
       <view>漫 游</view>
       <view class="flex-between">
+        <view class="sort_btn" bindtap="handleSort">按{{type?'时间':'点赞'}}排序</view>
         <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
         <view class="content_select">
           <view class="content_pic"></view>
           <view class="content_tag">{{tags[tagIndex]}}</view>
         </view>
       </picker>
-      <view class="sort_btn" bindtap="handleSort">排序</view>
       </view>
     </view>
     <view class="hr"></view>
     <view class="content_list">
-      <navigator wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"
-        class="content_item flex-between" url="{{item.url}}">
+      <view hidden="{{list.length}}" class="content_item flex-center">暂无数据</view>
+      <navigator wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="id"
+        class="content_item flex-between" data-url="{{item.url}}" bindtap="handleTo" data-index="{{index}}">
         <view class="left_wrap">
-          <view class="title">{{item.title}}</view>
-          <view class="tip flex-between">
-            <view class="date">{{item.date}}</view>
-            <view class="tag">#{{item.tag}}</view>
+          <view class="title">{{item.keyWord}}</view>
+          <view class="tip">
+            <view class="date">{{item.time}}</view>
+            <view class="tag">#{{item.Type}}</view>
           </view>
         </view>
         <view class="right_wrap flex-between">
           <view class="resonate">
-            <view class="text">共鸣</view>
-            <view class="num">{{item.star}}</view>
+            <image mode="scaleToFill" class="text" src="../../../assets/images/dreamCommunity/resonate.png"></image>
+            <!-- <view class="text">共鸣</view> -->
+            <view class="num">{{item.like}}</view>
           </view>
           <view class="to_detail">></view>
         </view>
