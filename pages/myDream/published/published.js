@@ -3,17 +3,33 @@ Page({
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
     capsuleHeight: 44,
-    animationData : null,
-    hasEgg : true,
-    eggCtx: ' 梦见养羊，预示着你近期的运势很好，路上将会遇到自己很久没见的故人，两人有很多说不完的话。找工作者梦见养羊，预示着你近期的求职运势很好，自己的表现得到考官的欣赏，有机会获得一份好的工作。务员梦见养羊，预示着你近期的运势很好，自己的表现太好，得到上司的器重，有机会可以升职。找工作者梦见养羊，预示着你近期的求职运势很好，自己的表现得到考官的欣赏，有机会获得一份好的工作。公务员梦见养羊，预示着你近期的运势很好，自己的表现太好，得到上司的器重，有机会可以升职。找工作者梦见养羊，预示着你近期的求职运势很好，自己的表现得到考官的欣赏，有机会获得一份好的工作。公务员梦见养羊，预示着你近期的运势很好，自己的表现太好，得到上司的器重，有机会可以升职。'
+    animationData: null,
+    eggCtx: ''
   },
-  onReady: function(){
+  onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
-      success: function(e){
+      success: function (e) {
         that.data.capsuleHeight = e.height;
       }
     })
+    if (app.globalData.keyword) {
+      wx.request({
+        url: app.globalData.domain + 'explain?keyword=' + app.globalData.keyword,
+        method: 'get',
+        success(res) {
+          console.log(res.data.Data);
+          if (res.data.Data) {
+            let content = res.data.Data[0].Content;
+            let passage = content.join('\n&emsp;&emsp;');
+            that.setData({
+              eggCtx: passage
+            })
+          }
+        }
+      })
+    }
+
   },
   onShow() {
     let move = wx.createAnimation({
@@ -22,10 +38,10 @@ Page({
     })
     move.opacity(1).step();
     this.setData({
-      animationData : move.export()
+      animationData: move.export()
     })
   },
-  return(){
+  return () {
     wx.navigateBack();
   },
 })

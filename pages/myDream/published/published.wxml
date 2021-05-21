@@ -1,13 +1,13 @@
 <view catchtap="return" class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
   ← 返回
 </view>
-<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;height : {{hasEgg ? 'auto' : '100vh'}}">
-  <view class="main-content {{hasEgg ? 'flex-start-col' : 'flex-center-col'}}">
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;height : {{eggCtx ? 'auto' : '100vh'}}">
+  <view class="main-content {{eggCtx ? 'flex-start-col' : 'flex-center-col'}}">
     <view class="published-text flex-center">梦境已发表</view>
-    <view wx:if="{{hasEgg}}" class="flex-center tip">以下解读仅供参考，如有应验纯属巧合</view>
-    <view animation="{{animationData}}" wx:if="{{hasEgg}}" class="surprise flex-around-col">
+    <view wx:if="{{eggCtx}}" class="flex-center tip">以下解读仅供参考，如有应验纯属巧合</view>
+    <view animation="{{animationData}}" wx:if="{{eggCtx}}" class="surprise flex-around-col">
       <view class="surprise-title">读梦</view>
-      <text class="surprise-ctx">
+      <text decode="true" class="surprise-ctx">
         {{eggCtx}}
       </text>
     </view>

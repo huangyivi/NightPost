@@ -9,25 +9,25 @@ Page({
     capsuleHeight: 44,
     access: ['公开', '私密'],
     accessIndex: 0,
-    tags: ['美梦', '噩梦', '白日梦', '预知','猎奇','反梦','平平淡淡','其他'],
+    tags: ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'],
     tagIndex: 0,
     keyword: '',
     detail: '',
     imageFile: '',
-    date : {},
-    animationData : null
+    date: {},
+    animationData: null
   },
   onReady: function () {
     let that = this;
     let date = new Date();
     let dateObj = {
-      month : date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1),
-      day : date.getDate() > 9 ? date.getDate() + 1 : '0' + (date.Date() + 1),
-      weekday : getWeekday(date.getDay())
+      month: date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1),
+      day: date.getDate() > 9 ? date.getDate() + 1 : '0' + (date.Date() + 1),
+      weekday: getWeekday(date.getDay())
     }
-   
+
     this.setData({
-      date : dateObj
+      date: dateObj
     })
     wx.getMenuButtonBoundingClientRect({
       success: function (e) {
@@ -36,14 +36,30 @@ Page({
     })
   },
   onShow() {
+    // 判断用户是否登录
+    if(!app.globalData.openId) {
+      wx.showModal({
+        title: "用户未登录",
+        content: "想要发布梦境，请先登录哦！",
+        confirmText: '现在登录',
+        cancelText: '我再看看',
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../../mySelf/aboutMe/aboutMe',
+            })
+          }
+        }
+      })
+    }
     // 动画
     let animationData = wx.createAnimation({
-      duration : 1000,
-      timingFunction : 'ease'
+      duration: 1000,
+      timingFunction: 'ease'
     })
     animationData.opacity(1).step();
     this.setData({
-      animationData : animationData.export()
+      animationData: animationData.export()
     })
     // 查看本地是否有临时梦境
     if (app.globalData.myDream) {
@@ -142,8 +158,8 @@ Page({
           }
           let data = that.data;
           let upload = {
-            "uid": "hyw",
-            "keyword" : data.keyword,
+            "uid": app.globalData.userId,
+            "keyword": data.keyword,
             "dream": data.detail,
             "privacy": data.access == 1 ? 'y' : 'n',
             "time": new Date().getTime(),
@@ -164,9 +180,11 @@ Page({
               console.log(err);
             }
           })
+          app.globalData.keyword = that.data.keyword;
           app.globalData.myDream = null;
           app.globalData.imageFile = '';
           app.globalData.lastImage = [];
+          app.globalData.voice = ''
           that.setData({
             accessIndex: 0,
             tagIndex: 0,
@@ -199,7 +217,7 @@ Page({
   changeVal(e) {
     let key = e.target.dataset.key;
     this.setData({
-      [key] : e.detail.value
+      [key]: e.detail.value
     })
   }
 })

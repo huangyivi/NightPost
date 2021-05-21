@@ -1,14 +1,13 @@
 {
   "pages":[
+    "pages/myCommunity/listView/listView",
     "pages/mySelf/aboutMe/aboutMe",
     "pages/mySelf/sleepMode/sleepMode",
     "pages/frame/frame",
-    "pages/index/index",
     "pages/myDream/editDream/editDream",
     "pages/myDream/record/record",
-    "pages/myDream/published/published",
     "pages/myDream/paint/paint",
-    "pages/myCommunity/listView/listView",
+    "pages/myDream/published/published",
     "pages/myCommunity/dreamArticle/dreamArticle"
   ],
   "window":{

@@ -1,0 +1,4 @@
+<view class="firstLoad flex-around-col" animation="{{animationData}}" wx:if="{{isShow}}">
+  <text class="largeFont">万</text>  
+  <text class="largeFont">象</text>  
+</view>

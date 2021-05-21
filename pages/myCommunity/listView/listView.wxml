@@ -1,3 +1,4 @@
+<first-load></first-load>
 <view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
   梦境万象
 </view>
@@ -19,7 +20,7 @@
     <view class="content_list">
       <view hidden="{{list.length}}" class="content_item flex-center">暂无数据</view>
       <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="id"
-        class="content_item flex-between" data-url="{{item.url}}" bindtap="handleTo" data-index="{{index}}">
+        class="content_item flex-between" data-url="{{item.url}}" catchtap="handleTo" data-index="{{index}}">
         <view class="left_wrap">
           <view class="title">{{item.keyWord}}</view>
           <view class="tip">

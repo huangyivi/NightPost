@@ -1,0 +1,15 @@
+/* components/firstLoad/firstLoad.wxss */
+@import "../../app.wxss";
+
+.firstLoad {
+  z-index: 2;
+  position: absolute;
+  width : 100vw;
+  height : 100vh;
+  background-color: white;
+  opacity: 1;
+}
+
+.largeFont {
+  font-size: 150rpx;
+}
