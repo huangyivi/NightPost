@@ -90,6 +90,7 @@ page {
 }
 
 .aboutme-login-img {
+    border: none;
     width: 128rpx !important;
     padding: 0;
     margin: 0;

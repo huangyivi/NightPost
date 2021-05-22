@@ -64,11 +64,16 @@ page {
     margin: 10rpx 10rpx;
     border-radius: 14rpx;
     display: block;
-    background-color: brown;
+    background-color: rgb(64, 64, 64);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center center;
 }
 
 .sleep-music-name {
     position: absolute;
+    color: white;
+    text-shadow: 2rpx 2rpx 2rpx #b3b3b3;
     bottom: 24rpx;
     left: 18rpx;
 }

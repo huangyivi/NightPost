@@ -35,58 +35,109 @@ Page({
     if (e.detail.value == 1) {
       setTimeout(() => {
         let option = this.data.option;
-        console.log(option);
         chart.setOption(option);
       }, 100)
     }
   },
 
-
-  login: function () {
+  bindGetUserInfo(e) {
+    console.log(e.detail.userInfo);
     let that = this;
-    wx.showModal({
-      title: '提示',
-      content: '是否登录？',
-      success: function (sm) {
-        if (sm.confirm) {
-          wx.login({
-            success: function (res) {
-              var code = res.code;
-              var appId = 'wxd0748aaad95d239a';
-              var secret = 'b71c503761d021c4eb3f20a236d1698b';
-              wx.request({
-                url: `${app.globalData.domain}openid?appId=${appId}&code=${code}&secret=${secret}`,
-                data: {},
-                header: {
-                  'content-type': 'json'
-                },
-                method: "GET",
-                success: function (res) {
-                  app.globalData.openId = res.data.Data;
-                  that.setData({ openId: true });
-                  // 获取用户ID
-                  wx.request({
-                    url: `${app.globalData.domain}user?${app.globalData.openId}`,
-                    data: {},
-                    header: {
-                      'content-type': 'json'
-                    },
-                    method: "GET",
-                    success: function (res) {
-                      app.globalData.userId = res.data.Data.id;
-                      // app.globalData.userId = 1;
-                      that.getData();
-                    }
-                  })
-                }
-              })
-            }
-          });
-        } else if (sm.cancel) {
-          console.log('用户点击取消')
+    if (e.detail.userInfo) {
+      wx.showModal({
+        title: '提示',
+        content: '是否登录？',
+        success: function (sm) {
+          if (sm.confirm) {
+            that.login(e.detail.userInfo.nickName)
+          }
         }
+      })
+    }
+    // 查看是否授权，问题：全是true
+    // wx.getSetting({
+    //   success(res) {
+    //     console.log(res);
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       wx.showModal({
+    //         title: '提示',
+    //         content: '是否登录？',
+    //         success: function (sm) {
+    //           if (sm.confirm) {
+    //             that.login(e.detail.userInfo.nickName)
+    //           }
+    //         }
+    //       })
+    //     } else {
+    //       that.login(e.detail.userInfo.nickName)
+    //     }
+    //   }
+    // })
+
+  },
+
+  login: function (name) {
+    let that = this;
+    wx.login({
+      success: function (res) {
+        console.log(res);
+        var code = res.code;
+        var appId = 'wxd0748aaad95d239a';
+        var secret = 'b71c503761d021c4eb3f20a236d1698b';
+        wx.request({
+          url: `${app.globalData.domain}openid?appId=${appId}&code=${code}&secret=${secret}`,
+          data: {},
+          header: {
+            'content-type': 'json'
+          },
+          method: "GET",
+          success: function (res) {
+            app.globalData.openId = res.data.Data;
+            that.setData({ openId: true });
+
+            // 注册
+            wx.request({
+              url: `${app.globalData.domain}user/register`,
+              data: {
+                "open_id": app.globalData.openId,
+                "nickname": name
+              },
+              header: {
+                'content-type': 'json'
+              },
+              method: "POST",
+              success: function (res) {
+                console.log("register", res);
+
+                // 获取用户ID
+                wx.request({
+                  url: `${app.globalData.domain}user?open_id=${app.globalData.openId}`,
+                  data: {},
+                  header: {
+                    'content-type': 'json'
+                  },
+                  method: "GET",
+                  success: function (res) {
+                    console.log(res);
+                    app.globalData.userId = res.data.Data.id;
+
+
+                    // app.globalData.userId = 1;
+                    that.getData();
+                  }
+                })
+              }
+            })
+
+
+
+
+          }
+        })
       }
-    })
+    });
+
   },
 
   getData: function () {
@@ -308,6 +359,13 @@ Page({
     })
   },
 
+  toDetail: function (val) {
+    let id = val.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: `../../myCommunity/dreamArticle/dreamArticle?id=${id}`
+    })
+  },
+
   setChart: function (tags, dataChart, dataChartAll) {
     // 数据处理
     dataChart.sort(function (a, b) {
@@ -361,7 +419,7 @@ Page({
   },
 
   onLoad: function () {
-    this.login()
+    // this.login()
     var that = this;
     if (app.globalData.openId != '')
       that.setData({ openId: true })

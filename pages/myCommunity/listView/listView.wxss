@@ -64,7 +64,7 @@ page {
   /* margin-left: 50rpx; */
   width: 52rpx;
   height: 52rpx;
-  background: #ACACAC;
+  /* background: #ACACAC; */
 }
 
 .sort_btn {

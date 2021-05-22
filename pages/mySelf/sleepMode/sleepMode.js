@@ -8,20 +8,33 @@ Page({
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
     capsuleHeight: 44,
-    poster: '?', // 图片
-    name: '尚未播放',
-    author: '无名氏',
-    src: '/',
+    poster: 'https://qg-recruit-video.oss-accelerate.aliyuncs.com/5c0b32560f183828e76207096a9d44c.jpg',
+    src: "https://qg-recruit-video.oss-accelerate.aliyuncs.com/music/Big%20River.mp3",
+    name: "Big River",
+    author: "Echoes Of An Era",
+    // poster: '?', // 图片.oss-accelerate.aliyuncs.com/music/Big%20River.mp3",
+    // name: '尚未播放',
+    // author: '无名氏',
+    // src: '/',
     musicList: [
-      { src: "../music/day.mp3", name: "早晨", author: "1111", poster: "?" },
-      { src: "../music/snow.mp3", name: "雪花", author: "222", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
-      { src: "../music/night.mp3", name: "夜晚", author: "1111", poster: "?" },
+      {
+        src: "https://qg-recruit-video.oss-accelerate.aliyuncs.com/music/Big%20River.mp3",
+        name: "Big River",
+        author: "Echoes Of An Era",
+        poster: 'https://qg-recruit-video.oss-accelerate.aliyuncs.com/5c0b32560f183828e76207096a9d44c.jpg'
+      },
+      {
+        src: "https://qg-recruit-video.oss-accelerate.aliyuncs.com/music/Sailing%20to%20a%20hidden%20cove.mp3",
+        name: "Sailing to a hidden cove",
+        author: "Classical Artists",
+        poster: 'https://qg-recruit-video.oss-accelerate.aliyuncs.com/ade925295c7cc8bbf2a2e1535a4e063.jpg'
+      },
+      {
+        src: "https://qg-recruit-video.oss-accelerate.aliyuncs.com/music/%E6%98%A5%E6%BC%BE.mp3",
+        name: "春漾",
+        author: "Matthew Lien",
+        poster: 'https://qg-recruit-video.oss-accelerate.aliyuncs.com/ea749fabdf9569d0173182955ad42f1.jpg'
+      },
     ],
     isStart: false,
   },
@@ -39,8 +52,6 @@ Page({
 
   startMusic: function (val) {
     let music = val.currentTarget.dataset.music;
-    // console.log(music);
-    // console.log(this.data.src);
     this.setData({
       src: music.src,
       name: music.name,

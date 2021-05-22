@@ -10,7 +10,7 @@
         <view class="sort_btn" bindtap="handleSort">按{{type?'时间':'点赞'}}排序</view>
         <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
         <view class="content_select">
-          <view class="content_pic"></view>
+          <image src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/筛选.png" class="content_pic"></image>
           <view class="content_tag">{{tags[tagIndex]}}</view>
         </view>
       </picker>
@@ -30,7 +30,7 @@
         </view>
         <view class="right_wrap flex-between">
           <view class="resonate">
-            <image mode="scaleToFill" class="text" src="../../../assets/images/dreamCommunity/resonate.png"></image>
+            <image mode="scaleToFill" class="text" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/共鸣.png"></image>
             <!-- <view class="text">共鸣</view> -->
             <view class="num">{{item.like}}</view>
           </view>

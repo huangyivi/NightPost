@@ -1,4 +1,8 @@
-<view class="firstLoad flex-around-col" animation="{{animationData}}" wx:if="{{isShow}}">
-  <text class="largeFont">万</text>  
-  <text class="largeFont">象</text>  
+<view class="firstLoad" animation="{{animationData}}" wx:if="{{isShow}}">
+  <image animation="{{showAndHide}}" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/firstPage.jpg" class="firstPage"></image>
+  <view class="lrgFont flex-center">
+    <text animation="{{fromLeft}}" class="t-left">黑夜</text>
+    <text animation="{{fromRight}}" class="t-right">邮局</text>
+  </view>
+  <view animtaion="{{show}}" class="midFont">N i g h t P o s t</view>
 </view>
