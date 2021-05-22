@@ -14,7 +14,7 @@
       <view class="top_pic"></view>
     </view>
     <view class="content_introduce">
-      <view class="img_container"> 
+      <view class="img_container">
         <image hidden="{{!dream.draw}}" src="{{dream.draw}}" mode="scaleToFill" class="introduce_bg"></image>
         <view class="title">{{dream.keyWord}}</view>
       </view>
@@ -39,11 +39,15 @@
         <text class="tag">#{{dream.Type}}</text>
       </view>
       <!-- <view class="bottom_bg"></view> -->
-      <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/resonate.png" class="bottom_bg"></image>
+      <view class="resonate flex-center-col" bindtap="handleApprove" style="color:{{approveTag?'blue':'#ACACAC'}}">
+        <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/resonate.png" class="bottom_bg"></image>
+        <view>{{dream.like}}</view>
+      </view>
+
     </view>
   </view>
   <view class="bottom_tip">
-    往下滑动查看其他梦境
+    往下拉动查看其他梦境
     <text>→</text>
   </view>
 </view>

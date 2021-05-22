@@ -9,7 +9,8 @@
     "pages/myDream/published/published",
     "pages/myDream/paint/paint",
     "pages/myCommunity/listView/listView",
-    "pages/myCommunity/dreamArticle/dreamArticle"
+    "pages/myCommunity/dreamArticle/dreamArticle",
+    "pages/myCommunity/comment/comment"
   ],
   "window":{
     "backgroundTextStyle":"light",
