@@ -12,6 +12,10 @@ Component({
    */
   data: {
     animationData: null,
+    showAndHide: null,
+    fromLeft: null,
+    fromRight: null,
+    show: null,
     isShow: true
   },
 
@@ -25,23 +29,60 @@ Component({
    */
   methods: {
     loadAnimation() {
-      console.log('触发首屏动画');
-      let hide = wx.createAnimation({
-        duration: 3000,
-        timingFunction: 'ease-out'
-      })
-
-      hide.opacity(0).translateY('-200rpx').step();
-      this.setData({
-        animationData: hide.export()
-      })
-
       let that = this;
+      // 图片出现
+      let showAndHide = wx.createAnimation({
+        duration: 1200,
+        timingFunction: 'ease'
+      })
+      showAndHide.opacity(1).step();
+      that.setData({
+        showAndHide: showAndHide.export()
+      })
+
+      // 文字拼接
+      let left = wx.createAnimation({
+        duration : 1000,
+        timingFunction: "linear"
+      })
+      let right = wx.createAnimation({
+        duration : 1000,
+        timingFunction: "linear"
+      })
+      let show = wx.createAnimation({
+        duration : 1000,
+        timingFunction: "ease"
+      })
+      left.translateX(0) .opacity(1).step();
+      right.translateX(0).opacity(1).step();
+      show.opacity(1).step();
+      setTimeout(() => {
+        that.setData({
+          fromLeft : left.export(),
+          fromRight : right.export(),
+          show : show.export()
+        })
+      }, 1200);
+
+      // 黑底消失
+      let hide = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease'
+      })
+      hide.opacity(0).step();
+
+      setTimeout(function () {
+        that.setData({
+          animationData: hide.export()
+        })
+      }, 4000)
+
+      // 首屏隐藏
       setTimeout(function () {
         that.setData({
           isShow: false
         })
-      },3000)
+      }, 5000);
     }
   }
 })

@@ -7,7 +7,9 @@
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
     <scroll-view class="main-content flex-start-col">
         <view class="aboutme-login flex-around-col">
-            <image mode="aspectFill" wx:if="{{!openId}}" src="https://tva2.sinaimg.cn/large/007DFXDhgy1g51jlzfb4lj305k02s0sp.jpg" bindgetuserinfo="getUserInfo" catchtap="login" class="aboutme-login-img" />
+            <button wx:if="{{!openId}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="aboutme-login-img">
+                <image slot="img" class="aboutme-login-img" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/4c541df19e46615725efc724582bfe6.png"></image>
+            </button>
             <open-data wx:else type="userAvatarUrl" class="aboutme-login-img"></open-data>
         </view>
         <view class="aboutme-dream-sleep flex-around">
@@ -57,7 +59,7 @@
         </view>
         <view class="aboutme-list flex-around-col" wx:if="{{openId}}">
             <view wx:for="{{dreamList}}" wx:key="id" class="aboutme-list-dream flex-space-between">
-                <view>
+                <view bindtap="toDetail" data-id="{{item.id}}">
                     <view>{{item.dream}}</view>
                     <view class="aboutme-list-dream-detail flex-space-between">
                         <view class="aboutme-list-dream-day">{{item.time}}</view>

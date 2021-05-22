@@ -61,12 +61,30 @@
   justify-content: center;
   align-items: center
 }
+.flex-center-end-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center
+}
+.flex-center-start-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center
+}
 
 .flex-around-col {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center
+}
+
+.flex-center-end {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .black-btn {

@@ -8,8 +8,45 @@
   height : 100vh;
   background-color: white;
   opacity: 1;
+  background-color: #000000;
+  /* background: url('https://qg-recruit-video.oss-accelerate.aliyuncs.com/firstPage.jpg'); */
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.largeFont {
-  font-size: 150rpx;
+.t-left {
+  transform: translateX(-30rpx);
+  opacity: 0;
+}
+
+.t-right {
+  transform: translateX(30rpx);
+  opacity: 0;
+}
+
+.lrgFont {
+  color: white;
+  text-indent: 10rpx;
+  font-size: 60rpx;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.midFont {
+  position: absolute;
+  top: calc(70% + 80rpx);
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(151, 151, 151);
+  font-size: 30rpx;
+  /* opacity: 0; */
+}
+
+
+.firstPage {
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
 }

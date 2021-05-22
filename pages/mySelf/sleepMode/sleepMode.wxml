@@ -6,7 +6,7 @@
         <view class="sleep-music-bgimg"></view>
         <view>助眠曲录</view>
         <view class="sleep-music-all flex-start">
-            <view wx:for="{{musicList}}" wx:key="{{item}}" class="sleep-music" bindtap="startMusic" data-music='{{item}}'>
+            <view wx:for="{{musicList}}" wx:key="{{item}}" class="sleep-music" style="background-image:url('{{item.poster}}')" bindtap="startMusic" data-music='{{item}}'>
                 <view class="sleep-music-name">{{item.name}}</view>
             </view>
         </view>
@@ -14,7 +14,5 @@
 </view>
 <!-- 以下根据页面自己修改 -->
 <view class="navi-bottom">
-    <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}"
-     bindtap="toggleMusic" id="myAudio" autoplay='{{true}}' controls loop='{{true}}'
-     ></audio>
+    <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" bindtap="toggleMusic" id="myAudio" autoplay='{{true}}' controls loop='{{true}}'></audio>
 </view>

@@ -28,7 +28,7 @@
       <view class="content_sound">
         <!-- <button bindtap="handleMusic" class="sound_play">{{play?'暂停':'播放'}}音频</button> -->
         <view bindtap="handleMusic">
-          <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/play.png" class="sound_bg"></image>
+          <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/播放.png" class="sound_bg"></image>
           <view>{{play?'播放':'暂停'}}中</view>
         </view>
       </view>
@@ -39,11 +39,7 @@
         <text class="tag">#{{dream.Type}}</text>
       </view>
       <!-- <view class="bottom_bg"></view> -->
-      <view class="resonate flex-center-col" bindtap="handleApprove" style="color:{{approveTag?'blue':'#ACACAC'}}">
-        <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/resonate.png" class="bottom_bg"></image>
-        <view>{{dream.like}}</view>
-      </view>
-
+      <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/共鸣.png" class="bottom_bg"></image>
     </view>
   </view>
   <view class="bottom_tip">

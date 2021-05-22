@@ -48,6 +48,10 @@ Page({
             wx.switchTab({
               url: '../../mySelf/aboutMe/aboutMe',
             })
+          }else {
+            wx.switchTab({
+              url: '../../myCommunity/listView/listView',
+            })
           }
         }
       })
@@ -162,7 +166,7 @@ Page({
             "keyword": data.keyword,
             "dream": data.detail,
             "privacy": data.access == 1 ? 'y' : 'n',
-            "time": new Date().getTime(),
+            "time": Object.toString(new Date().getTime()),
             "type": data.tagIndex,
             "like": 0,
             "draw": getFileName(app.globalData.imageFile),
