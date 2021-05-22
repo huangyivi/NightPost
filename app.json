@@ -8,7 +8,8 @@
     "pages/myDream/record/record",
     "pages/myDream/paint/paint",
     "pages/myDream/published/published",
-    "pages/myCommunity/dreamArticle/dreamArticle"
+    "pages/myCommunity/dreamArticle/dreamArticle",
+    "pages/myCommunity/comment/comment"
   ],
   "window":{
     "backgroundTextStyle":"light",

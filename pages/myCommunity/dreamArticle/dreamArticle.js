@@ -1,3 +1,7 @@
+import {
+  handleRequest
+} from "../../../utils/util"
+
 const app = getApp();
 // 定义资源路径
 const myAudio = wx.createInnerAudioContext({});
@@ -13,6 +17,7 @@ Page({
       month: 0
     },
     play: false,
+    approveTag: false
   },
   onReady: function () {
     let that = this;
@@ -22,29 +27,29 @@ Page({
       }
     })
   },
-  onShow: function () {
+  onShow: async function () {
 
-   /*  // 获取页面传参
-    let pages = getCurrentPages();
-    let currentPage = pages[pages.length - 1];
+    /*  // 获取页面传参
+     let pages = getCurrentPages();
+     let currentPage = pages[pages.length - 1];
 
-    let {
-      dream
-    } = currentPage.options;
-    dream = JSON.parse(dream);
-    console.log(dream);
-    // 整合一下时间，为了渲染
-    const [month, day] = dream.time.split('/');
-    let time = {
-      day,
-      month
-    };
+     let {
+       dream
+     } = currentPage.options;
+     dream = JSON.parse(dream);
+     console.log(dream);
+     // 整合一下时间，为了渲染
+     const [month, day] = dream.time.split('/');
+     let time = {
+       day,
+       month
+     };
 
-    myAudio.src = dream.sound;
-    console.log(myAudio.src); */
+     myAudio.src = dream.sound;
+     console.log(myAudio.src); */
 
     let index = app.globalData.currentIndex;
-    
+
     let dream = app.globalData.dreamsList[index];
 
     const [month, day] = dream.time.split('/');
@@ -53,16 +58,34 @@ Page({
       month
     };
 
+    // 设置音频资源
     myAudio.src = dream.sound;
+
+    // 渲染点赞模块
+    const {
+      uid,
+      id
+    } = dream;
+    const {
+      data: {
+        Data
+      }
+    } = await handleRequest({
+      url: `/dream/like/check/${uid}/${id}`,
+      methos: "get"
+    });
+
+    // 获取用户基本信息
+    this.getUserMsg();
 
     this.setData({
       dream,
-      time
+      time,
+      approveTag: Data || false,
     });
   },
 
-  onLoad: function(){
-  },
+  onLoad: function () {},
 
   onUnload: function () {
     // myAudio = null;
@@ -88,12 +111,12 @@ Page({
     app.globalData.currentIndex = parseInt(index);
     let dream = app.globalData.dreamsList[index];
     wx.showLoading({
-      title: '加载中',
+      title: '加载其他梦境中',
       duration: 1000,
       mask: true
     })
     this.setData({
-      dream : dream || ''
+      dream: dream || ''
     });
     // 更新音频
     myAudio.src = dream.sound;
@@ -108,14 +131,82 @@ Page({
     let {
       play
     } = this.data;
+    // 播放中
     if (play) {
       myAudio.pause();
-    } else {
+    }
+    // 暂停中
+    else {
       myAudio.play();
     }
     this.setData({
       play: !play
     });
+  },
+
+  // 点赞
+  handleApprove() {
+    const {
+      dream: {
+        uid,
+        id
+      }
+    } = this.data;
+
+    // 判断是否已经点赞
+    handleRequest({
+      url: `/dream/like/check/${uid}/${id}`,
+      methos: "get"
+    }).then(async res => {
+      console.log("原本是否点赞:", res);
+
+      let {
+        Data,
+        Status
+      } = res.data;
+
+      // 请求失败
+      if (!Status) return wx.showToast({
+        title: '点赞失败',
+        icon: "error"
+      });
+
+      // 根据是否点赞请求不同的路径
+      const url = `/dream/${!Data?'like':'unlike'}/${uid}/${id}`;
+      // 根据是否点赞并发送给后台
+      const {
+        data
+      } = await handleRequest({
+        url,
+        methods: "get"
+      });
+
+      // 请求失败
+      if (!data.Status) return wx.showToast({
+        title: '点赞失败',
+        icon: "error"
+      });
+
+      wx.showToast({
+        title: `${!Data?'点':'取消'}赞成功`
+      });
+
+      let {
+        like
+      } = this.data.dream;
+      console.log(like);
+      const dream = {
+        ...this.data.dream,
+        like: !Data ? like + 1 : like - 1,
+      }
+      this.setData({
+        dream,
+        approveTag: !Data
+      });
+      console.log(this.data.dream.like);
+    }).catch(err => {
+      console.log(err);
+    })
   },
 
   // 开始滑动时
@@ -144,6 +235,40 @@ Page({
   handleBack() {
     wx.navigateBack({
       delta: 0,
+    })
+  },
+
+  // 获取用户基本信息
+  getUserMsg() {
+    var appId = 'wxd0748aaad95d239a';
+    var secret = 'b71c503761d021c4eb3f20a236d1698b';
+
+    wx.request({
+      url: `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${appId}&secret=${secret}`,
+      success: function (res) {
+        console.log(res);
+        const {
+          access_token
+        } = res.data;
+        console.log(app.globalData.openId);
+
+        wx.getSetting({
+          withSubscriptions: true,
+        })
+
+        wx.request({
+          url: `https://api.weixin.qq.com/cgi-bin/user/info?access_token=${access_token}&openid=${app.globalData.openId}`,
+          success(res) {
+            console.log(res);
+          },
+          fail(err) {
+            console.log(err);
+          }
+        })
+      },
+      fail(err) {
+        console.log(err);
+      }
     })
   }
 })

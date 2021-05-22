@@ -73,6 +73,13 @@
         {
           "name": "pages/myCommunity/listView/listView",
           "pathName": "pages/myCommunity/listView/listView",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/comment/comment",
+          "pathName": "pages/myCommunity/comment/comment",
+          "query": "id=1",
           "scene": null
         }
       ]

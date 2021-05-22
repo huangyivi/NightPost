@@ -182,6 +182,17 @@ page {
   color: #ACACAC;
 }
 
+.resonate {
+  font-size: 28rpx;
+  /* color: blue; */
+  color: #ACACAC;
+  color: rgb(8, 8, 223);
+}
+
+.resonate image {
+  color: rgb(8, 8, 223);
+}
+
 .tag {
   margin-left: 30rpx;
 }

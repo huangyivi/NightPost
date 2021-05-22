@@ -30,7 +30,12 @@ Page({
       }
     })
   },
-  onLoad: function () {
+
+  onPullDownRefresh: function(){
+    this.getDreamByWhat(TIME);
+  },
+
+  onShow: function(){
     // 一开始进来根据时间排序
     this.getDreamByWhat(TIME);
   },
@@ -140,7 +145,7 @@ Page({
   // 获取梦境地址
   getDreamURL(dream) {
     dream.Type = this.getDreamType(dream.type);
-    return `../dreamArticle/dreamArticle?dream=${JSON.stringify(dream)}`;
+    return `../dreamArticle/dreamArticle?dream="${JSON.stringify(dream)}"`;
   },
 
   // 获取梦类型

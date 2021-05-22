@@ -1,0 +1,51 @@
+<view class="navi-top" style="margin-top: {{statusBarHeight}}px;height: {{capsuleHeight}}px">
+  <text bindtap="handleBack" decode="true">&lt;返回</text>
+</view>
+<view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
+  <view class="main-content">
+    <!-- 顶部 -->
+    <view class="content_top flex-between">
+      <view class="flex-between">
+        <view class="top_title">{{dream.keyWord}}</view>
+        <view class="music flex-between">
+          <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/play.png" class="play_btn"></image>
+          <view>{{play?'播放':'暂停'}}中</view>
+        </view>
+      </view>
+      <view class="date">
+        <text class="month">{{time.month}}</text>
+        /
+        <text class="day">{{time.day}}</text>
+      </view>
+    </view>
+    <!-- 正文 -->
+    <view class="content_context">
+      <view class="text">
+        {{dream.dream}}
+      </view>
+      <view class="content_bottom flex-between">
+        <view>
+          <text class="user">用户-{{dream.uid}}</text>
+          <text class="tag">#{{dream.Type}}</text>
+        </view>
+        <view class="resonate flex-center-col" bindtap="handleApprove" style="color:{{approveTag?'blue':'#ACACAC'}}">
+          <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/resonate.png" class="bottom_bg"></image>
+          <view>{{dream.like}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 评论 -->
+    <view class="comment">
+      <view class="flex-between">
+        <view class="flex-center-col">
+          <image class="comment_head" mode="scaleToFill" src=""></image>
+          <view class="comment_man">用户1</view>
+        </view>
+        <view class="comment_wrap">
+          <view class="comment_content">fjaljfkajfkajk猱狮我儿子,孙菲菲放假啊开发就发就发卡机咖啡碱</view>
+          <view class="comment_time">3/01</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
