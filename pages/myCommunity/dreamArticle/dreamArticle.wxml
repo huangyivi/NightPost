@@ -27,7 +27,7 @@
       </view>
       <view class="content_sound">
         <!-- <button bindtap="handleMusic" class="sound_play">{{play?'暂停':'播放'}}音频</button> -->
-        <view bindtap="handleMusic" hidden="{{!dream.sound}}>
+        <view bindtap="handleMusic" hidden="{{!dream.sound}}">
           <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/播放.png" class="sound_bg"></image>
           <view>{{play?'播放':'暂停'}}中</view>
         </view>
