@@ -7,7 +7,13 @@
     <view class="content_top flex-between">
       <view>漫 游</view>
       <view class="flex-between">
-        <view class="sort_btn" bindtap="handleSort">按{{type?'时间':'点赞'}}排序</view>
+        <picker bindchange="handleSort" value="{{tagIndex}}" range="{{sortType}}">
+        <view class="content_select">
+          <image src="../../../assets/images/dreamCommunity/sort.png" mode="scaleToFill" class="content_pic"></image>
+          <view class="content_tag">{{sortType[sortIndex]}}</view>
+        </view>
+      </picker>
+        <!-- <view class="sort_btn" bindtap="handleSort">按{{type?'时间':'点赞'}}排序</view> -->
         <picker bindchange="handleChangeTag" value="{{tagIndex}}" range="{{tags}}">
         <view class="content_select">
           <image src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/筛选.png" class="content_pic"></image>

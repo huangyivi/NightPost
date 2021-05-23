@@ -6,9 +6,9 @@
     <!-- 顶部 -->
     <view class="content_top flex-between">
       <view class="flex-between">
-        <view class="top_title">{{dream.keyWord}}</view>
-        <view class="music flex-between">
-          <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/play.png" class="play_btn"></image>
+        <view class="top_title" title="{{dream.keyWord}}">{{dream.keyWord}}</view>
+        <view class="music flex-between" bindtap="handleMusic" hidden="{{!dream.sound}}">
+          <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/播放.png" class="play_btn"></image>
           <view>{{play?'播放':'暂停'}}中</view>
         </view>
       </view>
@@ -25,7 +25,7 @@
       </view>
       <view class="content_bottom flex-between">
         <view>
-          <text class="user">用户-{{dream.uid}}</text>
+          <text class="user">{{dream.nickname}}</text>
           <text class="tag">#{{dream.Type}}</text>
         </view>
         <view class="resonate flex-center-col" bindtap="handleApprove" style="color:{{approveTag?'blue':'#ACACAC'}}">
@@ -35,17 +35,22 @@
       </view>
     </view>
     <!-- 评论 -->
-    <view class="comment">
-      <view class="flex-between">
+    <view class="comment_list">
+      <view style="text-align:center" hidden="{{comment.length}}">暂无评论</view>
+      <view class="comment flex-between" wx:for="{{comment}}" wx:for-item="item" wx:key="index">
         <view class="flex-center-col">
-          <image class="comment_head" mode="scaleToFill" src=""></image>
-          <view class="comment_man">用户1</view>
+          <!-- <image class="comment_head" mode="scaleToFill" src=""></image> -->
+          <view class="comment_man">用户{{item.send_id}}</view>
         </view>
         <view class="comment_wrap">
-          <view class="comment_content">fjaljfkajfkajk猱狮我儿子,孙菲菲放假啊开发就发就发卡机咖啡碱</view>
-          <view class="comment_time">3/01</view>
+          <view class="comment_content">{{item.content}}</view>
+          <!-- <view class="comment_time">--</view> -->
         </view>
       </view>
     </view>
   </view>
+</view>
+<view class="bottom_comment flex-between">
+  <input bindinput="" bindconfirm="handleComment" maxlength="255" class="comment_input" model:value="{{content}}" type="text" placeholder="添加文字"/>
+  <button bindtap="handleComment" class="send_btn">发送</button>
 </view>

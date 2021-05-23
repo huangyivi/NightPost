@@ -31,9 +31,10 @@ page {
 
 .main {
   box-sizing: border-box;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  height: 100%;
   width: 100vw;
-  margin-bottom: 200rpx;
+  /* margin-bottom: 200rpx; */
 }
 
 .main-content {
@@ -103,6 +104,11 @@ page {
 
 }
 
+.top_tip {
+  padding-left: 10px;
+  font-size: 32rpx;
+} 
+
 .top_date .day {
   bottom: 0;
   right: 0;
@@ -110,10 +116,10 @@ page {
 
 .top_pic {
   flex: 1;
+  text-align: right;
   /* width: 150rpx;
   height: 150rpx; */
   /* background: #ACACAC; */
-  text-align: right;
 }
 
 .content_introduce {
@@ -127,7 +133,7 @@ page {
 
 .introduce_bg{
   width: 100%;
-  background: #fefefe;
+  background: #E6E6E6;
 }
 
 .content_introduce .title {

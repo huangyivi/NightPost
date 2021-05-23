@@ -1,4 +1,5 @@
-/* pages/myCommunity/comment/comment.wxss *//* 顶部样式 */
+/* pages/myCommunity/comment/comment.wxss */
+/* 顶部样式 */
 /* 1px = 2rpx */
 @import "../../../app.wxss";
 
@@ -33,7 +34,7 @@ page {
 .main-content {
   width: 100%;
   height: 100%;
-  background: linear-gradient(#fff 80%,transparent);
+  background: linear-gradient(#fff 80%, transparent);
 }
 
 
@@ -54,7 +55,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   font-size: 30rpx;
   font-weight: 500;
   line-height: 42rpx;
@@ -65,7 +66,7 @@ page {
 .navi-btn-active {
   width: 112rpx;
   height: 112rpx;
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 
@@ -101,7 +102,7 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   font-size: 30rpx;
   font-weight: 500;
   line-height: 42rpx;
@@ -112,7 +113,7 @@ page {
 .navi-btn-active {
   width: 112rpx;
   height: 112rpx;
-  background-color: rgba(0,0,0,0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .content_top {
@@ -124,6 +125,8 @@ page {
   font-weight: bold;
   width: 200rpx;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .music {
@@ -160,7 +163,7 @@ page {
 
 
 .content_bottom {
-  margin: 50rpx;
+  margin: 50rpx 50rpx 30rpx;
   padding-bottom: 50rpx;
   font-size: 30rpx;
   color: #ACACAC;
@@ -188,18 +191,24 @@ page {
   /* background: #ACACAC; */
 }
 
+.comment_list {
+  padding: 30rpx 30rpx 50rpx 30rpx;
+}
+
 .comment {
-  padding: 50rpx 30rpx 50rpx 30rpx;
+  margin-top: 30rpx;
+  padding: 10rpx 0;
 }
 
 .comment_head {
   height: 80rpx;
   width: 80rpx;
   background: #ACACAC;
-  margin-bottom: 30rpx;
+  margin-bottom: 10rpx;
 }
 
 .comment_wrap {
+  flex: 1;
   margin-left: 50rpx;
 }
 
@@ -209,7 +218,8 @@ page {
 }
 
 .comment_content {
-  text-indent: 50rpx;
+  text-indent: 1em;
+  text-align: left;
   font-size: 36rpx;
   color: #181818;
 }
@@ -220,5 +230,31 @@ page {
   text-align: right;
 }
 
+.bottom_comment {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: white;
+  padding: 50rpx 20rpx;
+  border-top: 1px solid #E3E3E3;
+  box-sizing: border-box;
+}
 
+.comment_input {
+  flex: 4;
+  background: #fff;
+  border: 1px solid #ACACAC;
+  margin-right: 20rpx;
+  height: auto;
+  padding: 5px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+}
 
+.send_btn:not([size='mini']) {
+  flex: 1;
+  width: 180rpx;
+  text-align: center;
+  color: #181818;
+}

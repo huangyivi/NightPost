@@ -13,6 +13,7 @@
       </view>
       <view class="top_pic">{{dream.nickname}}</view>
     </view>
+    <view class="top_tip">今天，我与他/她的梦境相匹配</view>
     <view class="content_introduce">
       <view class="img_container">
         <image hidden="{{!dream.draw}}" src="{{dream.draw}}" mode="aspectFit" class="introduce_bg"></image>
@@ -27,12 +28,12 @@
       </view>
       <view class="content_sound">
         <!-- <button bindtap="handleMusic" class="sound_play">{{play?'暂停':'播放'}}音频</button> -->
-        <view bindtap="handleMusic" hidden="{{!dream.sound}}>
+        <view bindtap="handleMusic" hidden="{{!dream.sound}}}">
           <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/播放.png" class="sound_bg"></image>
           <view>{{play?'播放':'暂停'}}中</view>
         </view>
       </view>
-      <view class="resonate_dream" bindtap="handleResonate" hidden="{{dream.uid!=uid}}">与你共鸣的梦→</view>
+      <!-- <view class="resonate_dream" bindtap="handleResonate">与你共鸣的梦➡</view> -->
     </view>
     <view class="content_bottom flex-between">
       <view>
@@ -51,8 +52,8 @@
     往右滑动查看梦境评论
     <text>→</text>
   </view>
-  <view class="bottom_tip">
+  <!-- <view class="bottom_tip">
     往下拉动查看其他梦境
     <text>→</text>
-  </view>
+  </view> -->
 </view>

@@ -18,8 +18,7 @@ Page({
       month: 0
     },
     play: false,
-    approveTag: false,
-    uid: app.globalData.userId || -1,
+    approveTag: false
   },
   onReady: function () {
     let that = this;
@@ -31,114 +30,69 @@ Page({
   },
   onShow: async function () {
 
-    /*  // 获取页面传参
-     let pages = getCurrentPages();
-     let currentPage = pages[pages.length - 1];
+    // 获取页面传参
+    let pages = getCurrentPages();
+    let currentPage = pages[pages.length - 1];
 
-     let {
-       dream
-     } = currentPage.options;
-     dream = JSON.parse(dream);
-     console.log(dream);
-     // 整合一下时间，为了渲染
-     const [month, day] = dream.time.split('/');
-     let time = {
-       day,
-       month
-     };
-
-     myAudio.src = dream.sound;
-     console.log(myAudio.src); */
-
-
-    let index = app.globalData.currentIndex;
-    let dream = app.globalData.dreamsList[index];
-
-    let newTime = formatDate(dream.time);
-    const [month, day] = newTime.split('/');
-    let time = {
-      day,
-      month
-    };
-
-    // 设置音频资源
-    myAudio.src = dream.sound;
-
-    // 渲染点赞模块
-    const {
+    let {
       uid,
       id
-    } = dream;
-    const {
-      data: {
-        Data
-      }
-    } = await handleRequest({
-      url: `/dream/like/check/${uid}/${id}`,
-      methos: "get"
-    });
+    } = currentPage.options;
 
-    // 获取用户基本信息
-    this.getUserMsg();
+    console.log(uid, id);
 
-    this.setData({
-      dream,
-      time,
-      approveTag: Data || false,
-      uid: app.globalData.userId
-    });
-  },
+    this.getTheDream(uid,id);
+    // 整合一下时间，为了渲染
+    //  const [month, day] = dream.time.split('/');
+    //  let time = {
+    //    day,
+    //    month
+    //  };
 
-  // 转发
-  onShareAppMessage: function () {
-    return {
-      title: '转发',
-      path: '/pages/myCommunity/listView/listView',
-      success: function () {
-        console.log('成功');
-      }
-    }
+    //  myAudio.src = dream.sound;
+    //  console.log(myAudio.src); 
+
+    /*   let index = app.globalData.currentIndex;
+      let dream = app.globalData.dreamsList[index];
+
+      let newTime = formatDate(dream.time);
+      const [month, day] = newTime.split('/');
+      let time = {
+        day,
+        month
+      };
+
+      // 设置音频资源
+      myAudio.src = dream.sound;
+
+      // 渲染点赞模块
+      const {
+        uid,
+        id
+      } = dream;
+      const {
+        data: {
+          Data
+        }
+      } = await handleRequest({
+        url: `/dream/like/check/${uid}/${id}`,
+        methos: "get"
+      });
+
+      // 获取用户基本信息
+      this.getUserMsg();
+
+      this.setData({
+        dream,
+        time,
+        approveTag: Data || false,
+      }); */
   },
 
   onLoad: function () {},
 
   onUnload: function () {
     // myAudio = null;
-  },
-
-  // 上拉触底
-  onReachBottom() {
-    console.log('上拉触底事件触发');
-    // 开始加载下一张梦境
-    // 获取梦境总数
-    const len = app.globalData.dreamsList.length;
-    // 获取当前索引
-    let index = ++app.globalData.currentIndex;
-
-    if (index >= len) {
-      // index = 0;
-      wx.showToast({
-        title: '没有其他梦境啦^_^',
-        icon: 'none'
-      })
-      return;
-    }
-    app.globalData.currentIndex = parseInt(index);
-    let dream = app.globalData.dreamsList[index];
-    wx.showLoading({
-      title: '加载其他梦境中',
-      duration: 1000,
-      mask: true
-    })
-    this.setData({
-      dream: dream || ''
-    });
-    // 更新音频
-    myAudio.src = dream.sound;
-    wx.pageScrollTo({
-      scrollTop: 0
-    });
-    console.log(index);
   },
 
   // 处理音频播放和暂停
@@ -217,7 +171,7 @@ Page({
       }
       // 更新全局梦境
       this.updateAppDream(dream);
-
+      
       this.setData({
         dream,
         approveTag: !Data
@@ -242,12 +196,6 @@ Page({
     let clientX = e.changedTouches[0].clientX;
     /*  // 获取屏幕宽度
      let windowWidth = wx.getSystemInfoSync().windowWidth; */
-    // 往左滑30触发，设计一定距离，防止上下滑动时手滑而触发
-    if (nowclientX - clientX > 30) {
-      wx.navigateBack({
-        delta: 0,
-      })
-    }
 
     if (clientX - nowclientX > 30) {
       const {
@@ -285,21 +233,8 @@ Page({
           withSubscriptions: true,
         })
 
-        // wx.request({
-        //   url: `https://api.weixin.qq.com/cgi-bin/user/info?access_token=${access_token}&openid=${app.globalData.openId}&lang=zh_CN`,
-        //   success(res) {
-        //     console.log(res);
-        //   },
-        //   fail(err) {
-        //     console.log(err);
-        //   }
-        // })
         wx.request({
-          url: "https://api.weixin.qq.com/cgi-bin/component/api_authorizer_token",
-          method: "post",
-          data: {
-            component_access_token:access_token,
-          },
+          url: `https://api.weixin.qq.com/cgi-bin/user/info?access_token=${access_token}&openid=${app.globalData.openId}`,
           success(res) {
             console.log(res);
           },
@@ -314,20 +249,67 @@ Page({
     })
   },
 
-  // 梦境匹配
-  handleResonate() {
-    const {
-      dream: {
-        id,
-        uid
-      }
-    } = this.data;
-    wx.navigateTo({
-      url: `../dreamDetail/dreamDetail?uid=${uid}&id=${id}`,
+  // 获取匹配的梦境
+  getTheDream(uid, id) {
+    handleRequest({
+      url: '/dream/match/' + uid + '/' + id,
+      method: 'get'
+    }).then(res => {
+      console.log(res);
+      const {
+        Data,
+        Status
+      } = res.data;
+
+      if (!Status) return false;
+
+      // 处理得到的梦境
+      let newTime = formatDate(Data.time) || "0/0/0";
+      const [month, day] = newTime.split('/');
+      let time = {
+        day,
+        month
+      };
+
+      // 设置音频资源
+      myAudio.src = Data.sound;
+
+      // 渲染点赞模块
+      // const {
+      //   uid,
+      //   id
+      // } = dream;
+      // const {
+      //   data: {
+      //     Data
+      //   }
+      // } = await handleRequest({
+      //   url: `/dream/like/check/${uid}/${id}`,
+      //   methos: "get"
+      // });
+
+      const dream = {
+        ...Data,
+        Type: this.getDreamType(Data.type)
+      };
+
+      this.setData({
+        dream,
+        time
+      });
+
+    }).catch(err => {
+      console.log(err);
     })
   },
 
-  // 重新设置全局变量的梦境，用于点赞后更新
+  // 获取梦境类型
+  getDreamType(type) {
+    const tags =  ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
+    return tags[parseInt(type)];
+  },
+
+  // 更新全局梦境
   updateAppDream(dream){
     const index = app.globalData.dreamsList.findIndex(item => item.id == dream.id);
     app.globalData.dreamsList[index] = dream;
