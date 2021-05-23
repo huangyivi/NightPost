@@ -1,7 +1,6 @@
 const app = getApp();
 Page({
   onReady: function (e) {
-    // 使用 wx.createAudioContext 获取 audio 上下文 context
     this.audioCtx = wx.createAudioContext('myAudio')
   },
 
@@ -40,7 +39,6 @@ Page({
   },
 
   bindPickerChange: function (e) {
-    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })

@@ -7,7 +7,7 @@
     <view class="black-btn flex-center" catchtap="toPublish">发表</view>
   </view>
   <view class="main-content" animation="{{animationData}}" style="opacity : 0.2">
-    <input class="main-title" type="text" placeholder="梦的关键词" data-key="keyword" value="{{keyword}}" bindinput="changeVal"/>
+    <input class="main-title" maxlength="10" type="text" placeholder="梦的关键词" data-key="keyword" value="{{keyword}}" bindinput="changeVal"/>
     <textarea class="main-detail" placeholder="记录下你的梦吧" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}" data-key="detail" bindinput="changeVal"></textarea>
     <view class="main-function flex-start">
       <view wx:if="{{!imageFile}}" class="main-func flex-center-end draw-icon" catchtap="toPaint">手绘</view>

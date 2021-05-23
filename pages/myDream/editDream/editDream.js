@@ -37,7 +37,7 @@ Page({
   },
   onShow() {
     // 判断用户是否登录
-    if(!app.globalData.openId) {
+    if (!app.globalData.openId) {
       wx.showModal({
         title: "用户未登录",
         content: "想要发布梦境，请先登录哦！",
@@ -48,7 +48,7 @@ Page({
             wx.switchTab({
               url: '../../mySelf/aboutMe/aboutMe',
             })
-          }else {
+          } else {
             wx.switchTab({
               url: '../../myCommunity/listView/listView',
             })
@@ -167,38 +167,59 @@ Page({
             "dream": data.detail,
             "privacy": data.access == 1 ? 'y' : 'n',
             "time": new Date().getTime(),
-            "type": data.tagIndex,
+            "type": parseInt(data.tagIndex),
             "like": 0,
             "draw": getFileName(app.globalData.imageFile),
             "sound": getFileName(app.globalData.voice)
           }
           console.log(upload);
+          wx.showLoading({
+            title: '发表中',
+          })
           wx.request({
             url: app.globalData.domain + 'save',
             data: upload,
             method: 'post',
-            success(res) {
-              console.log(res);
+            success(res1) {
+              wx.hideLoading({
+                success: (res) => {
+                  if (res1.data.Status) {
+                    app.globalData.keyword = that.data.keyword;
+                    app.globalData.myDream = null;
+                    app.globalData.imageFile = '';
+                    app.globalData.lastImage = [];
+                    app.globalData.voice = ''
+                    that.setData({
+                      accessIndex: 0,
+                      tagIndex: 0,
+                      keyword: '',
+                      detail: '',
+                      imageFile: '',
+                    })
+                    wx.navigateTo({
+                      url: '../published/published'
+                    })
+                  }else {
+                    wx.showModal({
+                      title : "发布失败！",
+                      content : res1.data.Message
+                    })
+                  }
+                },
+              })
             },
             fail(err) {
-              console.log(err);
+              wx.hideLoading({
+                success: (res) => {
+                  wx.showModal({
+                    title: '网络连接错误',
+                    content: err
+                  })
+                },
+              })
             }
           })
-          app.globalData.keyword = that.data.keyword;
-          app.globalData.myDream = null;
-          app.globalData.imageFile = '';
-          app.globalData.lastImage = [];
-          app.globalData.voice = ''
-          that.setData({
-            accessIndex: 0,
-            tagIndex: 0,
-            keyword: '',
-            detail: '',
-            imageFile: '',
-          })
-          wx.navigateTo({
-            url: '../published/published'
-          })
+
         }
       }
     })

@@ -1,6 +1,6 @@
 const app = getApp();
-const {formatDate} = require('../../../utils/util')
 import * as echarts from "../../../utils/ec-canvas/echarts";
+const { formatDate } = require('../../../utils/util')
 let chart;
 
 function initChart(canvas, width, height) {
@@ -28,7 +28,7 @@ Page({
     d2: '--',
     openId: false,
   },
-
+  // 次数类型页面转换
   bindPickerChange: function (e) {
     this.setData({
       index: e.detail.value
@@ -40,7 +40,7 @@ Page({
       }, 100)
     }
   },
-
+  // 用户登录提示框和入口
   bindGetUserInfo(e) {
     console.log(e.detail.userInfo);
     let that = this;
@@ -55,34 +55,22 @@ Page({
         }
       })
     }
-    // 查看是否授权，问题：全是true
-    // wx.getSetting({
-    //   success(res) {
-    //     console.log(res);
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-    //       wx.showModal({
-    //         title: '提示',
-    //         content: '是否登录？',
-    //         success: function (sm) {
-    //           if (sm.confirm) {
-    //             that.login(e.detail.userInfo.nickName)
-    //           }
-    //         }
-    //       })
-    //     } else {
-    //       that.login(e.detail.userInfo.nickName)
-    //     }
-    //   }
-    // })
-
   },
-
+  // 登录
   login: function (name) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this;
     wx.login({
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (res) {
-        console.log(res);
         var code = res.code;
         var appId = 'wxd0748aaad95d239a';
         var secret = 'b71c503761d021c4eb3f20a236d1698b';
@@ -93,6 +81,13 @@ Page({
             'content-type': 'json'
           },
           method: "GET",
+          error: function () {
+            wx.hideLoading();
+            wx.showModal({
+              title: '获取失败',
+              content: '后台链接失败，请联系管理员',
+            })
+          },
           success: function (res) {
             app.globalData.openId = res.data.Data;
             that.setData({ openId: true });
@@ -108,6 +103,13 @@ Page({
                 'content-type': 'json'
               },
               method: "POST",
+              error: function () {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '获取失败',
+                  content: '后台链接失败，请联系管理员',
+                })
+              },
               success: function (res) {
                 console.log("register", res);
 
@@ -119,29 +121,33 @@ Page({
                     'content-type': 'json'
                   },
                   method: "GET",
+                  error: function () {
+                    wx.hideLoading();
+                    wx.showModal({
+                      title: '获取失败',
+                      content: '后台链接失败，请联系管理员',
+                    })
+                  },
                   success: function (res) {
+                    wx.hideLoading();
                     console.log(res);
                     app.globalData.userId = res.data.Data.id;
-
-
                     // app.globalData.userId = 1;
                     that.getData();
                   }
                 })
               }
             })
-
-
-
-
           }
         })
       }
     });
-
   },
-
+  // 获取页面数据
   getData: function () {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this;
     // 总发表数
     let dataChartAll = [];
@@ -155,6 +161,13 @@ Page({
         'content-type': 'json'
       },
       method: "GET",
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (res) {
         let data = res.data.Data;
         that.setData({
@@ -174,6 +187,13 @@ Page({
             'content-type': 'json'
           },
           method: "GET",
+          error: function () {
+            wx.hideLoading();
+            wx.showModal({
+              title: '获取失败',
+              content: '后台链接失败，请联系管理员',
+            })
+          },
           success: function (res) {
             let data = res.data.Data;
             dataChart.push({
@@ -189,6 +209,13 @@ Page({
                 'content-type': 'json'
               },
               method: "GET",
+              error: function () {
+                wx.hideLoading();
+                wx.showModal({
+                  title: '获取失败',
+                  content: '后台链接失败，请联系管理员',
+                })
+              },
               success: function (res) {
                 let data = res.data.Data;
                 dataChart.push({
@@ -204,6 +231,13 @@ Page({
                     'content-type': 'json'
                   },
                   method: "GET",
+                  error: function () {
+                    wx.hideLoading();
+                    wx.showModal({
+                      title: '获取失败',
+                      content: '后台链接失败，请联系管理员',
+                    })
+                  },
                   success: function (res) {
                     let data = res.data.Data;
                     dataChart.push({
@@ -219,6 +253,13 @@ Page({
                         'content-type': 'json'
                       },
                       method: "GET",
+                      error: function () {
+                        wx.hideLoading();
+                        wx.showModal({
+                          title: '获取失败',
+                          content: '后台链接失败，请联系管理员',
+                        })
+                      },
                       success: function (res) {
                         let data = res.data.Data;
                         dataChart.push({
@@ -234,6 +275,13 @@ Page({
                             'content-type': 'json'
                           },
                           method: "GET",
+                          error: function () {
+                            wx.hideLoading();
+                            wx.showModal({
+                              title: '获取失败',
+                              content: '后台链接失败，请联系管理员',
+                            })
+                          },
                           success: function (res) {
                             let data = res.data.Data;
                             dataChart.push({
@@ -249,6 +297,13 @@ Page({
                                 'content-type': 'json'
                               },
                               method: "GET",
+                              error: function () {
+                                wx.hideLoading();
+                                wx.showModal({
+                                  title: '获取失败',
+                                  content: '后台链接失败，请联系管理员',
+                                })
+                              },
                               success: function (res) {
                                 let data = res.data.Data;
                                 dataChart.push({
@@ -264,6 +319,13 @@ Page({
                                     'content-type': 'json'
                                   },
                                   method: "GET",
+                                  error: function () {
+                                    wx.hideLoading();
+                                    wx.showModal({
+                                      title: '获取失败',
+                                      content: '后台链接失败，请联系管理员',
+                                    })
+                                  },
                                   success: function (res) {
                                     let data = res.data.Data;
                                     dataChart.push({
@@ -279,6 +341,13 @@ Page({
                                         'content-type': 'json'
                                       },
                                       method: "GET",
+                                      error: function () {
+                                        wx.hideLoading();
+                                        wx.showModal({
+                                          title: '获取失败',
+                                          content: '后台链接失败，请联系管理员',
+                                        })
+                                      },
                                       success: function (res) {
                                         let data = res.data.Data;
                                         dataChart.push({
@@ -312,6 +381,13 @@ Page({
         'content-type': 'json'
       },
       method: "GET",
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (res) {
         let data = res.data.Data;
         that.setData({
@@ -327,6 +403,13 @@ Page({
         'content-type': 'json'
       },
       method: "GET",
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (res) {
         let data = res.data.Data;
         for(let i=0;i<data.length;i++) {
@@ -345,6 +428,13 @@ Page({
         'content-type': 'json'
       },
       method: "GET",
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (res) {
         let data = res.data.Data;
         let max = Math.max(data[0].Count, data[1].Count, data[2].Count, data[3].Count, data[4].Count, data[5].Count);
@@ -362,14 +452,14 @@ Page({
       }
     })
   },
-
+  // 切换到梦境详细页面
   toDetail: function (val) {
     let id = val.currentTarget.dataset.id;
     wx.navigateTo({
       url: `../../myCommunity/dreamArticle/dreamArticle?id=${id}`
     })
   },
-
+  // 根据数据生成类型图表
   setChart: function (tags, dataChart, dataChartAll) {
     // 数据处理
     dataChart.sort(function (a, b) {
@@ -409,19 +499,20 @@ Page({
     this.setData({
       option: option
     })
+    wx.hideLoading();
   },
-
+  // 返回次数条的高度
   getpercent: function (max, x) {
     if (x == 0) return 2;
     else return x / max * 70;
   },
-
+  // 助眠模式
   toSleep: function () {
     wx.navigateTo({
       url: '../sleepMode/sleepMode'
     })
   },
-
+  // 是否登录，数据回写
   onLoad: function () {
     // this.login()
     var that = this;
@@ -429,17 +520,25 @@ Page({
       that.setData({ openId: true })
     // console.log("?:", that.data.openId);
   },
-
+  // 页面宽高
   onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
       success: function (e) {
         that.data.capsuleHeight = e.height;
       }
     })
   },
-
-  onPullDownRefresh() {
-    this.getData();
+  onShow: function () {
+    if(app.globalData.openId) {
+      this.getData();
+    }
   }
 })
