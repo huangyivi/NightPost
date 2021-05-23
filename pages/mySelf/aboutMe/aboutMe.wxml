@@ -60,7 +60,7 @@
         <view class="aboutme-list flex-around-col" wx:if="{{openId}}">
             <view wx:for="{{dreamList}}" wx:key="id" class="aboutme-list-dream flex-space-between">
                 <view bindtap="toDetail" data-id="{{item.id}}">
-                    <view>{{item.dream}}</view>
+                    <view class="text-overflow">{{item.dream}}</view>
                     <view class="aboutme-list-dream-detail flex-space-between">
                         <view class="aboutme-list-dream-day">{{item.time}}</view>
                         <view>#{{item.keyWord}}</view>

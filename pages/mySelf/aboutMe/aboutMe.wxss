@@ -3,6 +3,7 @@
 /* 1px = 2rpx */
 
 @import "../../../app.wxss";
+
 page {
     background-color: #F8F8F8;
     font-family: 'Source Han Serif CN' !important;
@@ -160,7 +161,7 @@ page {
 }
 
 .aboutme-list-dream-detail {
-    width: 360rpx;
+    width: 500rpx;
     font-size: 28rpx;
     color: #818181;
 }
@@ -214,4 +215,12 @@ page {
     width: 112rpx;
     height: 112rpx;
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+.text-overflow {
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    width: 500rpx;
 }

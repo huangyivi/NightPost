@@ -422,7 +422,7 @@ Page({
     })
     // 次数统计
     wx.request({
-      url: app.globalData.domain + `count/time`,
+      url: app.globalData.domain + `count/time/${app.globalData.userId}`,
       data: {},
       header: {
         'content-type': 'json'
