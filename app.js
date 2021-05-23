@@ -1,26 +1,13 @@
 // app.js
 App({
   onLaunch() {
-    // 登录
-    // let that = this;
-    // wx.login({
-    //   success: function (res) {
-    //     var code = res.code;
-    //     var appId = 'wxd0748aaad95d239a';
-    //     var secret = 'b71c503761d021c4eb3f20a236d1698b';
-    //     wx.request({
-    //       url: `http://39.99.140.114/dream/openid?appId=${appId}&code=${code}&secret=${secret}`,
-    //       data: {},
-    //       header: {
-    //         'content-type': 'json'
-    //       },
-    //       method: "GET",
-    //       success: function (res) {
-    //         that.globalData.openId = res.data.Data;
-    //       }
-    //     })
-    //   }
-    //   });
+    let that = this;
+    wx.getStorage({
+      key: 'userId',
+      success: function(res){
+        that.globalData.userId = res.data;
+      }
+    })
   },
   globalData: {
     userInfo: null,

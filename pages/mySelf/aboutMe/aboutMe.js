@@ -42,29 +42,16 @@ Page({
   },
   // 用户登录提示框和入口
   bindGetUserInfo(e) {
-    console.log(e.detail.userInfo);
     let that = this;
     if (e.detail.userInfo) {
-      wx.showModal({
-        title: '提示',
-        content: '是否登录？',
-        success: function (sm) {
-          if (sm.confirm) {
-            that.login(e.detail.userInfo.nickName)
-          }
-        }
-      })
+      that.login(e.detail.userInfo.nickName)
     }
   },
   // 登录
   login: function (name) {
-    wx.showLoading({
-      title: '加载中',
-    })
     let that = this;
     wx.login({
       error: function () {
-        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -82,7 +69,7 @@ Page({
           },
           method: "GET",
           error: function () {
-            wx.hideLoading();
+
             wx.showModal({
               title: '获取失败',
               content: '后台链接失败，请联系管理员',
@@ -104,15 +91,13 @@ Page({
               },
               method: "POST",
               error: function () {
-                wx.hideLoading();
+
                 wx.showModal({
                   title: '获取失败',
                   content: '后台链接失败，请联系管理员',
                 })
               },
               success: function (res) {
-                console.log("register", res);
-
                 // 获取用户ID
                 wx.request({
                   url: `${app.globalData.domain}user?open_id=${app.globalData.openId}`,
@@ -122,15 +107,19 @@ Page({
                   },
                   method: "GET",
                   error: function () {
-                    wx.hideLoading();
+
                     wx.showModal({
                       title: '获取失败',
                       content: '后台链接失败，请联系管理员',
                     })
                   },
                   success: function (res) {
-                    wx.hideLoading();
-                    console.log(res);
+
+                    // 写入app和本地
+                    wx.setStorage({
+                      data: res.data.Data.id,
+                      key: 'userId',
+                    })
                     app.globalData.userId = res.data.Data.id;
                     // app.globalData.userId = 1;
                     that.getData();
@@ -145,9 +134,6 @@ Page({
   },
   // 获取页面数据
   getData: function () {
-    wx.showLoading({
-      title: '加载中',
-    })
     let that = this;
     // 总发表数
     let dataChartAll = [];
@@ -162,7 +148,7 @@ Page({
       },
       method: "GET",
       error: function () {
-        wx.hideLoading();
+
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -188,7 +174,7 @@ Page({
           },
           method: "GET",
           error: function () {
-            wx.hideLoading();
+
             wx.showModal({
               title: '获取失败',
               content: '后台链接失败，请联系管理员',
@@ -210,7 +196,7 @@ Page({
               },
               method: "GET",
               error: function () {
-                wx.hideLoading();
+
                 wx.showModal({
                   title: '获取失败',
                   content: '后台链接失败，请联系管理员',
@@ -232,7 +218,7 @@ Page({
                   },
                   method: "GET",
                   error: function () {
-                    wx.hideLoading();
+
                     wx.showModal({
                       title: '获取失败',
                       content: '后台链接失败，请联系管理员',
@@ -254,7 +240,7 @@ Page({
                       },
                       method: "GET",
                       error: function () {
-                        wx.hideLoading();
+
                         wx.showModal({
                           title: '获取失败',
                           content: '后台链接失败，请联系管理员',
@@ -276,7 +262,7 @@ Page({
                           },
                           method: "GET",
                           error: function () {
-                            wx.hideLoading();
+
                             wx.showModal({
                               title: '获取失败',
                               content: '后台链接失败，请联系管理员',
@@ -298,7 +284,7 @@ Page({
                               },
                               method: "GET",
                               error: function () {
-                                wx.hideLoading();
+
                                 wx.showModal({
                                   title: '获取失败',
                                   content: '后台链接失败，请联系管理员',
@@ -320,7 +306,7 @@ Page({
                                   },
                                   method: "GET",
                                   error: function () {
-                                    wx.hideLoading();
+
                                     wx.showModal({
                                       title: '获取失败',
                                       content: '后台链接失败，请联系管理员',
@@ -342,7 +328,7 @@ Page({
                                       },
                                       method: "GET",
                                       error: function () {
-                                        wx.hideLoading();
+
                                         wx.showModal({
                                           title: '获取失败',
                                           content: '后台链接失败，请联系管理员',
@@ -382,7 +368,7 @@ Page({
       },
       method: "GET",
       error: function () {
-        wx.hideLoading();
+
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -404,7 +390,7 @@ Page({
       },
       method: "GET",
       error: function () {
-        wx.hideLoading();
+
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -412,7 +398,7 @@ Page({
       },
       success: function (res) {
         let data = res.data.Data;
-        for(let i=0;i<data.length;i++) {
+        for (let i = 0; i < data.length; i++) {
           data[i].time = formatDate(data[i].time)
         }
         that.setData({
@@ -429,7 +415,7 @@ Page({
       },
       method: "GET",
       error: function () {
-        wx.hideLoading();
+
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -448,7 +434,6 @@ Page({
             { times: data[5].Count, day: data[5].Day, opacity: 0.1, height: `${that.getpercent(max, data[5].Count)}%` },
           ]
         });
-        // console.log(res.data.Data);
       }
     })
   },
@@ -499,7 +484,7 @@ Page({
     this.setData({
       option: option
     })
-    wx.hideLoading();
+
   },
   // 返回次数条的高度
   getpercent: function (max, x) {
@@ -514,18 +499,17 @@ Page({
   },
   // 是否登录，数据回写
   onLoad: function () {
-    // this.login()
     var that = this;
-    if (app.globalData.openId != '')
+    if (app.globalData.userId) {
       that.setData({ openId: true })
-    // console.log("?:", that.data.openId);
+      that.getData();
+    }
   },
   // 页面宽高
   onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
       error: function () {
-        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -537,7 +521,7 @@ Page({
     })
   },
   onShow: function () {
-    if(app.globalData.openId) {
+    if (app.globalData.userId) {
       this.getData();
     }
   }
