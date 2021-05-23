@@ -160,7 +160,7 @@ page {
 }
 
 .aboutme-list-dream-detail {
-    width: 180rpx;
+    width: 360rpx;
     font-size: 28rpx;
     color: #818181;
 }

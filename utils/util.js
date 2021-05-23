@@ -7,7 +7,7 @@ const getFileName = function(file) {
   return '';
 }
 
-// 传入时间戳，格式化时间为：2021/01/01 12:00:00
+// 传入时间戳，格式化时间为：2021/01/01
 const formatDate = (date) => {
   if(!date) return null;
   //date是传入的时间
@@ -15,11 +15,8 @@ const formatDate = (date) => {
 
   let month = (d.getMonth() + 1) < 10 ? '0' + (d.getMonth() + 1) : (d.getMonth() + 1);
   let day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
-  let hours = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
-  let min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
-  let sec = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
 
-  let times = d.getFullYear() + '/' + month + '/' + day + ' ' + hours + ':' + min + ':' + sec;
+  let times =  month + '/' + day;
 
   return times;
 }

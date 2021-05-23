@@ -34,7 +34,7 @@
             </view>
         </view>
         <view class="aboutme-bg"></view>
-        <view wx:if="{{!openId}}" class="login-first">请先登录~</view>
+        <view wx:if="{{!openId}}" class="login-first">点击头像登录~</view>
         <view class="flex-start-col aboutme-top" wx:else>
             <view class="flex-space-between aboutme-top-title">
                 <view class="aboutme-dream-title">梦境统计</view>

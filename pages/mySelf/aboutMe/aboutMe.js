@@ -1,4 +1,5 @@
 const app = getApp();
+const {formatDate} = require('../../../utils/util')
 import * as echarts from "../../../utils/ec-canvas/echarts";
 let chart;
 
@@ -328,6 +329,9 @@ Page({
       method: "GET",
       success: function (res) {
         let data = res.data.Data;
+        for(let i=0;i<data.length;i++) {
+          data[i].time = formatDate(data[i].time)
+        }
         that.setData({
           dreamList: data
         });
@@ -434,4 +438,8 @@ Page({
       }
     })
   },
+
+  onPullDownRefresh() {
+    this.getData();
+  }
 })

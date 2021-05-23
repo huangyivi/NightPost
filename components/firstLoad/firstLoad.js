@@ -62,7 +62,7 @@ Component({
           fromRight : right.export(),
           show : show.export()
         })
-      }, 1200);
+      }, 1000);
 
       // 黑底消失
       let hide = wx.createAnimation({
@@ -75,14 +75,14 @@ Component({
         that.setData({
           animationData: hide.export()
         })
-      }, 4000)
+      }, 3000)
 
       // 首屏隐藏
       setTimeout(function () {
         that.setData({
           isShow: false
         })
-      }, 5000);
+      }, 3500);
     }
   }
 })

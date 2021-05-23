@@ -166,7 +166,7 @@ Page({
             "keyword": data.keyword,
             "dream": data.detail,
             "privacy": data.access == 1 ? 'y' : 'n',
-            "time": Object.toString(new Date().getTime()),
+            "time": new Date().getTime(),
             "type": data.tagIndex,
             "like": 0,
             "draw": getFileName(app.globalData.imageFile),
