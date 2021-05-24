@@ -81,6 +81,17 @@
           "pathName": "pages/myCommunity/comment/comment",
           "query": "id=1",
           "scene": null
+        },
+        {
+          "name": "pages/myCommunity/dreamArticle/dreamArticle",
+          "pathName": "pages/myCommunity/dreamArticle/dreamArticle",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myCommunity/dreamDetail/dreamDetail",
+          "pathName": "pages/myCommunity/dreamDetail/dreamDetail",
+          "scene": null
         }
       ]
     }

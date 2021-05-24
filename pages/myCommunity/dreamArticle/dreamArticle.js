@@ -21,6 +21,7 @@ Page({
     approveTag: false,
     uid: app.globalData.userId || -1,
   },
+  Bottom: false, // 是否已经触底的标志
   onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
@@ -79,7 +80,7 @@ Page({
     });
 
     // 获取用户基本信息
-    this.getUserMsg();
+    // this.getUserMsg();
 
     this.setData({
       dream,
@@ -87,6 +88,7 @@ Page({
       approveTag: Data || false,
       uid: app.globalData.userId
     });
+    console.log("用户uid", this.data.uid);
   },
 
   // 转发
@@ -100,45 +102,17 @@ Page({
     }
   },
 
-  onLoad: function () {},
-
-  onUnload: function () {
-    // myAudio = null;
-  },
-
   // 上拉触底
   onReachBottom() {
     console.log('上拉触底事件触发');
-    // 开始加载下一张梦境
-    // 获取梦境总数
-    const len = app.globalData.dreamsList.length;
-    // 获取当前索引
-    let index = ++app.globalData.currentIndex;
-
-    if (index >= len) {
-      // index = 0;
-      wx.showToast({
-        title: '没有其他梦境啦^_^',
-        icon: 'none'
-      })
+    // 判断是否触底
+    if (this.Bottom == false) {
+      this.Bottom = true;
       return;
     }
-    app.globalData.currentIndex = parseInt(index);
-    let dream = app.globalData.dreamsList[index];
-    wx.showLoading({
-      title: '加载其他梦境中',
-      duration: 1000,
-      mask: true
-    })
-    this.setData({
-      dream: dream || ''
-    });
-    // 更新音频
-    myAudio.src = dream.sound;
-    wx.pageScrollTo({
-      scrollTop: 0
-    });
-    console.log(index);
+    // 触底后再触底
+    this.getNewDream();
+    // this.Bottom = false;
   },
 
   // 处理音频播放和暂停
@@ -244,18 +218,18 @@ Page({
      let windowWidth = wx.getSystemInfoSync().windowWidth; */
     // 往左滑30触发，设计一定距离，防止上下滑动时手滑而触发
     if (nowclientX - clientX > 30) {
-      wx.navigateBack({
-        delta: 0,
-      })
-    }
-
-    if (clientX - nowclientX > 30) {
       const {
         dream
       } = this.data;
       console.log(dream);
       wx.navigateTo({
         url: `../comment/comment?id=${dream.id}`,
+      })
+    }
+
+    if (clientX - nowclientX > 30) {
+      wx.navigateBack({
+        delta: 0,
       })
     }
   },
@@ -298,7 +272,7 @@ Page({
           url: "https://api.weixin.qq.com/cgi-bin/component/api_authorizer_token",
           method: "post",
           data: {
-            component_access_token:access_token,
+            component_access_token: access_token,
           },
           success(res) {
             console.log(res);
@@ -327,8 +301,43 @@ Page({
     })
   },
 
+  // 加载新梦境
+  getNewDream() {
+    // 开始加载下一张梦境
+    // 获取梦境总数
+    const len = app.globalData.dreamsList.length;
+    // 获取当前索引
+    let index = ++app.globalData.currentIndex;
+
+    if (index >= len) {
+      // index = 0;
+      wx.showToast({
+        title: '没有其他梦境啦^_^',
+        icon: 'none'
+      })
+      return;
+    }
+    app.globalData.currentIndex = parseInt(index);
+    let dream = app.globalData.dreamsList[index];
+    wx.showLoading({
+      title: '加载其他梦境中',
+      duration: 1000,
+      mask: true
+    })
+    this.setData({
+      dream: dream || ''
+    });
+    // 更新音频
+    myAudio.src = dream.sound;
+    wx.pageScrollTo({
+      scrollTop: 0
+    });
+    // 设置成未触底状态
+    this.Bottom = false;
+  },
+
   // 重新设置全局变量的梦境，用于点赞后更新
-  updateAppDream(dream){
+  updateAppDream(dream) {
     const index = app.globalData.dreamsList.findIndex(item => item.id == dream.id);
     app.globalData.dreamsList[index] = dream;
     console.log(index);

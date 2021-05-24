@@ -9,10 +9,11 @@
     "pages/myDream/paint/paint",
     "pages/myDream/published/published",
     "pages/myCommunity/dreamArticle/dreamArticle",
-    "pages/myCommunity/comment/comment"
+    "pages/myCommunity/comment/comment",
+    "pages/myCommunity/dreamDetail/dreamDetail"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationStyle": "custom"
   },
   "style": "v2",
