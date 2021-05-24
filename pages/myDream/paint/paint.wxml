@@ -8,6 +8,7 @@
         <view class="paint-option" catchtap="recall">撤回</view>
         <view class="paint-option" catchtap="redo">重做</view>
       </view>
+      <view wx:if="{{isClear}}" class="eraser-tip">使用橡皮中...</view>
       <view class="black-btn" catchtap="upload">完成</view>
     </view>
     <view class="paint-board">
@@ -18,7 +19,8 @@
         bindtouchmove="touchMove"></canvas>
     </view>
     <view class="paint-tools flex-around">
-      <view catchtap="getEraser" class="eraser flex-center">{{isClear ? '取消' : '橡皮'}}</view>
+    <!-- 工具栏 -->
+      <view catchtap="getEraser" class="eraser flex-center {{isClear ? 'pen-icon' : 'eraser-icon'}} "></view>
       <view class="pen-thick flex-around">
         <view catchtap="changeThickness" data-thick="10" style="background: {{color}}" class="pen-thickness pen-small {{thick == 10? 'clicked': ''}}">
         </view> 
@@ -45,3 +47,5 @@
     <view catchtap="changeColor" class="colors {{color === '#DDDDDD' ? 'selected' : ''}}" data-color="#DDDDDD" style="background: #DDDDDD"></view>
   </view>
 </view>
+
+

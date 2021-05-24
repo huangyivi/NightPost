@@ -140,6 +140,9 @@ Page({
     let dataChart = [];
     let tags = ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
     let i = 0;
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: app.globalData.domain + 'all/' + app.globalData.userId,
       data: {},
@@ -148,13 +151,14 @@ Page({
       },
       method: "GET",
       error: function () {
-
+        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
         })
       },
       success: function (res) {
+        wx.hideLoading();
         let data = res.data.Data;
         that.setData({
           d1: data
@@ -174,13 +178,14 @@ Page({
           },
           method: "GET",
           error: function () {
-
+            wx.hideLoading();
             wx.showModal({
               title: '获取失败',
               content: '后台链接失败，请联系管理员',
             })
           },
           success: function (res) {
+            wx.hideLoading();
             let data = res.data.Data;
             dataChart.push({
               name: tags[i],
@@ -196,13 +201,14 @@ Page({
               },
               method: "GET",
               error: function () {
-
+                wx.hideLoading();
                 wx.showModal({
                   title: '获取失败',
                   content: '后台链接失败，请联系管理员',
                 })
               },
               success: function (res) {
+                wx.hideLoading();
                 let data = res.data.Data;
                 dataChart.push({
                   name: tags[i],
@@ -218,13 +224,14 @@ Page({
                   },
                   method: "GET",
                   error: function () {
-
+                    wx.hideLoading();
                     wx.showModal({
                       title: '获取失败',
                       content: '后台链接失败，请联系管理员',
                     })
                   },
                   success: function (res) {
+                    wx.hideLoading();
                     let data = res.data.Data;
                     dataChart.push({
                       name: tags[i],
@@ -240,13 +247,14 @@ Page({
                       },
                       method: "GET",
                       error: function () {
-
+                        wx.hideLoading();
                         wx.showModal({
                           title: '获取失败',
                           content: '后台链接失败，请联系管理员',
                         })
                       },
                       success: function (res) {
+                        wx.hideLoading();
                         let data = res.data.Data;
                         dataChart.push({
                           name: tags[i],
@@ -262,13 +270,14 @@ Page({
                           },
                           method: "GET",
                           error: function () {
-
+                            wx.hideLoading();
                             wx.showModal({
                               title: '获取失败',
                               content: '后台链接失败，请联系管理员',
                             })
                           },
                           success: function (res) {
+                            wx.hideLoading();
                             let data = res.data.Data;
                             dataChart.push({
                               name: tags[i],
@@ -284,13 +293,14 @@ Page({
                               },
                               method: "GET",
                               error: function () {
-
+                                wx.hideLoading();
                                 wx.showModal({
                                   title: '获取失败',
                                   content: '后台链接失败，请联系管理员',
                                 })
                               },
                               success: function (res) {
+                                wx.hideLoading();
                                 let data = res.data.Data;
                                 dataChart.push({
                                   name: tags[i],
@@ -306,13 +316,14 @@ Page({
                                   },
                                   method: "GET",
                                   error: function () {
-
+                                    wx.hideLoading();
                                     wx.showModal({
                                       title: '获取失败',
                                       content: '后台链接失败，请联系管理员',
                                     })
                                   },
                                   success: function (res) {
+                                    wx.hideLoading();
                                     let data = res.data.Data;
                                     dataChart.push({
                                       name: tags[i],
@@ -328,13 +339,14 @@ Page({
                                       },
                                       method: "GET",
                                       error: function () {
-
+                                        wx.hideLoading();
                                         wx.showModal({
                                           title: '获取失败',
                                           content: '后台链接失败，请联系管理员',
                                         })
                                       },
                                       success: function (res) {
+                                        wx.hideLoading();
                                         let data = res.data.Data;
                                         dataChart.push({
                                           name: tags[i],
@@ -368,13 +380,14 @@ Page({
       },
       method: "GET",
       error: function () {
-
+        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
         })
       },
       success: function (res) {
+        wx.hideLoading();
         let data = res.data.Data;
         that.setData({
           d2: data
@@ -390,13 +403,14 @@ Page({
       },
       method: "GET",
       error: function () {
-
+        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
         })
       },
       success: function (res) {
+        wx.hideLoading();
         let data = res.data.Data;
         for (let i = 0; i < data.length; i++) {
           data[i].time = formatDate(data[i].time)
@@ -415,13 +429,14 @@ Page({
       },
       method: "GET",
       error: function () {
-
+        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
         })
       },
       success: function (res) {
+        wx.hideLoading();
         let data = res.data.Data;
         let max = Math.max(data[0].Count, data[1].Count, data[2].Count, data[3].Count, data[4].Count, data[5].Count);
         that.setData({
@@ -439,9 +454,11 @@ Page({
   },
   // 切换到梦境详细页面
   toDetail: function (val) {
-    let id = val.currentTarget.dataset.id;
+    let idx = val.currentTarget.dataset.idx;
+    app.globalData.dreamsList = this.data.dreamList;
+    app.globalData.currentIndex = idx
     wx.navigateTo({
-      url: `../../myCommunity/dreamArticle/dreamArticle?id=${id}`
+      url: `../../myCommunity/dreamArticle/dreamArticle`
     })
   },
   // 根据数据生成类型图表

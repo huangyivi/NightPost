@@ -37,7 +37,7 @@ Page({
   },
   onShow() {
     // 判断用户是否登录
-    if (!app.globalData.openId) {
+    if (!app.globalData.userId) {
       wx.showModal({
         title: "用户未登录",
         content: "想要发布梦境，请先登录哦！",
