@@ -117,112 +117,123 @@ Page({
   },
   toPublish(e) {
     let that = this;
-    wx.showModal({
-      content: "准备发布您的梦境了吗？",
-      confirmText: "准备好了",
-      cancelText: "还没有",
-      success(res) {
-        if (res.confirm) {
-          // 上传图片
-          if (app.globalData.imageFile) {
-            // console.log(getFileName(app.globalData.imageFile));
-            wx.uploadFile({
-              filePath: app.globalData.imageFile,
-              name: 'draw',
-              url: app.globalData.domain + 'file/draw',
-              success(res) {
-                console.log(res);
-              },
-              fail(err) {
-                console.log(err);
-              }
-            })
-          }
-          // 上传音频
-          if (app.globalData.voice) {
-            let voice = app.globalData.voice;
-            console.log(getFileName(voice));
-            wx.uploadFile({
-              filePath: voice,
-              name: 'sound',
-              url: app.globalData.domain + 'file/sound',
-              success(res) {
-                console.log(res);
-              },
-              fail(err) {
-                console.log(err);
-              }
-            })
-          }
-          // 上传整个梦境信息
-          if (that.data.detail === '') {
-            that.setData({
-              detail: '用户分享梦境'
-            })
-          }
-          let data = that.data;
-          let upload = {
-            "uid": app.globalData.userId,
-            "keyword": data.keyword,
-            "dream": data.detail,
-            "privacy": data.access == 1 ? 'y' : 'n',
-            "time": new Date().getTime(),
-            "type": parseInt(data.tagIndex),
-            "like": 0,
-            "draw": getFileName(app.globalData.imageFile),
-            "sound": getFileName(app.globalData.voice)
-          }
-          console.log(upload);
-          wx.showLoading({
-            title: '发表中',
-          })
-          wx.request({
-            url: app.globalData.domain + 'save',
-            data: upload,
-            method: 'post',
-            success(res1) {
-              wx.hideLoading({
-                success: (res) => {
-                  if (res1.data.Status) {
-                    app.globalData.keyword = that.data.keyword;
-                    app.globalData.myDream = null;
-                    app.globalData.imageFile = '';
-                    app.globalData.lastImage = [];
-                    app.globalData.voice = ''
-                    that.setData({
-                      accessIndex: 0,
-                      tagIndex: 0,
-                      keyword: '',
-                      detail: '',
-                      imageFile: '',
-                    })
-                    wx.navigateTo({
-                      url: '../published/published'
-                    })
-                  }else {
-                    wx.showModal({
-                      title : "发布失败！",
-                      content : res1.data.Message
-                    })
-                  }
+    if(!this.data.keyword) {
+      wx.showModal({
+        content : "请输入关键词哦~",
+        showCancel : false
+      })
+    }else if(this.data.detail || app.globalData.imageFile || app.globalData.voice){
+      wx.showModal({
+        content: "准备发布您的梦境了吗？",
+        confirmText: "准备好了",
+        cancelText: "还没有",
+        success(res) {
+          if (res.confirm) {
+            // 上传图片
+            if (app.globalData.imageFile) {
+              // console.log(getFileName(app.globalData.imageFile));
+              wx.uploadFile({
+                filePath: app.globalData.imageFile,
+                name: 'draw',
+                url: app.globalData.domain + 'file/draw',
+                success(res) {
+                  console.log(res);
                 },
-              })
-            },
-            fail(err) {
-              wx.hideLoading({
-                success: (res) => {
-                  wx.showModal({
-                    title: '网络连接错误',
-                    content: err
-                  })
-                },
+                fail(err) {
+                  console.log(err);
+                }
               })
             }
-          })
-
+            // 上传音频
+            if (app.globalData.voice) {
+              let voice = app.globalData.voice;
+              console.log(getFileName(voice));
+              wx.uploadFile({
+                filePath: voice,
+                name: 'sound',
+                url: app.globalData.domain + 'file/sound',
+                success(res) {
+                  console.log(res);
+                },
+                fail(err) {
+                  console.log(err);
+                }
+              })
+            }
+            // 上传整个梦境信息
+            if (that.data.detail === '') {
+              that.setData({
+                detail: '用户分享梦境'
+              })
+            }
+            let data = that.data;
+            let upload = {
+              "uid": app.globalData.userId,
+              "keyword": data.keyword,
+              "dream": data.detail,
+              "privacy": data.accessIndex == 1 ? 'y' : 'n',
+              "time": new Date().getTime(),
+              "type": parseInt(data.tagIndex),
+              "like": 0,
+              "draw": getFileName(app.globalData.imageFile),
+              "sound": getFileName(app.globalData.voice)
+            }
+            console.log(upload);
+            wx.showLoading({
+              title: '发表中',
+            })
+            wx.request({
+              url: app.globalData.domain + 'save',
+              data: upload,
+              method: 'post',
+              success(res1) {
+                wx.hideLoading({
+                  success: (res) => {
+                    if (res1.data.Status) {
+                      app.globalData.keyword = that.data.keyword;
+                      app.globalData.myDream = null;
+                      app.globalData.imageFile = '';
+                      app.globalData.lastImage = [];
+                      app.globalData.voice = ''
+                      that.setData({
+                        accessIndex: 0,
+                        tagIndex: 0,
+                        keyword: '',
+                        detail: '',
+                        imageFile: '',
+                      })
+                      wx.navigateTo({
+                        url: '../published/published'
+                      })
+                    }else {
+                      wx.showModal({
+                        title : "发布失败！",
+                        content : res1.data.Message
+                      })
+                    }
+                  },
+                })
+              },
+              fail(err) {
+                wx.hideLoading({
+                  success: (res) => {
+                    wx.showModal({
+                      title: '网络连接错误',
+                      content: err
+                    })
+                  },
+                })
+              }
+            })
+  
+          }
         }
-      }
-    })
+      })
+    }else {
+      wx.showModal({
+        content : "请输入您的梦境内容哦~\n至少一种形式~"
+      })
+    }
   },
   onHide() {
     const {

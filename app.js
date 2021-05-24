@@ -21,6 +21,6 @@ App({
     userId : '',  // 用户id，openid太长了，用这个标识
     dreamsList: [], // 梦境列表
     currentIndex: -1, // 梦境索引
-    keyword : '恐龙'  // 梦境关键词，用于解梦
+    keyword : ''  // 梦境关键词，用于解梦
   }
 })

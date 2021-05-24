@@ -139,7 +139,6 @@ Page({
     let dataChartAll = [];
     let dataChart = [];
     let tags = ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
-    let i = 0;
     wx.showLoading({
       title: '加载中',
     })
@@ -168,209 +167,40 @@ Page({
           value: data,
           children: []
         });
-        // 类型统计
-        // 0
-        wx.request({
-          url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-          data: {},
-          header: {
-            'content-type': 'json'
-          },
-          method: "GET",
-          error: function () {
-            wx.hideLoading();
-            wx.showModal({
-              title: '获取失败',
-              content: '后台链接失败，请联系管理员',
-            })
-          },
-          success: function (res) {
-            wx.hideLoading();
-            let data = res.data.Data;
-            dataChart.push({
-              name: tags[i],
-              value: data
-            })
-            i++;
-            // 1
-            wx.request({
-              url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-              data: {},
-              header: {
-                'content-type': 'json'
-              },
-              method: "GET",
-              error: function () {
-                wx.hideLoading();
-                wx.showModal({
-                  title: '获取失败',
-                  content: '后台链接失败，请联系管理员',
-                })
-              },
-              success: function (res) {
-                wx.hideLoading();
-                let data = res.data.Data;
-                dataChart.push({
-                  name: tags[i],
-                  value: data
-                })
-                i++;
-                // 2
-                wx.request({
-                  url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                  data: {},
-                  header: {
-                    'content-type': 'json'
-                  },
-                  method: "GET",
-                  error: function () {
-                    wx.hideLoading();
-                    wx.showModal({
-                      title: '获取失败',
-                      content: '后台链接失败，请联系管理员',
-                    })
-                  },
-                  success: function (res) {
-                    wx.hideLoading();
-                    let data = res.data.Data;
-                    dataChart.push({
-                      name: tags[i],
-                      value: data
-                    })
-                    i++;
-                    // 3
-                    wx.request({
-                      url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                      data: {},
-                      header: {
-                        'content-type': 'json'
-                      },
-                      method: "GET",
-                      error: function () {
-                        wx.hideLoading();
-                        wx.showModal({
-                          title: '获取失败',
-                          content: '后台链接失败，请联系管理员',
-                        })
-                      },
-                      success: function (res) {
-                        wx.hideLoading();
-                        let data = res.data.Data;
-                        dataChart.push({
-                          name: tags[i],
-                          value: data
-                        })
-                        i++;
-                        // 4
-                        wx.request({
-                          url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                          data: {},
-                          header: {
-                            'content-type': 'json'
-                          },
-                          method: "GET",
-                          error: function () {
-                            wx.hideLoading();
-                            wx.showModal({
-                              title: '获取失败',
-                              content: '后台链接失败，请联系管理员',
-                            })
-                          },
-                          success: function (res) {
-                            wx.hideLoading();
-                            let data = res.data.Data;
-                            dataChart.push({
-                              name: tags[i],
-                              value: data
-                            })
-                            i++;
-                            // 5
-                            wx.request({
-                              url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                              data: {},
-                              header: {
-                                'content-type': 'json'
-                              },
-                              method: "GET",
-                              error: function () {
-                                wx.hideLoading();
-                                wx.showModal({
-                                  title: '获取失败',
-                                  content: '后台链接失败，请联系管理员',
-                                })
-                              },
-                              success: function (res) {
-                                wx.hideLoading();
-                                let data = res.data.Data;
-                                dataChart.push({
-                                  name: tags[i],
-                                  value: data
-                                })
-                                i++;
-                                // 6
-                                wx.request({
-                                  url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                                  data: {},
-                                  header: {
-                                    'content-type': 'json'
-                                  },
-                                  method: "GET",
-                                  error: function () {
-                                    wx.hideLoading();
-                                    wx.showModal({
-                                      title: '获取失败',
-                                      content: '后台链接失败，请联系管理员',
-                                    })
-                                  },
-                                  success: function (res) {
-                                    wx.hideLoading();
-                                    let data = res.data.Data;
-                                    dataChart.push({
-                                      name: tags[i],
-                                      value: data
-                                    })
-                                    i++;
-                                    // 7
-                                    wx.request({
-                                      url: app.globalData.domain + `count/type/${app.globalData.userId}/${i}`,
-                                      data: {},
-                                      header: {
-                                        'content-type': 'json'
-                                      },
-                                      method: "GET",
-                                      error: function () {
-                                        wx.hideLoading();
-                                        wx.showModal({
-                                          title: '获取失败',
-                                          content: '后台链接失败，请联系管理员',
-                                        })
-                                      },
-                                      success: function (res) {
-                                        wx.hideLoading();
-                                        let data = res.data.Data;
-                                        dataChart.push({
-                                          name: tags[i],
-                                          value: data
-                                        })
-                                        that.setChart(tags, dataChart, dataChartAll);
-                                      }
-                                    })
-                                  }
-                                })
-                              }
-                            })
-                          }
-                        })
-                      }
-                    })
-                  }
-                })
-              }
-            })
-          }
-        })
       }
     })
+
+    // 类型统计
+    wx.request({
+      url: app.globalData.domain + `count/type/${app.globalData.userId}`,
+      data: {},
+      header: {
+        'content-type': 'json'
+      },
+      method: "GET",
+      error: function () {
+        wx.hideLoading();
+        wx.showModal({
+          title: '获取失败',
+          content: '后台链接失败，请联系管理员',
+        })
+      },
+      success: function (res) {
+        wx.hideLoading();
+        let data = res.data.Data;
+        console.log(data);
+        for(let i=0;i<data.length;i++) {
+          dataChart.push({
+            name: tags[i] + "("+ data[i].Count +")",
+            value: data[i].Count
+          })
+        }
+        
+        that.setChart(tags, dataChart, dataChartAll); 
+      }
+    })
+
+
     // 总共鸣数
     wx.request({
       url: app.globalData.domain + 'user/likes/' + app.globalData.userId,
