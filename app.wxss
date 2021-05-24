@@ -74,6 +74,12 @@
   align-items: center
 }
 
+.flex-end-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .flex-around-col {
   display: flex;
   flex-direction: column;

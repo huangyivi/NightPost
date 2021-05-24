@@ -76,8 +76,23 @@ page {
   background-color: rgba(0,0,0,0.1);
 }
 
+.delete_icon {
+  /* padding: 10rpx 30rpx; */
+  text-align: right;
+ 
+}
+
+.delete_icon text {
+  background: #ACACAC;
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  padding: 10rpx;
+  border-radius: 0 0 0 5px;
+}
+
 .content_top {
-  padding: 40rpx 30rpx;
+  padding: 30rpx 30rpx 40rpx;
   font-size: 48rpx;
 }
 
@@ -128,6 +143,8 @@ page {
   text-align: right;
 }
 
+
+
 .content_introduce {
   margin-top: 80rpx;
 }
@@ -158,6 +175,8 @@ page {
   font-size: 34rpx;
   padding: 50rpx;
   text-indent: calc(1rem + 50rpx);
+  min-height: 50vh; 
+  box-sizing: border-box;
 }
 
 .content_sound {
@@ -165,7 +184,7 @@ page {
   justify-content: flex-end;
   align-items: center;
   padding: 20rpx 50rpx;
-  height: 200rpx;
+  /* height: 200rpx; */
   text-align: center;
 }
 

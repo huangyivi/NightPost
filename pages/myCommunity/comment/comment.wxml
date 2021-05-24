@@ -38,14 +38,14 @@
     <!-- 评论 -->
     <view class="comment_list">
       <view style="text-align:center" hidden="{{comment.length}}">暂无评论</view>
-      <view class="comment flex-between" wx:for="{{comment}}" wx:for-item="item" wx:key="index">
+      <view class="comment flex-between" wx:for="{{comment}}" wx:for-item="item" wx:key="id">
         <view class="flex-center-col man_wrap">
           <!-- <image class="comment_head" mode="scaleToFill" src=""></image> -->
           <view class="comment_man">{{item.send_nickname}}:</view>
         </view>
-        <view class="comment_wrap">
+        <view class="comment_wrap flex-end-between">
           <view class="comment_content">{{item.content}}</view>
-          <!-- <view class="comment_time">--</view> -->
+          <view class="comment_delete" wx:if="{{item.send_id == userId}}" bindtap="deleteComment" data-id="{{item.id}}">删除</view>
         </view>
       </view>
     </view>

@@ -30,7 +30,8 @@ Page({
     comment: [],
     content: '',
     play: false, // 音乐播放标志
-    approveTag: false
+    approveTag: false,
+    userId: 0,
   },
   onReady: function () {
     let that = this;
@@ -62,7 +63,8 @@ Page({
 
     this.setData({
       dream,
-      time
+      time,
+      userId: app.globalData.userId
     });
   },
 
@@ -237,5 +239,46 @@ Page({
     const index = app.globalData.dreamsList.findIndex(item => item.id == dream.id);
     app.globalData.dreamsList[index] = dream;
     console.log(index);
+  },
+
+  // 删除评论
+  deleteComment(e){
+    console.log(e);
+    const {id} = e.target.dataset;
+    wx.showModal({
+      title: '删除评论',
+      content: '确认要删除你的评论吗？',
+      showCancel: true,
+      cancelText: '取消',
+      confirmText: '确定',
+      success: (result) => {
+        if (result.confirm) {
+          console.log("删除");
+          // 删除评论，发送请求
+          handleRequest({url:'/dream/com/del/'+id,method:'delete'}).then(res=>{
+            console.log(res);
+            const {Status} = res.data;
+            wx.showToast({
+              title: `删除${Status?'成功':'失败'}`,
+              icon: Status?'success':'error'
+            });
+            setTimeout(()=>{
+              this.getCommentList(this.data.dream.id);
+            },1000);
+          }).catch(err=>{
+            wx.showToast({
+              title: '服务器error',
+            })
+          })
+        }
+      },
+      fail: (err) => {
+        console.log("删除失败");
+        wx.showToast({
+          title: '删除失败',
+        })
+      },
+    });
+
   }
 })
