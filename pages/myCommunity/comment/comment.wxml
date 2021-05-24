@@ -30,7 +30,7 @@
           <text class="tag">#{{dream.Type}}</text>
         </view>
         <view class="resonate flex-center-col" bindtap="handleApprove" style="color:{{approveTag?'blue':'#ACACAC'}}">
-          <image mode="scaleToFill" src="../../../assets/images/dreamCommunity/resonate.png" class="bottom_bg"></image>
+          <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/共鸣.png" class="bottom_bg"></image>
           <view>{{dream.like}}</view>
         </view>
       </view>
