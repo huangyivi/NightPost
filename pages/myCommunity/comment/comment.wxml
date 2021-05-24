@@ -3,6 +3,7 @@
 </view>
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
   <view class="main-content">
+    <view class="content_react"></view>
     <!-- 顶部 -->
     <view class="content_top flex-between">
       <view class="flex-between">
@@ -38,9 +39,9 @@
     <view class="comment_list">
       <view style="text-align:center" hidden="{{comment.length}}">暂无评论</view>
       <view class="comment flex-between" wx:for="{{comment}}" wx:for-item="item" wx:key="index">
-        <view class="flex-center-col">
+        <view class="flex-center-col man_wrap">
           <!-- <image class="comment_head" mode="scaleToFill" src=""></image> -->
-          <view class="comment_man">用户{{item.send_id}}</view>
+          <view class="comment_man">{{item.send_nickname}}:</view>
         </view>
         <view class="comment_wrap">
           <view class="comment_content">{{item.content}}</view>

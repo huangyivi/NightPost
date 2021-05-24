@@ -28,19 +28,20 @@ page {
   font-weight: bold;
 }
 
-
 .main {
   box-sizing: border-box;
   min-height: 100vh;
   width: 100vw;
-  margin-bottom: 200rpx;
+  /* margin-bottom: 200rpx; */
 }
 
 .main-content {
+  position: relative;
   width: 100%;
   height: 100%;
   /* background: linear-gradient(#fff 80%,transparent); */
   background: #fff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 
@@ -85,6 +86,17 @@ page {
   height: 130rpx;
   font-weight: bold;
   position: relative;
+}
+
+.content_react {
+  position: absolute;
+  right: -1px;
+  top: 50rpx;
+  width: 60rpx;
+  height: calc(100% - 100rpx);
+  background:#fff;
+  transform: translate(100%,0);
+  /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16); */
 }
 
 .top_date > view {

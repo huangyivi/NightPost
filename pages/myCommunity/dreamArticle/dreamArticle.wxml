@@ -5,6 +5,7 @@
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;" bindtouchstart="touchstart"
   bindtouchend="touchend">
   <view class="main-content">
+    <view class="content_react"></view>
     <view class="content_top flex-between">
       <view class="top_date">
         <view class="month">{{time.month}}</view>
@@ -27,7 +28,7 @@
       </view>
       <view class="content_sound">
         <!-- <button bindtap="handleMusic" class="sound_play">{{play?'暂停':'播放'}}音频</button> -->
-        <view bindtap="handleMusic" hidden="{{!dream.sound}}">
+        <view bindtap="handleMusic" wx:if="{{dream.sound}}">
           <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/播放.png" class="sound_bg"></image>
           <view>{{play?'播放':'暂停'}}中</view>
         </view>
@@ -44,15 +45,14 @@
         <image mode="scaleToFill" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/icon/共鸣.png" class="bottom_bg"></image>
         <view>{{dream.like}}</view>
       </view>
-
     </view>
   </view>
-  <view class="bottom_tip2">
-    往右滑动查看梦境评论
-    <text>→</text>
-  </view>
-  <view class="bottom_tip">
-    往下拉动查看其他梦境
+  <navigator class="bottom_tip2" url="../comment/comment?id={{dream.id}}">
+    往左滑动(或点此)查看梦境评论
+    <text>←</text>
+  </navigator>
+  <view class="bottom_tip" bindtap="getNewDream">
+    往下拉动(或点此)查看其他梦境
     <text>→</text>
   </view>
 </view>

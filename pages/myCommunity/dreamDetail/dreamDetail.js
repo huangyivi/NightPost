@@ -41,7 +41,7 @@ Page({
 
     console.log(uid, id);
 
-    this.getTheDream(uid,id);
+    this.getTheDream(uid, id);
     // 整合一下时间，为了渲染
     //  const [month, day] = dream.time.split('/');
     //  let time = {
@@ -171,7 +171,7 @@ Page({
       }
       // 更新全局梦境
       this.updateAppDream(dream);
-      
+
       this.setData({
         dream,
         approveTag: !Data
@@ -196,8 +196,7 @@ Page({
     let clientX = e.changedTouches[0].clientX;
     /*  // 获取屏幕宽度
      let windowWidth = wx.getSystemInfoSync().windowWidth; */
-
-    if (clientX - nowclientX > 30) {
+    if (nowclientX - clientX > 30) {
       const {
         dream
       } = this.data;
@@ -305,12 +304,12 @@ Page({
 
   // 获取梦境类型
   getDreamType(type) {
-    const tags =  ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
+    const tags = ['美梦', '噩梦', '白日梦', '预知', '猎奇', '反梦', '平平淡淡', '其他'];
     return tags[parseInt(type)];
   },
 
   // 更新全局梦境
-  updateAppDream(dream){
+  updateAppDream(dream) {
     const index = app.globalData.dreamsList.findIndex(item => item.id == dream.id);
     app.globalData.dreamsList[index] = dream;
     console.log(index);
