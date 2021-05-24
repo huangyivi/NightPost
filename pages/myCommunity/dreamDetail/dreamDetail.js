@@ -194,9 +194,9 @@ Page({
   touchend(e) {
     let nowclientX = this.data.nowclientX;
     let clientX = e.changedTouches[0].clientX;
-    /*  // 获取屏幕宽度
-     let windowWidth = wx.getSystemInfoSync().windowWidth; */
-    if (nowclientX - clientX > 30) {
+    // 获取屏幕宽度
+    let windowWidth = wx.getSystemInfoSync().windowWidth;
+    if (nowclientX - clientX > Math.floor(windowWidth/4)) {
       const {
         dream
       } = this.data;
@@ -261,6 +261,24 @@ Page({
       } = res.data;
 
       if (!Status) return false;
+
+      // 匹配不到梦境
+      if (Data.id == 0)
+        return wx.showModal({
+          title: '无匹配的梦境',
+          content: '没有和你共鸣的梦~_~',
+          showCancel: false,
+          confirmText: '返回',
+          success: (result) => {
+            if (result.confirm) {
+              console.log("返回");
+              this.handleBack();
+            }
+          },
+          fail: (err) => {
+            console.log("失败");
+          },
+        });
 
       // 处理得到的梦境
       let newTime = formatDate(Data.time) || "0/0/0";

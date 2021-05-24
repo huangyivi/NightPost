@@ -214,10 +214,10 @@ Page({
   touchend(e) {
     let nowclientX = this.data.nowclientX;
     let clientX = e.changedTouches[0].clientX;
-    /*  // 获取屏幕宽度
-     let windowWidth = wx.getSystemInfoSync().windowWidth; */
+    // 获取屏幕宽度
+     let windowWidth = wx.getSystemInfoSync().windowWidth;
     // 往左滑30触发，设计一定距离，防止上下滑动时手滑而触发
-    if (nowclientX - clientX > 30) {
+    if (nowclientX - clientX > Math.floor(windowWidth/4)) {
       const {
         dream
       } = this.data;
@@ -227,7 +227,7 @@ Page({
       })
     }
 
-    if (clientX - nowclientX > 30) {
+    if (clientX - nowclientX >  Math.floor(windowWidth/4)) {
       wx.navigateBack({
         delta: 0,
       })
@@ -301,6 +301,46 @@ Page({
     })
   },
 
+  // 删除梦境
+  delteDream() {
+    const {uid,dream:{id}} = this.data;
+    wx.showModal({
+      title: '删除梦境',
+      content: '真的要删除你的梦境吗？',
+      showCancel: true,
+      cancelText: '取消',
+      confirmText: '确定',
+      success: (result) => {
+        if (result.confirm) {
+          console.log("删除");
+          // 删除梦境，发送请求
+          handleRequest({url:`/dream/del/${uid}/${id}`,method:'delete'}).then(res=>{
+            console.log(res);
+            const {Status} = res.data;
+            wx.showToast({
+              title: `删除${Status?'成功':'失败'}`,
+              icon: Status?'success':'error'
+            })
+            // 返回上一页
+            setTimeout(()=>{
+              wx.navigateBack({
+                delta: 0,
+              })
+            },500);
+          }).catch(err=>{
+            console.log(err);
+          })
+        }
+      },
+      fail: (err) => {
+        console.log("删除失败");
+        wx.showToast({
+          title: '删除失败',
+        })
+      },
+    });
+  },
+
   // 加载新梦境
   getNewDream() {
     // 开始加载下一张梦境
@@ -319,13 +359,20 @@ Page({
     }
     app.globalData.currentIndex = parseInt(index);
     let dream = app.globalData.dreamsList[index];
+    let newTime = formatDate(dream.time);
+    const [month, day] = newTime.split('/');
+    let time = {
+      day,
+      month
+    };
     wx.showLoading({
       title: '加载其他梦境中',
       duration: 1000,
       mask: true
     })
     this.setData({
-      dream: dream || ''
+      dream: dream || '',
+      time
     });
     // 更新音频
     myAudio.src = dream.sound;
