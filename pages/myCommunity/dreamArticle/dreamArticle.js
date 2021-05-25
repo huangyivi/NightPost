@@ -137,10 +137,11 @@ Page({
   handleApprove() {
     const {
       dream: {
-        uid,
         id
-      }
+      },
+      uid
     } = this.data;
+    console.log(uid,id);
 
     // 判断是否已经点赞
     handleRequest({
