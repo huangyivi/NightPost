@@ -1,5 +1,11 @@
 <view class="navi-bottom">
-  <view animation="{{role === 0 ? animationData : null}}" class="comunity navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" data-site="0" catchtap="switchTab"> </view>
-  <view animation="{{role === 1 ? animationData : null}}" class="edit navi-btn {{role === 1 ? 'navi-btn-active' : ''}}" data-site="1" catchtap="switchTab">     </view>
-  <view animation="{{role === 2 ? animationData : null}}" class="personal navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" data-site="2" catchtap="switchTab"> </view>
+  <view animation="{{role === 0 ? animationData : null}}" class="comunity navi-btn {{role === 0 ? 'navi-btn-active' : ''}}" > </view>
+  <view animation="{{role === 1 ? animationData : null}}" class="edit navi-btn {{role === 1 ? 'navi-btn-active' : ''}}"     >     </view>
+  <view animation="{{role === 2 ? animationData : null}}" class="personal navi-btn {{role === 2 ? 'navi-btn-active' : ''}}" > </view>
+</view>
+
+<view class="navi-bottom2">
+  <view style="opacity : {{role === 0 ? 1 : 0}}" class="navi-btn2 flex-center" data-site="0" catchtap="switchTab">万象</view>
+  <view style="opacity : {{role === 1 ? 1 : 0}}" class="navi-btn2 flex-center" data-site="1" catchtap="switchTab">漫游</view>
+  <view style="opacity : {{role === 2 ? 1 : 0}}" class="navi-btn2 flex-center" data-site="2" catchtap="switchTab">我梦</view>
 </view>

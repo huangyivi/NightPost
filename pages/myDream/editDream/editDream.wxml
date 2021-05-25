@@ -10,9 +10,9 @@
     <input class="main-title" maxlength="10" type="text" placeholder="梦的关键词" data-key="keyword" value="{{keyword}}" bindinput="changeVal"/>
     <textarea class="main-detail" placeholder="记录下你的梦吧" name="" id="" cols="30" rows="10" maxlength="255" value="{{detail}}" data-key="detail" bindinput="changeVal"></textarea>
     <view class="main-function flex-start">
-      <view wx:if="{{!imageFile}}" class="main-func flex-center-end draw-icon" catchtap="toPaint">手绘</view>
+      <view wx:if="{{!imageFile}}" class="main-func flex-center-end draw-icon" catchtap="toPaint"></view>
       <image wx:else class="main-func flex-center" mode="aspectFill" src="{{imageFile}}" catchtap="toPaint"></image>
-      <view class="main-func flex-center-end record-icon" catchtap="toRecord">录音</view>
+      <view class="main-func flex-center-end record-icon" catchtap="toRecord"></view>
     </view>
     <view class="main-select flex-start-col">
       <picker style="width: 100%" bindchange="isAccessedChange" value="{{accessIndex}}" range="{{access}}">

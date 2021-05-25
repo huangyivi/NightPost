@@ -5,7 +5,7 @@
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
   <view class="main-content">
     <view class="content_top flex-between">
-      <view>漫 游</view>
+      <view style="font-size: 40rpx;">漫 游</view>
       <view class="flex-between">
         <picker bindchange="handleSort" value="{{tagIndex}}" range="{{sortType}}">
         <view class="content_select">

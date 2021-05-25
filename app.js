@@ -8,6 +8,17 @@ App({
         that.globalData.userId = res.data;
       }
     })
+
+
+    // 获取字体
+    // wx.loadFontFace({
+    //   "family" : "KaiTi",
+    //   "source" : 'url("https://qg-recruit-video.oss-accelerate.aliyuncs.com/Source%20Han%20Serif%20CN.ttf")',
+    //   "global" : true,
+    //   "success" : function() {
+    //     console.log('加载字体成功');
+    //   }
+    // })
   },
   globalData: {
     userInfo: null,

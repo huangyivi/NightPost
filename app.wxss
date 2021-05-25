@@ -1,10 +1,10 @@
-@font-face {
-  font-family: "Source Han Serif CN";
+/* @font-face {
+  font-family: "KaiTi";
   src: url("https://qg-recruit-video.oss-accelerate.aliyuncs.com/Source%20Han%20Serif%20CN.ttf");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /**app.wxss**/
 
@@ -98,7 +98,7 @@
   justify-content: center;
   align-items: center;
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 500;
   line-height: 40rpx;
   color: #fff;
@@ -116,7 +116,7 @@
   height: 48rpx;
   background: #ACACAC;
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 500;
   line-height: 40rpx;
   color: #FFFFFF;
@@ -131,7 +131,7 @@
   height: 48rpx;
   background: #ec1717;
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 500;
   line-height: 40rpx;
   color: #FFFFFF;

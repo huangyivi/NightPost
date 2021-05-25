@@ -1,4 +1,5 @@
 /* components/navigator.wxss */
+@import "../../app.wxss";
 
 .navi-bottom {
   background-color: rgba(255,255,255,0.95);
@@ -7,7 +8,21 @@
   position: fixed;
   bottom: 0;
   padding: 0 64rpx;
-  height: 240rpx;
+  height: 200rpx;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-bottom2 {
+  /* background-color: rgba(255,255,255,0.95); */
+  /* background-color: #F8F8F8; */
+  box-sizing: border-box;
+  position: fixed;
+  bottom: 0;
+  padding: 0 64rpx;
+  height: 200rpx;
   width: 100vw;
   display: flex;
   justify-content: space-around;
@@ -15,10 +30,23 @@
 }
 
 
+
+
 .navi-btn {
-  width: 56rpx;
-  height: 56rpx;
-  opacity: 0.3;
+  width: 112rpx;
+  height: 112rpx;
+  opacity: 1;
+  background-repeat: no-repeat;
+  background-size: 50% 50%;
+  background-position: center;
+}
+
+.navi-btn2 {
+  font-weight: 800;
+  width: 112rpx;
+  height: 112rpx;
+  color: #000000;
+  text-shadow: #ffffff 0 0 30rpx,#ffffff 0 0 30rpx;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -26,7 +54,8 @@
 .navi-btn-active {
   width: 112rpx;
   height: 112rpx;
-  opacity: 1;
+  opacity: 0.3;
+  background-size: 100% 100%;
 }
 
 .personal {

@@ -5,7 +5,7 @@
 
 page {
   background-color: #F8F8F8;
-  font-family: 'Source Han Serif CN' !important;
+  font-family: 'KaiTi' !important;
 }
 
 .navi-top {
@@ -41,7 +41,7 @@ page {
 
 .content_top {
   font-size: 48rpx;
-  padding: 60rpx 45rpx;
+  padding: 40rpx 45rpx;
   color: #181818;
 }
 
@@ -83,12 +83,12 @@ view.hr {
 }
 
 .content_item {
-  padding: 60rpx 45rpx;
+  padding: 30rpx 45rpx;
   margin: 20rpx 0;
 }
 
 .content_item .title {
-  font-size: 48rpx;
+  font-size: 34rpx;
   color: #181818;
 }
 
@@ -104,6 +104,12 @@ view.hr {
 
 .tip .tag {
   margin-left: 20rpx;
+  font-size: 30rpx;
+
+}
+
+.tip .date {
+  font-size: 30rpx;
 }
 
 .right_wrap {
@@ -123,12 +129,9 @@ view.hr {
   height: 50rpx;
 }
 
-.resonate .num {
-
-}
-
 .content_item .to_detail {
   /* margin-left: 20rpx; */
   font-size: 48rpx;
+  opacity: 0.5;
 }
 

@@ -4,7 +4,7 @@
 
 page {
   background-color: #F8F8F8;
-  font-family: 'Source Han Serif CN' !important;
+  font-family: 'KaiTi' !important;
 }
 
 .navi-top {
@@ -43,7 +43,7 @@ page {
 .paint-option {
   margin-left: 30rpx;
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 500;
   line-height: 40rpx;
   color: #7B7B7B;
@@ -63,7 +63,7 @@ page {
 
 .eraser {
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 500;
   line-height: 32rpx;
   color: #181818;
@@ -121,7 +121,7 @@ page {
 
 
 .color-pane {
-  z-index: 2;
+  z-index: 999;
   position: absolute;
   left: 50%;
   bottom: 20%;
@@ -161,7 +161,7 @@ page {
 
 .eraser-tip {
   font-size: 28rpx;
-  font-family: Source Han Serif CN;
+  font-family: KaiTi;
   font-weight: 600;
   line-height: 40rpx;
   color: #7B7B7B;

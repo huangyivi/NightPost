@@ -5,7 +5,7 @@
 @import "../../../app.wxss";
 page {
     background-color: #F8F8F8;
-    font-family: 'Source Han Serif CN' !important;
+    font-family: 'KaiTi' !important;
 }
 
 .navi-top {
@@ -82,7 +82,7 @@ page {
     margin: 100rpx 0 0 0;
     width: 100%;
     font-size: 28rpx;
-    font-family: Source Han Serif CN;
+    font-family: KaiTi;
     font-weight: 400;
     line-height: 40rpx;
     color: #D2D2D2;

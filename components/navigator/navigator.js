@@ -41,13 +41,13 @@ Component({
     },
     loadAnimation() {
       let up = wx.createAnimation({
-        duration: 1000,
+        duration: 500,
         timingFunction: 'ease'
       })
       up.translateY('-20rpx').step();
       
       let down = wx.createAnimation({
-        duration: 5000,
+        duration: 1500,
         timingFunction: 'ease'
       })
       down.translateY('0rpx').step();
@@ -60,7 +60,7 @@ Component({
         that.setData({
           animationData : down.export()
         })
-      },1500)
+      },1000)
     }
   }
 })

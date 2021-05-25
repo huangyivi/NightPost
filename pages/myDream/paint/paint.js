@@ -97,7 +97,8 @@ Page({
   },
   changeColor(e) {
     this.setData({
-      color: e.target.dataset.color
+      color: e.target.dataset.color,
+      showColorPane: false
     })
   },
   getEraser() {
@@ -166,6 +167,7 @@ Page({
             canvasId: 'paint',
             x: 0,
             y: 0,
+            fileType: 'jpg',
             width: that.canvasW,
             height: that.canvasH,
             destHeight: that.canvasH,

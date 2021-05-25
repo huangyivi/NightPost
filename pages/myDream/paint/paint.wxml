@@ -34,18 +34,18 @@
   </view>
 
   <!-- 调色板 -->
-  <view class="color-pane" style="display: {{showColorPane ? '' : 'none'}}">
-    <view catchtap="changeColor" class="colors {{color === '#FA5151' ? 'selected' : ''}}" data-color="#FA5151" style="background: #FA5151"></view>
-    <view catchtap="changeColor" class="colors {{color === '#FA9D3B' ? 'selected' : ''}}" data-color="#FA9D3B" style="background: #FA9D3B"></view>
-    <view catchtap="changeColor" class="colors {{color === '#FFC300' ? 'selected' : ''}}" data-color="#FFC300" style="background: #FFC300"></view>
-    <view catchtap="changeColor" class="colors {{color === '#91D300' ? 'selected' : ''}}" data-color="#91D300" style="background: #91D300"></view>
-    <view catchtap="changeColor" class="colors {{color === '#07C160' ? 'selected' : ''}}" data-color="#07C160" style="background: #07C160"></view>
-    <view catchtap="changeColor" class="colors {{color === '#10AEFF' ? 'selected' : ''}}" data-color="#10AEFF" style="background: #10AEFF"></view>
-    <view catchtap="changeColor" class="colors {{color === '#6467F0' ? 'selected' : ''}}" data-color="#6467F0" style="background: #6467F0"></view>
-    <view catchtap="changeColor" class="colors {{color === '#181818' ? 'selected' : ''}}" data-color="#181818" style="background: #181818"></view>
-    <view catchtap="changeColor" class="colors {{color === '#ACACAC' ? 'selected' : ''}}" data-color="#ACACAC" style="background: #ACACAC"></view>
-    <view catchtap="changeColor" class="colors {{color === '#DDDDDD' ? 'selected' : ''}}" data-color="#DDDDDD" style="background: #DDDDDD"></view>
-  </view>
+  <cover-view class="color-pane" style="display: {{showColorPane ? '' : 'none'}}">
+    <cover-view catchtap="changeColor" class="colors {{color === '#FA5151' ? 'selected' : ''}}" data-color="#FA5151" style="background: #FA5151"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#FA9D3B' ? 'selected' : ''}}" data-color="#FA9D3B" style="background: #FA9D3B"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#FFC300' ? 'selected' : ''}}" data-color="#FFC300" style="background: #FFC300"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#91D300' ? 'selected' : ''}}" data-color="#91D300" style="background: #91D300"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#07C160' ? 'selected' : ''}}" data-color="#07C160" style="background: #07C160"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#10AEFF' ? 'selected' : ''}}" data-color="#10AEFF" style="background: #10AEFF"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#6467F0' ? 'selected' : ''}}" data-color="#6467F0" style="background: #6467F0"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#181818' ? 'selected' : ''}}" data-color="#181818" style="background: #181818"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#ACACAC' ? 'selected' : ''}}" data-color="#ACACAC" style="background: #ACACAC"></cover-view>
+    <cover-view catchtap="changeColor" class="colors {{color === '#DDDDDD' ? 'selected' : ''}}" data-color="#DDDDDD" style="background: #DDDDDD"></cover-view>
+  </cover-view>
 </view>
 
 
