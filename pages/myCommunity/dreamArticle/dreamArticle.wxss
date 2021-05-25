@@ -175,7 +175,7 @@ page {
   font-size: 34rpx;
   padding: 50rpx;
   text-indent: calc(1rem + 50rpx);
-  min-height: 50vh; 
+  /* min-height: 50vh;  */
   box-sizing: border-box;
 }
 
@@ -254,4 +254,26 @@ page {
 .resonate_dream {
   text-align:right;
   margin-right: 30rpx;
+}
+
+
+
+.bottom_btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transform: rotate(90deg) translate(-50%,20%);
+  transform-origin: center;
+  background: #fff;
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  border-radius: 50%;
+  box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.16);
+  box-sizing: border-box;
 }

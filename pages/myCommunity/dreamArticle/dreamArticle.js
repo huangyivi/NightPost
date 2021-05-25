@@ -21,7 +21,6 @@ Page({
     approveTag: false,
     uid: app.globalData.userId || -1,
   },
-  Bottom: false, // 是否已经触底的标志
   onReady: function () {
     let that = this;
     wx.getMenuButtonBoundingClientRect({
@@ -104,15 +103,13 @@ Page({
 
   // 上拉触底
   onReachBottom() {
-    console.log('上拉触底事件触发');
+    /* console.log('上拉触底事件触发');
     // 判断是否触底
     if (this.Bottom == false) {
       this.Bottom = true;
       return;
-    }
-    // 触底后再触底
-    this.getNewDream();
-    // this.Bottom = false;
+    } */
+    
   },
 
   // 处理音频播放和暂停
@@ -380,8 +377,6 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0
     });
-    // 设置成未触底状态
-    this.Bottom = false;
   },
 
   // 重新设置全局变量的梦境，用于点赞后更新

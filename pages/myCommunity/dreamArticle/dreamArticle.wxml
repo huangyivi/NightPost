@@ -54,8 +54,9 @@
     往左滑动(或点此)查看梦境评论
     <text>←</text>
   </navigator>
-  <view class="bottom_tip" bindtap="getNewDream">
+  <view bindtap="getNewDream" class="bottom_btn">>></view>
+  <!-- <view class="bottom_tip" bindtap="getNewDream">
     往下拉动(或点此)查看其他梦境
     <text>→</text>
-  </view>
+  </view> -->
 </view>

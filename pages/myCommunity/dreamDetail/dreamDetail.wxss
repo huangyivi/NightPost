@@ -165,7 +165,7 @@ page {
   font-size: 34rpx;
   padding: 50rpx;
   text-indent: calc(1rem + 50rpx);
-  min-height: 50vh; 
+  /* min-height: 50vh;  */
   box-sizing: border-box;
 }
 
