@@ -18,7 +18,8 @@ Page({
       month: 0
     },
     play: false,
-    approveTag: false
+    approveTag: false,
+    uid: -1,
   },
   onReady: function () {
     let that = this;
@@ -117,9 +118,9 @@ Page({
   handleApprove() {
     const {
       dream: {
-        uid,
         id
-      }
+      },
+      uid,
     } = this.data;
 
     // 判断是否已经点赞
@@ -312,7 +313,8 @@ Page({
 
       this.setData({
         dream,
-        time
+        time,
+        uid: app.globalData.userId
       });
 
     }).catch(err => {

@@ -164,14 +164,14 @@ Page({
   handleApprove() {
     const {
       dream: {
-        uid,
         id
-      }
+      },
+      userId
     } = this.data;
 
     // 判断是否已经点赞
     handleRequest({
-      url: `/dream/like/check/${uid}/${id}`,
+      url: `/dream/like/check/${userId}/${id}`,
       methos: "get"
     }).then(async res => {
       console.log("原本是否点赞:", res);
@@ -188,7 +188,7 @@ Page({
       });
 
       // 根据是否点赞请求不同的路径
-      const url = `/dream/${!Data?'like':'unlike'}/${uid}/${id}`;
+      const url = `/dream/${!Data?'like':'unlike'}/${userId}/${id}`;
       // 根据是否点赞并发送给后台
       const {
         data
