@@ -2,6 +2,5 @@
   "usingComponents": {
     "ec-canvas": "../../../utils/ec-canvas/ec-canvas",
     "my-navigator" : "../../../components/navigator/navigator"
-  },
-  "enablePullDownRefresh": true
+  }
 }

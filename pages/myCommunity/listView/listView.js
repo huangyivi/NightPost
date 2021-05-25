@@ -35,6 +35,9 @@ Page({
 
   onPullDownRefresh: function(){
     this.getDreamByWhat(TIME);
+    setTimeout(function () {
+      wx.onPullDownRefresh();
+    },1000);
   },
 
   onShow: function(){

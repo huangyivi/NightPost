@@ -121,6 +121,7 @@ page {
 
 
 .color-pane {
+  z-index: 2;
   position: absolute;
   left: 50%;
   bottom: 20%;
