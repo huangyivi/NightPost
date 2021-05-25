@@ -34,24 +34,45 @@ Page({
       index: e.detail.value
     })
     if (e.detail.value == 1) {
-      setTimeout(() => {
-        let option = this.data.option;
-        chart.setOption(option);
-      }, 100)
+      wx.showLoading({
+        title: '加载中',
+      })
+      let time = null;
+      time = setInterval(() => {
+        if (chart) {
+          let option = this.data.option;
+          chart.setOption(option);
+          clearInterval(time);
+          wx.hideLoading();
+        }
+      }, 100);
     }
   },
   // 用户登录提示框和入口
   bindGetUserInfo(e) {
     let that = this;
+    console.log(e.detail.userInfo);
     if (e.detail.userInfo) {
-      that.login(e.detail.userInfo.nickName)
+      wx.showModal({
+        title: '提示',
+        content: '是否登录？',
+        success: function (sm) {
+          if (sm.confirm) {
+            that.login(e.detail.userInfo.nickName)
+          }
+        }
+      })
     }
   },
   // 登录
   login: function (name) {
+    wx.showLoading({
+      title: '加载中',
+    })
     let that = this;
     wx.login({
       error: function () {
+        wx.hideLoading();
         wx.showModal({
           title: '获取失败',
           content: '后台链接失败，请联系管理员',
@@ -69,7 +90,7 @@ Page({
           },
           method: "GET",
           error: function () {
-
+            wx.hideLoading();
             wx.showModal({
               title: '获取失败',
               content: '后台链接失败，请联系管理员',
@@ -91,7 +112,7 @@ Page({
               },
               method: "POST",
               error: function () {
-
+                wx.hideLoading();
                 wx.showModal({
                   title: '获取失败',
                   content: '后台链接失败，请联系管理员',
@@ -107,7 +128,7 @@ Page({
                   },
                   method: "GET",
                   error: function () {
-
+                    wx.hideLoading();
                     wx.showModal({
                       title: '获取失败',
                       content: '后台链接失败，请联系管理员',
@@ -188,15 +209,13 @@ Page({
       success: function (res) {
         wx.hideLoading();
         let data = res.data.Data;
-        console.log(data);
-        for(let i=0;i<data.length;i++) {
+        for (let i = 0; i < data.length; i++) {
           dataChart.push({
-            name: tags[i] + "("+ data[i].Count +")",
+            name: tags[i] + "(" + data[i].Count + ")",
             value: data[i].Count
           })
         }
-        
-        that.setChart(tags, dataChart, dataChartAll); 
+        that.setChart(tags, dataChart, dataChartAll);
       }
     })
 
@@ -308,6 +327,7 @@ Page({
       value: count
     });
     dataChartAll[0].children = data;
+    console.log(data);
 
     // 显示
     let option = {
