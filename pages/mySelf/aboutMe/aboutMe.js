@@ -54,15 +54,15 @@ Page({
     wx.getUserProfile({
       desc: '获取用户昵称',
       success: (res) => {
-        wx.showModal({
-          title: '提示',
-          content: '是否登录？',
-          success: function (sm) {
-            if (sm.confirm) {
-              that.login(res.userInfo.nickName);
-            }
-          }
-        })
+        that.login(res.userInfo.nickName);
+        // wx.showModal({
+        //   title: '提示',
+        //   content: '是否登录？',
+        //   success: function (sm) {
+        //     if (sm.confirm) {
+        //     }
+        //   }
+        // })
       }
     })
   },
