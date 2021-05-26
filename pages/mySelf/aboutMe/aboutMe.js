@@ -49,10 +49,29 @@ Page({
     }
   },
   // 用户登录提示框和入口
+  getUserProfile(e) {
+    let that = this;
+    wx.getUserProfile({
+      desc: '获取用户昵称',
+      success: (res) => {
+        wx.showModal({
+          title: '提示',
+          content: '是否登录？',
+          success: function (sm) {
+            if (sm.confirm) {
+              that.login(res.userInfo.nickName);
+            }
+          }
+        })
+      }
+    })
+  },
+  // 用户登录提示框和入口
   bindGetUserInfo(e) {
     let that = this;
     console.log(e.detail.userInfo);
     if (e.detail.userInfo) {
+      
       wx.showModal({
         title: '提示',
         content: '是否登录？',
