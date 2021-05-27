@@ -15,19 +15,21 @@
 }
 
 .t-left {
+  height: 68rpx;
+  width: 136rpx;
   transform: translateX(-30rpx);
   opacity: 0;
 }
 
 .t-right {
+  height: 68rpx;
+  width: 136rpx;
   transform: translateX(30rpx);
   opacity: 0;
 }
 
 .lrgFont {
   color: white;
-  text-indent: 10rpx;
-  font-size: 60rpx;
   position: absolute;
   top: 70%;
   left: 50%;

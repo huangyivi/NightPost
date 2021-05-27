@@ -1,8 +1,8 @@
 <view class="firstLoad" animation="{{animationData}}" wx:if="{{isShow}}">
   <image animation="{{showAndHide}}" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/firstPage.jpg" class="firstPage"></image>
   <view class="lrgFont flex-center">
-    <text animation="{{fromLeft}}" class="t-left">浮云</text>
-    <text animation="{{fromRight}}" class="t-right">梦泽</text>
+    <image src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/cloud.png" animation="{{fromLeft}}" class="t-left"></image>
+    <image src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/land.png" animation="{{fromRight}}" class="t-right"></image>
   </view>
   <text decode="true" animtaion="{{show}}" class="midFont">Dream&emsp;Land</text>
 </view>
