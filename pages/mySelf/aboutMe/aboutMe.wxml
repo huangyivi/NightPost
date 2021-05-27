@@ -7,7 +7,7 @@
 <view class="main" style="padding: {{statusBarHeight + capsuleHeight}}px 64rpx 100rpx;">
     <scroll-view class="main-content flex-start-col">
         <view class="aboutme-login flex-around-col">
-            <button wx:if="{{!openId}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="aboutme-login-img">
+            <button wx:if="{{!openId}}" bindtap="getUserProfile" class="aboutme-login-img">
                 <image slot="img" class="aboutme-login-img" src="https://qg-recruit-video.oss-accelerate.aliyuncs.com/4c541df19e46615725efc724582bfe6.png"></image>
             </button>
             <open-data wx:else type="userAvatarUrl" class="aboutme-login-img"></open-data>

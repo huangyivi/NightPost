@@ -84,7 +84,7 @@ Page({
     // 渲染图片
     if (app.globalData.imageFile) {
       let file = app.globalData.imageFile;
-      let imgBase64 = 'data:image/jpg;base64,' + wx.getFileSystemManager().readFileSync(file, 'base64');
+      let imgBase64 = 'data:image/png;base64,' + wx.getFileSystemManager().readFileSync(file, 'base64');
       this.setData({
         imageFile: imgBase64
       })

@@ -156,7 +156,7 @@ page {
 
 .introduce_bg{
   width: 100%;
-  background: #fefefe;
+  background: #ffffff;
 }
 
 .content_introduce .title {

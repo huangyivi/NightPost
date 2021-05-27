@@ -167,7 +167,7 @@ Page({
             canvasId: 'paint',
             x: 0,
             y: 0,
-            fileType: 'jpg',
+            fileType: 'png',
             width: that.canvasW,
             height: that.canvasH,
             destHeight: that.canvasH,
