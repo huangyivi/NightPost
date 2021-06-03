@@ -23,7 +23,7 @@ const formatDate = (date) => {
 
 // 请求后台的方法
 const handleRequest = (params)=>{
-  const domain = 'https://recruit.qgailab.com';
+  const domain = 'https://common.qgailab.com';
   wx.showLoading({
     title: '加载中',
   })

@@ -27,7 +27,7 @@ App({
     lastImage: [],  // 画笔笔迹
     myDream: null,  // 我的梦境
     voice: '',  // 录音暂存地址
-    domain: 'https://recruit.qgailab.com/dream/',
+    domain: 'https://common.qgailab.com/dream/',
     openId : '',
     userId : '',  // 用户id，openid太长了，用这个标识
     dreamsList: [], // 梦境列表

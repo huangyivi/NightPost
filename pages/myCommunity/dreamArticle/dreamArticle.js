@@ -140,6 +140,11 @@ Page({
     } = this.data;
     console.log(uid,id);
 
+    if(!app.globalData.openId) return wx.showToast({
+      title: '请先登录!',
+      icon: 'none'
+    })
+
     // 判断是否已经点赞
     handleRequest({
       url: `/dream/like/check/${uid}/${id}`,
